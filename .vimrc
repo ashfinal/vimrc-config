@@ -80,12 +80,9 @@ filetype plugin indent on
 
 " 1 tab == 4 spaces
 set shiftwidth=4
-set softtabstop=4
 set tabstop=4
-set shiftround
 
 set expandtab    " Use spaces instead of tabs
-set smarttab    " Be smart when using tabs
 
 set wrap    " Wrap lines
 
@@ -285,7 +282,7 @@ nmap <silent> <C-k> :exe "resize " . (winheight(0) * 3/2)<CR>
 nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nmap <silent> <C-l> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
-autocmd vimResized * exe "normal! \<C-w>="
+" autocmd vimResized * exe "normal! \<C-w>="
 
 " Offer basic status line if Airline plugin fails to load
 set laststatus=2
@@ -326,7 +323,7 @@ inoremap <C-b> <Left>
 inoremap <C-h> <C-o>b
 
 " Ctrl-l: Move word right
-inoremap <C-l> <C-o>w
+inoremap <C-l> <C-o>e
 
 " Ctrl-k: Move cursor up
 inoremap <C-k> <Up>
@@ -371,7 +368,7 @@ nnoremap <silent> <Leader>t :call ToggleTabandSpace()<CR>
 function! ToggleTabandSpace()
     set list
     set expandtab!
-    retab!
+    retab! 4
 endfunction
 
 nnoremap <silent> <Leader>l :setlocal list!<CR>
@@ -421,6 +418,7 @@ function! ToggleFoldMethod()
 endfunction
 
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
+autocmd FileType html,css,markdown,php EmmetInstall
 
 " Use ~/.vimrc.local if exists
 if filereadable(expand("~/.vimrc.local"))
@@ -505,6 +503,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
 " Plugin Config - emmet-vim {{{ "
 
+let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key = ','
 
 " }}} Plugin Config - emmet-vim "
