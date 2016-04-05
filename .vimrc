@@ -418,7 +418,6 @@ function! ToggleFoldMethod()
 endfunction
 
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
-autocmd FileType html,css,markdown,php EmmetInstall
 
 " Use ~/.vimrc.local if exists
 if filereadable(expand("~/.vimrc.local"))
@@ -504,6 +503,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 " Plugin Config - emmet-vim {{{ "
 
 let g:user_emmet_install_global = 0
+autocmd FileType html,css,markdown,php EmmetInstall
 let g:user_emmet_leader_key = ','
 
 " }}} Plugin Config - emmet-vim "
