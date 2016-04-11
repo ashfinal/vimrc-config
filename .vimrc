@@ -78,6 +78,7 @@ filetype plugin indent on
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+set smarttab
 
 set expandtab    " Use spaces instead of tabs
 
