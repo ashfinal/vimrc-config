@@ -11,12 +11,11 @@
 
 set nocompatible     " be iMproved, required
 
-set title
-
 if !isdirectory(expand("~/.vim/"))
     call mkdir($HOME . "/.vim")
 endif
 
+set title
 set ttyfast    " Improves smoothness of redrawing
 
 " Don't redraw while executing macros (good performance config)
@@ -62,8 +61,6 @@ set termencoding=utf-8
 " Use Unix as the standard file type
 set fileformats=unix,mac,dos
 
-" The value 'double' cannot be used if 'listchars' or 'fillchars'
-" contains a character that would be double width.
 set ambiwidth=double
 
 " Also break at a multi-byte character above 255
@@ -96,7 +93,7 @@ set whichwrap+=<,>,h,l,[,]
 " Use these symbols for invisible chars
 set listchars=tab:¦\ ,eol:¬,trail:⋅,extends:»,precedes:«
 
-set foldenable                  " Auto fold code
+set foldenable
 
 " Add a bit extra margin to the left
 set foldcolumn=1
@@ -284,13 +281,8 @@ nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nmap <silent> <C-l> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " autocmd vimResized * exe "normal! \<C-w>="
 
-" Offer basic status line if Airline plugin fails to load
+" always show status line
 set laststatus=2
-set statusline=%<%f\                     " Filename
-set statusline+=%w%h%m%r                 " Options
-set statusline+=\ [%{&ff}/%Y]            " Filetype
-set statusline+=\ [%{getcwd()}]          " Current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 " }}} Buffer - BufferSwitch, FileExplorer, StatusLine "
 
@@ -371,6 +363,7 @@ function! ToggleTabandSpace()
     retab! 4
 endfunction
 
+nnoremap <silent> <Leader>x :setlocal modifiable!<CR>
 nnoremap <silent> <Leader>l :setlocal list!<CR>
 nnoremap <silent> <Leader>w :setlocal wrap!<CR>
 
