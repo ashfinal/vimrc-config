@@ -249,7 +249,7 @@ set hlsearch
 set incsearch
 " set nowrapscan    " Don't wrap around when jumping between search result
 
-"Keep search pattern at the center of the screen."
+" Keep search pattern at the center of the screen.
 nmap <silent> n nzz
 nmap <silent> N Nzz
 nmap <silent> * *zz
@@ -347,7 +347,7 @@ set matchtime=2
 set nrformats=alpha,octal,hex
 
 " For when you forget to sudo.. Really Write the file.
-cmap W! w !sudo tee % >/dev/null
+command W w !sudo tee % > /dev/null
 
 autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
 
@@ -461,6 +461,17 @@ endfunction
 
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
 
+" You can switch between py2 and py3, use py2 by default. Put 'let g:usePython3 = 1' into .vimrc.local to use py3.
+if exists('g:usePython3')
+    if has('python3')
+        silent echo "Has python3.x, py3 will be used."
+    else
+        if has('python2')
+            silent echo "Has python2.x, py2 will be used."
+        endif
+    endif
+endif
+
 " }}} Misc "
 
 " }}} General "
@@ -507,14 +518,14 @@ if !exists('g:nousePlugManager')
                 exe 'py import os,urllib2; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
             else
                 if has('python3')
-                    " TODO
+                    exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
                 else
                     echo "!Error: PluginManager - plug.vim need '+python' or '+python3' to run. \nIf you don't want to use it, you can put 'let g: nousePlugManager = 1' into .vimrc.local to disable it."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
                 echo "PluginManager - plug.vim just installed! \nVIM will quit now, after restart you can use PlugInstall to begin."
-                exe 'qa!'
+                exe 'qall!'
             endif
         else
             echo "!Error: PluginManager -plug.vim need 'git' to run. \n If you don't want to use it, you can put 'let g: nousePlugManager = 1' into .vimrc.local to disable it."
@@ -708,4 +719,4 @@ if filereadable(expand("~/.vimrc.after"))
     source $HOME/.vimrc.after
 endif
 
-" vim:set et sw=4 ts=4 tw=80 fdm=marker fdl=1:
+" vim:set et sw=4 ts=4 fdm=marker fdl=1:
