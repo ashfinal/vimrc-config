@@ -5,6 +5,11 @@
 " Created:  June 01, 2015
 " Modified: February 14, 2016
 
+" Use ~/.vimrc.local if exists
+if filereadable(expand("~/.vimrc.local"))
+    source $HOME/.vimrc.local
+endif
+
 " General {{{ "
 
 " Environment - Encoding, Indent, Fold {{{ "
@@ -13,6 +18,10 @@ set nocompatible     " be iMproved, required
 
 if !isdirectory(expand("~/.vim/"))
     call mkdir($HOME . "/.vim")
+endif
+
+if has('win32') || has('win64')
+    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
 endif
 
 set title
@@ -44,8 +53,7 @@ if has('clipboard')
 endif
 
 " Ctrl-t: copy the full path of the current file to the clipboard
-nmap <silent> <C-t> :let @+=expand("%:p")<CR>:echo "Copied current file
-    \ path '".expand("%:p")."' to clipboard"<CR>
+nmap <silent> <C-t> :let @+=expand("%:p")<CR>:echo "Copied current file path '".expand("%:p")."' to clipboard"<CR>
 
 set selection=exclusive
 set selectmode=mouse,key
@@ -150,7 +158,7 @@ set wildmenu
 set wildmode=list:longest,full
 " Ignore compiled files
 set wildignore=*.o,*.swp,*.bak,*.pyc,*.pyo,*.class,*.zip
-if has("win16") || has("win32")
+if has("win32") || has("win64")
     set wildignore+=.git\*,.hg\*,.svn\*
 else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -207,7 +215,7 @@ set autoread
 set autowrite    " Automatically write a file when leaving a modified buffer
 set updatetime=200
 
-" Sets how many lines of history VIM has to remember
+" Set how many lines of history VIM has to remember
 set history=1000     " command line history
 set undoreload=1000
 
@@ -338,6 +346,9 @@ set matchtime=2
 " Define how to use the CTRL-A and CTRL-X commands for adding to and subtracting from a number respectively
 set nrformats=alpha,octal,hex
 
+" For when you forget to sudo.. Really Write the file.
+cmap W! w !sudo tee % >/dev/null
+
 autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
 
 " Find out to which highlight-group a particular keyword/symbol belongs
@@ -345,6 +356,28 @@ nnoremap <silent> <C-c> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"nam
     \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
     \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
     \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+
+nnoremap <silent> <Leader>b :call ToggleBackground()<CR>
+function! ToggleBackground()
+    if &background == "light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+
+nnoremap <silent> <Leader>f :call ToggleFileformat()<CR>
+function! ToggleFileformat()
+    if (&fileformat == "dos")
+        set fileformat=mac
+    elseif (&fileformat == "mac")
+        set fileformat=unix
+    else
+        set fileformat=dos
+    endif
+endfunction
+
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab foldmethod=indent foldlevel=100
 
 nnoremap <silent> <Leader>s :call StripWSandBL()<CR>
 " Strip Trailing whitespace and blank line of EOF when saving files
@@ -358,15 +391,30 @@ function! StripWSandBL()
 endfunction
 
 nnoremap <silent> <Leader>t :call ToggleTabandSpace()<CR>
+let g:hadRetabbed = 0
 function! ToggleTabandSpace()
-    set list
-    set expandtab!
-    retab! 4
+    let g:etStatus = &expandtab
+    setlocal list
+    if g:hadRetabbed
+        setlocal noexpandtab
+        retab!
+        let g:hadRetabbed = 0
+    else
+        setlocal expandtab
+        retab
+        let g:hadRetabbed = 1
+    endif
+    if g:etStatus
+        set expandtab
+    else
+        set noexpandtab
+    endif
 endfunction
 
 nnoremap <silent> <Leader>x :setlocal modifiable!<CR>
 nnoremap <silent> <Leader>l :setlocal list!<CR>
 nnoremap <silent> <Leader>w :setlocal wrap!<CR>
+nnoremap <silent> <Leader>d :setlocal expandtab!<CR>
 
 " Make TOhtml behavior better
 let g:html_dynamic_folds = 1
@@ -375,7 +423,7 @@ let g:html_prevent_copy = "fntd"
 " Make search results can be foldable
 nnoremap <silent> <Leader>z :call ToggleSearchFold()<CR>
 function! ToggleSearchFold()
-    if !exists("b:hasSearchFold") || (b:hasSearchFold == 0)
+    if !exists('b:hasSearchFold') || (b:hasSearchFold == 0)
         setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2
         setlocal foldmethod=expr
         setlocal foldlevel=0
@@ -413,187 +461,251 @@ endfunction
 
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
 
-" Use ~/.vimrc.local if exists
-if filereadable(expand("~/.vimrc.local"))
-    source $HOME/.vimrc.local
-endif
-
 " }}} Misc "
 
 " }}} General "
 
-" Plugins Config {{{ "
+" Plugins List & Config {{{ "
 
 " Plugin List {{{ "
+if !exists('g:nousePlugManager')
+    if filereadable(expand("~/.vim/autoload/plug.vim"))
+        call plug#begin('~/.vim/plugged')
 
-if !filereadable(expand("~/.vim/autoload/plug.vim"))
-    exe '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-endif
+        Plug 'bling/vim-airline'
+        Plug 'mbbill/undotree'
+        Plug 'mattn/emmet-vim'
+        if executable('node')
+            Plug 'maksimr/vim-jsbeautify'
+        endif
+        Plug 'tpope/vim-surround'
+        Plug 'Lokaltog/vim-easymotion'
+        Plug 'kshenoy/vim-signature'
+        Plug 'scrooloose/nerdcommenter'
+        Plug 'Raimondi/delimitMate'
+        if has('lua')
+            Plug 'Shougo/neocomplete.vim'
+        endif
+        Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+        Plug 'tsaleh/vim-align'
+        Plug 'junegunn/goyo.vim'
+        Plug 'junegunn/limelight.vim'
+        Plug 'ctrlpvim/ctrlp.vim'
+        Plug 'vim-scripts/YankRing.vim'
+        Plug 'tpope/vim-unimpaired'
+        Plug 'airblade/vim-gitgutter'
+        Plug 'dhruvasagar/vim-table-mode'
+        Plug 'reedes/vim-colors-pencil'
 
-call plug#begin('~/.vim/plugged')
-
-Plug 'bling/vim-airline'
-Plug 'mbbill/undotree'
-Plug 'mattn/emmet-vim'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'tpope/vim-surround'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'kshenoy/vim-signature'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Raimondi/delimitMate'
-Plug 'Shougo/neocomplete.vim'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'tsaleh/vim-align'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'tpope/vim-unimpaired'
-Plug 'airblade/vim-gitgutter'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'reedes/vim-colors-pencil'
-
-call plug#end()
-
-if filereadable(expand("~/.vim/plugged/vim-colors-pencil/colors/pencil.vim"))
-    colorscheme pencil
+        call plug#end()
+    else
+        if executable('git')
+            if !isdirectory(expand("~/.vim/autoload"))
+                call mkdir($HOME . "/.vim/autoload", "p")
+            endif
+            if has('python')
+                exe 'py import os,urllib2; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
+            else
+                if has('python3')
+                    " TODO
+                else
+                    echo "!Error: PluginManager - plug.vim need '+python' or '+python3' to run. \nIf you don't want to use it, you can put 'let g: nousePlugManager = 1' into .vimrc.local to disable it."
+                endif
+            endif
+            if filereadable(expand("~/.vim/autoload/plug.vim"))
+                echo "PluginManager - plug.vim just installed! \nVIM will quit now, after restart you can use PlugInstall to begin."
+                exe 'qa!'
+            endif
+        else
+            echo "!Error: PluginManager -plug.vim need 'git' to run. \n If you don't want to use it, you can put 'let g: nousePlugManager = 1' into .vimrc.local to disable it."
+        endif
+    endif
 endif
 
 " }}} Plugin List "
 
-" Plugin Config - undotree {{{ "
+" Plugin Config {{{ "
 
-let g:undotree_SplitWidth = 40
-let g:undotree_SetFocusWhenToggle = 1
-nmap <silent> U :UndotreeToggle<CR>
+if !exists('g:nousePlugManager') && filereadable(expand("~/.vim/autoload/plug.vim"))
 
-" }}} Plugin Config - undotree "
+    " Plugin Config - pencilcolorscheme {{{ "
 
-" Plugin Config - vim-easymotion {{{ "
+    if filereadable(expand("~/.vim/plugged/vim-colors-pencil/colors/pencil.vim"))
+        colorscheme pencil
+    endif
 
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_use_smartsign_us = 1
-map <Leader> <Plug>(easymotion-prefix)
-nmap f <Plug>(easymotion-s)
-nmap t <Plug>(easymotion-s)
-nmap T <Plug>(easymotion-sn)
-nmap F <Plug>(easymotion-sn)
+    " }}} Plugin Config - pencilcolorscheme "
 
-" }}} Plugin Config - vim-easymotion "
+    " Plugin Config - undotree {{{ "
 
-" Plugin Config - ultisnips {{{ "
+    if filereadable(expand("~/.vim/plugged/undotree/plugin/undotree.vim"))
+        let g:undotree_SplitWidth = 40
+        let g:undotree_SetFocusWhenToggle = 1
+        nmap <silent> U :UndotreeToggle<CR>
+    endif
 
-let g:UltiSnipsExpandTrigger = "ii"
-let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
-let g:UltiSnipsEditSplit = "context"
-if !isdirectory(expand("~/.vim/UltiSnips"))
-    call mkdir($HOME . "/.vim/UltiSnips", "p")
+    " }}} Plugin Config - undotree "
+
+    " Plugin Config - vim-easymotion {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-easymotion/plugin/EasyMotion.vim"))
+        let g:EasyMotion_smartcase = 1
+        let g:EasyMotion_use_smartsign_us = 1
+        map <Leader> <Plug>(easymotion-prefix)
+        nmap f <Plug>(easymotion-s)
+        nmap t <Plug>(easymotion-s)
+        nmap T <Plug>(easymotion-sn)
+        nmap F <Plug>(easymotion-sn)
+    endif
+
+    " }}} Plugin Config - vim-easymotion "
+
+    " Plugin Config - ultisnips {{{ "
+
+    if filereadable(expand("~/.vim/plugged/ultisnips/plugin/UltiSnips.vim"))
+        let g:UltiSnipsExpandTrigger = "ii"
+        let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+        let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+        let g:UltiSnipsEditSplit = "context"
+        if !isdirectory(expand("~/.vim/UltiSnips"))
+            call mkdir($HOME . "/.vim/UltiSnips", "p")
+        endif
+        let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+    endif
+
+    " }}} Plugin Config - ultisnips "
+
+    " Plugin Config - emmet-vim {{{ "
+
+    if filereadable(expand("~/.vim/plugged/emmet-vim/plugin/emmet.vim"))
+        let g:user_emmet_install_global = 0
+        autocmd FileType html,css,markdown,php EmmetInstall
+        let g:user_emmet_leader_key = ','
+        let g:user_emmet_mode = 'iv'
+    endif
+
+    " }}} Plugin Config - emmet-vim "
+
+    " Plugin Config - neocomplete {{{ "
+
+    if filereadable(expand("~/.vim/plugged/neocomplete.vim/plugin/neocomplete.vim"))
+        let g:neocomplete#enable_at_startup = 1
+    endif
+
+    " }}} Plugin Config - neocomplete "
+
+    " Plugin Config - nerdcommenter {{{ "
+
+    if filereadable(expand("~/.vim/plugged/nerdcommenter/plugin/NERD_commenter.vim"))
+        " Always leave a space between the comment character and the comment
+        let NERDSpaceDelims = 1
+        map <Bslash> <plug>NERDCommenterInvert
+        vmap <C-Bslash> <plug>NERDCommenterSexy
+    endif
+
+    " }}} Plugin Config - nerdcommenter "
+
+    " Plugin Config - Goyo & Limelight {{{ "
+
+    if filereadable(expand("~/.vim/plugged/goyo.vim/plugin/goyo.vim"))
+        function! s:goyo_enter()
+            set noshowmode
+            set noshowcmd
+            set nocursorline
+            set foldcolumn=0
+        endfunction
+
+        function! s:goyo_leave()
+            set showmode
+            set showcmd
+            set cursorline
+            set foldcolumn=1
+        endfunction
+
+        autocmd! User GoyoEnter nested call <SID>goyo_enter()
+        autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+        if filereadable(expand("~/.vim/plugged/limelight.vim/plugin/limelight.vim"))
+            " Goyo.vim integration
+            let g:limelight_conceal_ctermfg = 250
+            let g:limelight_default_coefficient = 0.8
+            autocmd User GoyoEnter Limelight
+            autocmd User GoyoLeave Limelight!
+        endif
+    endif
+
+    " }}} Plugin Config - Goyo & Limelight "
+
+    " Plugin Config - JsBeautify {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-jsbeautify/plugin/beautifier.vim"))
+        autocmd FileType javascript noremap <buffer> <Leader>js :call JsBeautify()<CR>
+        autocmd FileType html noremap <buffer> <Leader>js :call HtmlBeautify()<CR>
+        autocmd FileType css noremap <buffer> <Leader>js :call CSSBeautify()<CR>
+    endif
+
+    " }}} Plugin Config - JsBeautify "
+
+    " Plugin Config - CtrlP {{{ "
+
+    if filereadable(expand("~/.vim/plugged/ctrlp.vim/plugin/ctrlp.vim"))
+        let g:ctrlp_map = '<Leader>o'
+        let g:ctrlp_cmd = 'CtrlPBuffer'
+    endif
+
+    " }}} Plugin Config - CtrlP "
+
+    " Plugin Config - YankRing {{{ "
+
+    if !isdirectory(expand("~/.vim/yankring"))
+        call mkdir($HOME . "/.vim/yankring", "p")
+    endif
+    let g:yankring_history_dir = '~/.vim/yankring/'
+    if filereadable(expand("~/.vim/plugged/YankRing.vim/plugin/yankring.vim"))
+        nmap <silent> <Leader>y :YRShow<CR>
+        let g:yankring_min_element_length = 3
+        let g:yankring_replace_n_pkey = '<C-p>'
+        let g:yankring_replace_n_nkey = '<C-n>'
+    endif
+
+    " }}} Plugin Config - YankRing "
+
+    " Plugin Config - vim-align {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-align/plugin/AlignPlugin.vim"))
+        nmap <Leader>g :AlignCtrl<Space>
+        vmap gl :Align<Space>
+    endif
+
+    " }}} Plugin Config - vim-align "
+
+    " Plugin Config - tablemode {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-table-mode/plugin/table-mode.vim"))
+        let g:table_mode_corner="|"
+        let g:table_mode_align_char=":"
+    endif
+
+    " }}} Plugin Config - tablemode "
+
+    " Plugin Config - airline {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-airline/plugin/airline.vim"))
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#fnamemod = ':t'
+    endif
+
+    " }}} Plugin Config - airline "
+
 endif
-let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
-" }}} Plugin Config - ultisnips "
+" }}} Plugin Config "
 
-" Plugin Config - emmet-vim {{{ "
+" }}} Plugins List & Config "
 
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,markdown,php EmmetInstall
-let g:user_emmet_leader_key = ','
-
-" }}} Plugin Config - emmet-vim "
-
-" Plugin Config - neocomplete {{{ "
-
-let g:neocomplete#enable_at_startup = 1
-
-" }}} Plugin Config - neocomplete "
-
-" Plugin Config - nerdcommenter {{{ "
-
-" Always leave a space between the comment character and the comment
-let NERDSpaceDelims = 1
-map <Bslash> <plug>NERDCommenterInvert
-vmap <C-Bslash> <plug>NERDCommenterSexy
-
-" }}} Plugin Config - nerdcommenter "
-
-" Plugin Config - Goyo & Limelight {{{ "
-
-function! s:goyo_enter()
-    set noshowmode
-    set noshowcmd
-    set nocursorline
-    set foldcolumn=0
-endfunction
-
-function! s:goyo_leave()
-    set showmode
-    set showcmd
-    set cursorline
-    set foldcolumn=1
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-" Goyo.vim integration
-let g:limelight_conceal_ctermfg = 250
-let g:limelight_default_coefficient = 0.8
-autocmd User GoyoEnter Limelight
-autocmd User GoyoLeave Limelight!
-
-" }}} Plugin Config - Goyo & Limelight "
-
-" Plugin Config - JsBeautify {{{ "
-if executable('node')
-    autocmd FileType javascript noremap <buffer> <Leader>js :call JsBeautify()<CR>
-    autocmd FileType html noremap <buffer> <Leader>js :call HtmlBeautify()<CR>
-    autocmd FileType css noremap <buffer> <Leader>js :call CSSBeautify()<CR>
+" Use ~/.vimrc.after if exists
+if filereadable(expand("~/.vimrc.after"))
+    source $HOME/.vimrc.after
 endif
-
-" }}} Plugin Config - JsBeautify "
-
-" Plugin Config - CtrlP {{{ "
-
-let g:ctrlp_map = '<Leader>o'
-let g:ctrlp_cmd = 'CtrlPBuffer'
-
-" }}} Plugin Config - CtrlP "
-
-" Plugin Config - YankRing {{{ "
-
-nmap <silent> <Leader>y :YRShow<CR>
-let g:yankring_min_element_length = 3
-let g:yankring_replace_n_pkey = '<C-p>'
-let g:yankring_replace_n_nkey = '<C-n>'
-if !isdirectory(expand("~/.vim/yankring"))
-    call mkdir($HOME . "/.vim/yankring", "p")
-endif
-let g:yankring_history_dir = '~/.vim/yankring/'
-
-" }}} Plugin Config - YankRing "
-
-" Plugin Config - vim-align {{{ "
-
-nmap <Leader>g :AlignCtrl<Space>
-vmap gl :Align<Space>
-
-" }}} Plugin Config - vim-align "
-
-" Plugin Config - tablemode {{{ "
-
-let g:table_mode_corner="|"
-let g:table_mode_align_char=":"
-
-" }}} Plugin Config - tablemode "
-
-" Plugin Config - airline {{{ "
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" }}} Plugin Config - airline "
-
-" }}} Plugins Config "
 
 " vim:set et sw=4 ts=4 tw=80 fdm=marker fdl=1:
