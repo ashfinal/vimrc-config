@@ -53,7 +53,7 @@ if has('clipboard')
 endif
 
 " Ctrl-t: copy the full path of the current file to the clipboard
-nmap <silent> <C-t> :let @+=expand("%:p")<CR>:echo "Copied current file path '".expand("%:p")."' to clipboard"<CR>
+nmap <silent> <C-t> :let @"=expand("%:p")<CR>:echo "Copied current file path '".expand("%:p")."' to clipboard"<CR>
 
 set selection=exclusive
 set selectmode=mouse,key
@@ -119,6 +119,9 @@ set guioptions-=L
 
 " Enable syntax highlighting
 syntax enable
+
+" Use desert colorscheme and light background
+colorscheme desert
 
 set shortmess=aoOtTI     " Abbrev. of messages
 
@@ -347,7 +350,7 @@ set matchtime=2
 set nrformats=alpha,octal,hex
 
 " For when you forget to sudo.. Really Write the file.
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
 
@@ -462,7 +465,7 @@ endfunction
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
 
 " You can switch between py2 and py3, use py2 by default. Put 'let g:usePython3 = 1' into .vimrc.local to use py3.
-if exists('g:usePython3')
+if exists('g:usepython3')
     if has('python3')
         silent echo "Has python3.x, py3 will be used."
     else
@@ -479,12 +482,14 @@ endif
 " Plugins List & Config {{{ "
 
 " Plugin List {{{ "
-if !exists('g:nousePlugManager')
+if !exists('g:nouseplugmanager')
     if filereadable(expand("~/.vim/autoload/plug.vim"))
         call plug#begin('~/.vim/plugged')
 
         Plug 'bling/vim-airline'
-        Plug 'mbbill/undotree'
+        if (version >= 703 && has('patch005'))
+            Plug 'mbbill/undotree'
+        endif
         Plug 'mattn/emmet-vim'
         if executable('node')
             Plug 'maksimr/vim-jsbeautify'
@@ -494,10 +499,14 @@ if !exists('g:nousePlugManager')
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
         Plug 'Raimondi/delimitMate'
-        if has('lua')
+        if (version >= 703 && has('lua'))
             Plug 'Shougo/neocomplete.vim'
         endif
-        Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+        if version >= 704
+            if has('python') || has('python3')
+                Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+            endif
+        endif
         Plug 'tsaleh/vim-align'
         Plug 'junegunn/goyo.vim'
         Plug 'junegunn/limelight.vim'
@@ -520,7 +529,7 @@ if !exists('g:nousePlugManager')
                 if has('python3')
                     exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
                 else
-                    echo "!Error: PluginManager - plug.vim need '+python' or '+python3' to run. \nIf you don't want to use it, you can put 'let g: nousePlugManager = 1' into .vimrc.local to disable it."
+                    echo "!Error: PluginManager - plug.vim need '+python' or '+python3' to run. \nIf you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -528,7 +537,7 @@ if !exists('g:nousePlugManager')
                 exe 'qall!'
             endif
         else
-            echo "!Error: PluginManager -plug.vim need 'git' to run. \n If you don't want to use it, you can put 'let g: nousePlugManager = 1' into .vimrc.local to disable it."
+            echo "!Error: PluginManager -plug.vim need 'git' to run. \n If you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
         endif
     endif
 endif
@@ -537,12 +546,13 @@ endif
 
 " Plugin Config {{{ "
 
-if !exists('g:nousePlugManager') && filereadable(expand("~/.vim/autoload/plug.vim"))
+if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     " Plugin Config - pencilcolorscheme {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-colors-pencil/colors/pencil.vim"))
         colorscheme pencil
+        set background=light
     endif
 
     " }}} Plugin Config - pencilcolorscheme "
