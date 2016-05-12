@@ -373,10 +373,13 @@ nnoremap <silent> <Leader>f :call ToggleFileformat()<CR>
 function! ToggleFileformat()
     if (&fileformat == "dos")
         set fileformat=mac
+        echo "Fileformat: mac"
     elseif (&fileformat == "mac")
         set fileformat=unix
+        echo "Fileformat: unix"
     else
         set fileformat=dos
+        echo "Fileformat: dos"
     endif
 endfunction
 
@@ -573,10 +576,8 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         let g:EasyMotion_smartcase = 1
         let g:EasyMotion_use_smartsign_us = 1
         map <Leader> <Plug>(easymotion-prefix)
-        nmap f <Plug>(easymotion-s)
         nmap t <Plug>(easymotion-s)
         nmap T <Plug>(easymotion-sn)
-        nmap F <Plug>(easymotion-sn)
     endif
 
     " }}} Plugin Config - vim-easymotion "
@@ -671,7 +672,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
 
     if filereadable(expand("~/.vim/plugged/ctrlp.vim/plugin/ctrlp.vim"))
         let g:ctrlp_map = '<Leader>o'
-        let g:ctrlp_cmd = 'CtrlPBuffer'
+        let g:ctrlp_cmd = 'CtrlPMRU'
     endif
 
     " }}} Plugin Config - CtrlP "
