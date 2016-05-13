@@ -2,8 +2,8 @@
 " Author:   ashfinal <ashfinal@gmail.com>
 " URL:      https://github.com/macplay
 " License:  MIT license
-" Created:  June 01, 2015
-" Modified: February 14, 2016
+" Created:  2016-02-04 21:45
+" Modified: 2016-05-13 11:06
 
 " Use ~/.vimrc.local if exists
 if filereadable(expand("~/.vimrc.local"))
@@ -35,7 +35,9 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-set t_ti= t_te=      " put terminal in 'termcap' mode
+if !(has('win32') || has('win64'))
+    set t_ti= t_te=      " put terminal in 'termcap' mode
+endif
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -350,7 +352,9 @@ set matchtime=2
 set nrformats=alpha,octal,hex
 
 " For when you forget to sudo.. Really Write the file.
-command! W w !sudo tee % > /dev/null
+if !(has('win32') || has('win64'))
+    command! W w !sudo tee % > /dev/null
+endif
 
 autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
 
@@ -532,7 +536,7 @@ if !exists('g:nouseplugmanager')
                 if has('python3')
                     exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
                 else
-                    echo "!Error: PluginManager - plug.vim need '+python' or '+python3' to run. \nIf you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
+                    echo "Error: PluginManager - plug.vim need '+python' or '+python3' to run. \nIf you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -540,7 +544,7 @@ if !exists('g:nouseplugmanager')
                 exe 'qall!'
             endif
         else
-            echo "!Error: PluginManager -plug.vim need 'git' to run. \n If you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
+            echo "Error: PluginManager -plug.vim need 'git' to run. \n If you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
         endif
     endif
 endif
