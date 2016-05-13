@@ -20,7 +20,7 @@ Single file, no installation required. Can be extended easily, and should works 
 
 ## Read it online
 
-Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html/) file and take what you need.
+Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file and take what you need.
 
 ## Maximize the power
 
