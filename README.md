@@ -2,20 +2,26 @@
 
 dot vimrc config - Reasonable, Readable, Reliable(Ever for ordinary people)
 
+Single file, no installation required. Can be extended easily, and should works on Mac, linux and windows.
+
 ![screenshot](./screenshot.png)
 
 ## How to use
 
-[Download .vimrc](https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc) and put it in your home directory. Just run vim as usual.
+[Download .vimrc](https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc) and put it in your home directory. Run vim as usual.
 
 - *nix & Mac
 
-'curl -o ~/.vimrc https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc'
+    `curl -o ~/.vimrc https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc`
 
 - Windows
 
-You will figure it out. :D
+    You will figure it out. :D
 
-## Read it online
+<!-- ## Read it online -->
 
-[.vimrc](https://raw.githubusercontent.com/ashfinal/vimrc-config/master/vimrc.html)
+<!-- Read the [.vimrc](http://macplay.github.io/cool-software/vimrc.html/) file and take what you need. -->
+
+<!-- ## Maximize the power -->
+
+<!-- [Read the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/) -->
