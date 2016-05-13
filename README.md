@@ -18,10 +18,10 @@ Single file, no installation required. Can be extended easily, and should works 
 
     You will figure it out. :D
 
-<!-- ## Read it online -->
+## Read it online
 
-<!-- Read the [.vimrc](http://macplay.github.io/cool-software/vimrc.html/) file and take what you need. -->
+Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html/) file and take what you need.
 
-<!-- ## Maximize the power -->
+## Maximize the power
 
-<!-- [Read the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/) -->
+[Read the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/)
