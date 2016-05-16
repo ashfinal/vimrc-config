@@ -3,11 +3,11 @@
 " URL:      https://github.com/macplay
 " License:  MIT license
 " Created:  2016-02-04 21:45
-" Modified: 2016-05-13 11:06
+" Modified: 2016-05-16 13:22
 
-" Use ~/.vimrc.local if exists
-if filereadable(expand("~/.vimrc.local"))
-    source $HOME/.vimrc.local
+" Use ~/.vimrc.before if exists
+if filereadable(expand("~/.vimrc.before"))
+    source $HOME/.vimrc.before
 endif
 
 " General {{{ "
@@ -63,7 +63,7 @@ set selectmode=mouse,key
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-set fileencodings=ucs-bom,utf-8,cp936,gb2312,big5,euc-jp,euc-kr,latin1
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 " Set terminal encoding
 set termencoding=utf-8
@@ -98,6 +98,7 @@ set wrap    " Wrap lines
 " set linebreak
 " set textwidth=80
 
+" set iskeyword+=-
 set showbreak=+++     " show softwarpped continuing line
 set whichwrap+=<,>,h,l,[,]
 
@@ -180,8 +181,11 @@ map ; :
 imap jj <Esc>
 
 " Make cursor always on center of screen
-nmap <silent> j gjzz
-nmap <silent> k gkzz
+set scrolloff=999
+
+" Make moving around works well in multi lines
+nmap <silent> j gj
+nmap <silent> k gk
 
 " With a map leader it's possible to do extra key combinations
 let mapleader = ","
@@ -254,12 +258,6 @@ set hlsearch
 set incsearch
 " set nowrapscan    " Don't wrap around when jumping between search result
 
-" Keep search pattern at the center of the screen.
-nmap <silent> n nzz
-nmap <silent> N Nzz
-nmap <silent> * *zz
-nmap <silent> # #zz
-
 " Disable highlight when <Space> is pressed
 map <silent> <Space> :nohlsearch<CR>
 
@@ -304,7 +302,6 @@ set laststatus=2
 
 " Bash like keys for the command line
 cnoremap <C-a> <home>
-cnoremap <C-e> <end>
 
 " Ctrl-[hl]: Move left/right by word
 cnoremap <C-h> <S-left>
@@ -316,32 +313,34 @@ inoremap <C-a> <esc>I
 " Ctrl-e: Go to end of line
 inoremap <C-e> <esc>A
 
-" Ctrl-a: Go to begin of line
-inoremap <C-a> <esc>I
-
-" Ctrl-f: Move cursor right
+" Ctrl-[bf]: Move cursor left/right
+inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 
-" Ctrl-b: Move cursor left
-inoremap <C-b> <Left>
-
-" Ctrl-h: Move word left
+" Ctrl-[hl]: Move left/right by word
 inoremap <C-h> <C-o>b
-
-" Ctrl-l: Move word right
 inoremap <C-l> <C-o>e
 
-" Ctrl-k: Move cursor up
+" Ctrl-[kj]: Move cursor up/down
 inoremap <C-k> <Up>
-
-" Ctrl-j: Move cursor down
 inoremap <C-j> <Down>
+
+" Ctrl-[kj]: Move lines up/down
+" nnoremap <silent> <C-j> :m .+1<CR>==
+" nnoremap <silent> <C-k> :m .-2<CR>==
+" inoremap <silent> <C-j> <Esc>:m .+1<CR>==gi
+" inoremap <silent> <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
 
 " }}} Key Mappings "
 
 " Misc {{{ "
 
 set showcmd
+
+" vertical diffsplit
+set diffopt+=vertical
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -471,7 +470,7 @@ endfunction
 
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
 
-" You can switch between py2 and py3, use py2 by default. Put 'let g:usePython3 = 1' into .vimrc.local to use py3.
+" You can switch between py2 and py3, use py2 by default. Put 'let g:usePython3 = 1' into .vimrc.before to use py3.
 if exists('g:usepython3')
     if has('python3')
         silent echo "Has python3.x, py3 will be used."
@@ -506,13 +505,11 @@ if !exists('g:nouseplugmanager')
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
         Plug 'Raimondi/delimitMate'
-        if (version >= 703 && has('lua'))
+        if version >= 703 && has('lua')
             Plug 'Shougo/neocomplete.vim'
         endif
         if version >= 704
-            if has('python') || has('python3')
-                Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-            endif
+            Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         endif
         Plug 'tsaleh/vim-align'
         Plug 'junegunn/goyo.vim'
@@ -520,9 +517,13 @@ if !exists('g:nouseplugmanager')
         Plug 'ctrlpvim/ctrlp.vim'
         Plug 'vim-scripts/YankRing.vim'
         Plug 'tpope/vim-unimpaired'
-        Plug 'airblade/vim-gitgutter'
-        Plug 'dhruvasagar/vim-table-mode'
+        if version >= 704
+            Plug 'airblade/vim-gitgutter'
+        endif
         Plug 'reedes/vim-colors-pencil'
+        if filereadable(expand("~/.vimrc.plug"))
+            source $HOME/.vimrc.plug
+        endif
 
         call plug#end()
     else
@@ -536,15 +537,17 @@ if !exists('g:nouseplugmanager')
                 if has('python3')
                     exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
                 else
-                    echo "Error: PluginManager - plug.vim need '+python' or '+python3' to run. \nIf you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
+                    exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
+                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation fell free to contact me."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
-                echo "PluginManager - plug.vim just installed! \nVIM will quit now, after restart you can use PlugInstall to begin."
+                echo "PluginManager - plug.vim just installed! vim will quit now.\nYou should relaunch vim, use PlugInstall to install plugins OR do nothing just use the basic one."
                 exe 'qall!'
             endif
         else
-            echo "Error: PluginManager -plug.vim need 'git' to run. \n If you don't want to use it, you can put 'let g: nouseplugmanager = 1' into .vimrc.local to disable it."
+            exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
+            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation fell free to contact me."
         endif
     endif
 endif
@@ -580,8 +583,8 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         let g:EasyMotion_smartcase = 1
         let g:EasyMotion_use_smartsign_us = 1
         map <Leader> <Plug>(easymotion-prefix)
-        nmap t <Plug>(easymotion-s)
-        nmap T <Plug>(easymotion-sn)
+        nmap f <Plug>(easymotion-s)
+        nmap F <Plug>(easymotion-sn)
     endif
 
     " }}} Plugin Config - vim-easymotion "
