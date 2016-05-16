@@ -1,8 +1,18 @@
-# vimrc-config
+# re-vim config
 
-dot vimrc config - Reasonable, Readable, Reliable(Ever for ordinary people)
+re-vim config - Reasonable, Readable, Reliable(Ever for ordinary people)
 
-Single file, no installation required. Can be extended easily, and should works on Mac, linux and windows.
+- Well polished, with love and patience.
+
+- Well documented, can be read (and copied) easily.
+
+- Well handled, should works on Mac, Linux and Windows.
+
+- Single file, no installation required. Start your work almost immediately.
+
+- Extend easily, make it fulfill your need.
+
+- And lots more...
 
 ![screenshot](./screenshot.png)
 
@@ -12,7 +22,7 @@ Single file, no installation required. Can be extended easily, and should works 
 
 - *nix & Mac
 
-    `curl -o ~/.vimrc https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc`
+    `curl -Lo ~/.vimrc http://jump.im/re`
 
 - Windows
 
