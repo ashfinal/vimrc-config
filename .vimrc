@@ -708,15 +708,6 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
 
     " }}} Plugin Config - vim-align "
 
-    " Plugin Config - tablemode {{{ "
-
-    if filereadable(expand("~/.vim/plugged/vim-table-mode/plugin/table-mode.vim"))
-        let g:table_mode_corner="|"
-        let g:table_mode_align_char=":"
-    endif
-
-    " }}} Plugin Config - tablemode "
-
     " Plugin Config - airline {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-airline/plugin/airline.vim"))
