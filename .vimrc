@@ -54,9 +54,6 @@ if has('clipboard')
     endif
 endif
 
-" Ctrl-t: copy the full path of the current file to the clipboard
-nmap <silent> <C-t> :let @"=expand("%:p")<CR>:echo "Copied current file path '".expand("%:p")."' to clipboard"<CR>
-
 set selection=exclusive
 set selectmode=mouse,key
 
