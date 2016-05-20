@@ -1,6 +1,11 @@
-# re-vim config
+# re-vim
+                         _
+     _ __ ___     __   _(_)_ __ ___
+    | '__/ _ \____\ \ / / | '_ ` _ \
+    | | |  __/_____\ V /| | | | | | |
+    |_|  \___|      \_/ |_|_| |_| |_|
 
-re-vim config - Reasonable, Readable, Reliable(Ever for ordinary people)
+re-vim - Reasonable, Readable, Reliable(Ever for ordinary people)
 
 - Well polished, with love and patience.
 
@@ -16,9 +21,7 @@ re-vim config - Reasonable, Readable, Reliable(Ever for ordinary people)
 
 ![screenshot](./screenshot.png)
 
-## How to use
-
-[Download .vimrc](https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc) and put it in your home directory. Run vim as usual.
+## Ready to rock in 5 secs!
 
 - *nix & Mac
 
@@ -26,7 +29,11 @@ re-vim config - Reasonable, Readable, Reliable(Ever for ordinary people)
 
 - Windows
 
-    You will figure it out. :D
+[Download .vimrc](https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc) and put it in your home directory.
+
+**Run vim as usual. That's it!**
+
+**You have 30 secs? By running `PlugInstall` in vim you get all-function vim.**
 
 ## Read it online
 
