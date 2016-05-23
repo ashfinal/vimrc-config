@@ -1,9 +1,7 @@
-" Name:     dot vimrc config - Reasonable, Readable, Reliable(Ever for ordinary people)
+" Name:     re-vim - Reasonable, Readable, Reliable vimrc(Ever for ordinary people)
 " Author:   ashfinal <ashfinal@gmail.com>
-" URL:      https://github.com/macplay
+" URL:      https://github.com/ashfinal
 " License:  MIT license
-" Created:  2016-02-04 21:45
-" Modified: 2016-05-16 13:22
 
 " Use ~/.vimrc.before if exists
 if filereadable(expand("~/.vimrc.before"))
