@@ -5,23 +5,15 @@
     | | |  __/_____\ V /| | | | | | |
     |_|  \___|      \_/ |_|_| |_| |_|
 
-re-vim - Reasonable, Readable, Reliable(Ever for ordinary people)
+re-vim - Reasonable, Readable, Reliable vimrc (Ever for ordinary people)
 
-- Well polished, with love and patience.
+- Well polished, documented, should work on Mac, Linux and Windows.
 
-- Well documented, can be read (and copied) easily.
+- Single file, just download the `.vimrc` file. Ready to rock in 5 secs.
 
-- Well handled, should works on Mac, Linux and Windows.
+- Can be extended easily, make it fulfill your need.
 
-- Single file, no installation required. Start your work almost immediately.
-
-- Extend easily, make it fulfill your need.
-
-- And lots more...
-
-![screenshot](./screenshot.png)
-
-## Ready to rock in 5 secs!
+## How to use?
 
 - *nix & Mac
 
@@ -29,16 +21,18 @@ re-vim - Reasonable, Readable, Reliable(Ever for ordinary people)
 
 - Windows
 
-[Download .vimrc](https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc) and put it in your home directory.
+    Download [.vimrc](https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc) and put it in your home directory.
 
-**Run vim as usual. That's it!**
+**Run vim as usual.**
 
-**You have 30 secs? By running `PlugInstall` in vim you get all-function vim.**
+If you would like all-function vim, please install the included plugins(20+) by running `PlugInstall` in vim. It should be completed in 30 secs.
+
+![screenshot](./screenshot.png)
 
 ## Read it online
 
-Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file and take what you need.
+Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file and copy what you need.
 
-## Maximize the power
+## Learn more
 
 [Read the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/)

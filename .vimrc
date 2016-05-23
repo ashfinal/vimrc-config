@@ -294,7 +294,7 @@ nmap <silent> <C-l> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 set laststatus=2
 set statusline=%<%f\ " filename
 set statusline+=%w%h%m%r " option
-set statusline+=\ [%{&ff}/%Y] " filetype
+set statusline+=\ [%{&ff}]/%y " fileformat/filetype
 set statusline+=\ [%{getcwd()}] " current dir
 set statusline+=\ [%{&encoding}] " encoding
 set statusline+=%=%-14.(%l/%L,%c%V%)\ %p%% " Right aligned file nav info
