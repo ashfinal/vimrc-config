@@ -333,7 +333,7 @@ inoremap <C-f> <Right>
 
 " Ctrl-[hl]: Move left/right by word
 inoremap <C-h> <C-o>b
-inoremap <C-l> <C-o>e
+inoremap <C-l> <C-o>w
 
 " Ctrl-[kj]: Move cursor up/down
 inoremap <C-k> <Up>
