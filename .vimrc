@@ -149,6 +149,9 @@ function! UseAbsNum()
 endfunction
 
 function! UseRelNum()
+    if !exists('b:fcStatus')
+        let b:fcStatus = &foldcolumn
+    endif
     if b:fcStatus == 1
         setlocal foldcolumn=1 " Restore foldcolumn in Normal mode
     endif
