@@ -267,7 +267,7 @@ set incsearch
 " set nowrapscan " Don't wrap around when jumping between search result
 
 " Disable highlight when <Space> is pressed
-map <silent> <Space> :nohlsearch<CR>
+map <silent> <CR> :nohlsearch<CR>
 
 " }}} Edit - Navigation, History, Search "
 
@@ -659,8 +659,7 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
         let g:EasyMotion_smartcase = 1
         let g:EasyMotion_use_smartsign_us = 1
         map <Leader> <Plug>(easymotion-prefix)
-        nmap f <Plug>(easymotion-s)
-        nmap F <Plug>(easymotion-sn)
+        nmap <Space> <Plug>(easymotion-s)
     endif
 
     " }}} Plugin Config - vim-easymotion "
@@ -713,6 +712,7 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plugin Config - Goyo & Limelight {{{ "
 
     if filereadable(expand("~/.vim/plugged/goyo.vim/plugin/goyo.vim"))
+        nmap <silent> <C-w><Space>  :Goyo<CR>
         function! s:goyo_enter()
             set noshowmode
             set noshowcmd
