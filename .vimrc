@@ -266,7 +266,7 @@ set hlsearch
 set incsearch
 " set nowrapscan " Don't wrap around when jumping between search result
 
-" Disable highlight when <Space> is pressed
+" Disable highlight when <Enter> is pressed
 map <silent> <CR> :nohlsearch<CR>
 
 " }}} Edit - Navigation, History, Search "
