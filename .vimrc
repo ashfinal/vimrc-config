@@ -12,7 +12,7 @@ endif
 
 " Environment - Encoding, Indent, Fold {{{ "
 
-set nocompatible     " be iMproved, required
+set nocompatible " be iMproved, required
 
 if !isdirectory(expand("~/.vim/"))
     call mkdir($HOME . "/.vim")
@@ -23,7 +23,7 @@ if has('win32') || has('win64')
 endif
 
 set title
-set ttyfast    " Improves smoothness of redrawing
+set ttyfast " Improves smoothness of redrawing
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -34,7 +34,7 @@ set novisualbell
 set t_vb=
 
 if !(has('win32') || has('win64'))
-    set t_ti= t_te=      " put terminal in 'termcap' mode
+    set t_ti= t_te= " put terminal in 'termcap' mode
 endif
 
 " Configure backspace so it acts as it should act
@@ -43,11 +43,11 @@ set backspace=eol,start,indent
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
 
-" Enable clipboard if possible, and use
+" Enable clipboard if possible
 if has('clipboard')
-    if has('unnamedplus')  " When possible use + register for copy-paste
+    if has('unnamedplus') " When possible use + register for copy-paste
         set clipboard=unnamed,unnamedplus
-    else         " On mac and Windows, use * register for copy-paste
+    else " On mac and Windows, use * register for copy-paste
         set clipboard=unnamed
     endif
 endif
@@ -73,8 +73,8 @@ set formatoptions+=m
 " When joining lines, don't insert a space between two multi-byte characters
 set formatoptions+=B
 
-set autoindent    " Auto indent
-set smartindent    " Smart indent
+set autoindent " Auto indent
+set smartindent " Smart indent
 
 filetype on
 filetype plugin on
@@ -85,25 +85,17 @@ set shiftwidth=4
 set tabstop=4
 set smarttab
 
-set expandtab    " Use spaces instead of tabs
+set expandtab " Use spaces instead of tabs
 
-set wrap    " Wrap lines
-
-" Linebreak on 80 characters
-" set linebreak
-" set textwidth=80
+set wrap " Wrap lines
 
 " set iskeyword+=-
-set showbreak=+++     " show softwarpped continuing line
 set whichwrap+=<,>,h,l,[,]
 
 " Use these symbols for invisible chars
 set listchars=tab:¦\ ,eol:¬,trail:⋅,extends:»,precedes:«
 
-set foldenable
-
-" Add a bit extra margin to the left
-set foldcolumn=1
+set foldlevel=100 " unfold all by default
 
 " }}} Environment - Encoding, Indent, Fold "
 
@@ -121,7 +113,7 @@ syntax enable
 " Use desert colorscheme and light background
 colorscheme desert
 
-set shortmess=aoOtTI     " Abbrev. of messages
+set shortmess=aoOtTI " Abbrev. of messages
 
 " Highlight current line
 set cursorline
@@ -132,22 +124,40 @@ set mousehide
 " Always show current position
 set ruler
 
-" Always show linenumber
-set number relativenumber
-" Use absolute linenum in Insert mode; relative linenum in Normal mode
-autocmd FocusLost,InsertEnter *
-    \ if exists('#goyo') |
-    \    exe "set nonumber norelativenumber" |
-    \ else |
-    \    exe "set number norelativenumber" |
-    \ endif
+" Default show linenumber
+if !exists('g:noshowlinenumber')
+    let g:noshowlinenumber = 0
+endif
+if (g:noshowlinenumber == 1)
+    set nonumber norelativenumber
+else
+    set number relativenumber
+endif
 
-autocmd FocusGained,InsertLeave *
-    \ if exists('#goyo') |
-    \    exe "set nonumber norelativenumber" |
-    \ else |
-    \    exe "set number relativenumber" |
-    \endif
+" Use absolute linenum in Insert mode; relative linenum in Normal mode
+autocmd FocusLost,InsertEnter * :call UseAbsNum()
+autocmd FocusGained,InsertLeave * :call UseRelNum()
+
+function! UseAbsNum()
+    let b:fcStatus = &foldcolumn
+    setlocal foldcolumn=0 " Don't show foldcolumn in Insert mode
+    if (g:noshowlinenumber == 1) || exists('#goyo')
+        set nonumber norelativenumber
+    else
+        set number norelativenumber
+    endif
+endfunction
+
+function! UseRelNum()
+    if b:fcStatus == 1
+        setlocal foldcolumn=1 " Restore foldcolumn in Normal mode
+    endif
+    if (g:noshowlinenumber == 1) || exists('#goyo')
+        set nonumber norelativenumber
+    else
+        set number relativenumber
+    endif
+endfunction
 
 " Turn spell check off
 set nospell
@@ -190,7 +200,7 @@ set virtualedit=onemore
 " How many lines to scroll at a time, make scrolling appears faster
 set scrolljump=3
 
-set viewoptions=folds,cursor,unix,slash     " Better Unix / Windows compatibility
+set viewoptions=folds,cursor,unix,slash " Better Unix / Windows compatibility
 " Save workspace and try to restore last session
 set sessionoptions=buffers,curdir,tabpages
 autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
@@ -216,11 +226,11 @@ autocmd BufReadPost *
 " Set to auto read when a file is changed from the outside
 set autoread
 
-set autowrite    " Automatically write a file when leaving a modified buffer
+set autowrite " Automatically write a file when leaving a modified buffer
 set updatetime=200
 
 " Set how many lines of history VIM has to remember
-set history=1000     " command line history
+set history=1000 " command line history
 set undoreload=1000
 
 " Turn backup off, since most stuff is in SVN, git etc anyway...
@@ -251,7 +261,7 @@ set hlsearch
 
 " Makes search act like search in modern browsers
 set incsearch
-" set nowrapscan    " Don't wrap around when jumping between search result
+" set nowrapscan " Don't wrap around when jumping between search result
 
 " Disable highlight when <Space> is pressed
 map <silent> <Space> :nohlsearch<CR>
@@ -265,7 +275,7 @@ set hidden
 
 " Open "FileExplorer" with the current buffer's path
 " Super useful when editing files in the same directory
-set autochdir   " change current working directory automatically
+set autochdir " change current working directory automatically
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 30
 let g:netrw_list_hide = '^\..*$'
@@ -275,17 +285,17 @@ nmap <silent> <Leader>e :Vexplore <C-r>=expand("%:p:h")<CR>/<CR>
 set switchbuf=useopen,usetab,newtab
 set showtabline=1
 
-set splitright    " Puts new vsplit windows to the right of the current
-set splitbelow    " Puts new split windows to the bottom of the current
+set splitright " Puts new vsplit windows to the right of the current
+set splitbelow " Puts new split windows to the bottom of the current
 
 " Split management
-nmap <Leader>m <C-w>_<C-w><Bar> " maximize split
 nmap <silent> <Tab> :bnext<CR>
 nmap <silent> <S-Tab> :bprevious<CR>
 nmap <silent> <C-k> :exe "resize " . (winheight(0) * 3/2)<CR>
 nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nmap <silent> <C-l> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+nmap <silent> <C-w>m <C-w>_<C-w><Bar> " maximize split
 " autocmd vimResized * exe "normal! \<C-w>="
 
 " always show status line
@@ -351,7 +361,7 @@ set matchtime=2
 " Define how to use the CTRL-A and CTRL-X commands for adding to and subtracting from a number respectively
 set nrformats=alpha,octal,hex
 
-" For when you forget to sudo.. Really Write the file.
+" For when you forget to sudo... Really Write the file.
 if !(has('win32') || has('win64'))
     command! W w !sudo tee % > /dev/null
 endif
@@ -373,6 +383,51 @@ function! ToggleBackground()
     endif
 endfunction
 
+" Toggle showing softwarpped continuing line
+nnoremap <silent> <Leader>k :call ToggleShowbreak()<CR>
+function! ToggleShowbreak()
+    if &showbreak == ""
+        set showbreak=+++
+    else
+        set showbreak=
+    endif
+endfunction
+
+" Toggle showing colorcolumn over the textwidth
+nnoremap <silent> <Leader>c :call ToggleColorcolumn()<CR>
+function! ToggleColorcolumn()
+    if &colorcolumn == ""
+        if &textwidth == 0
+            let &colorcolumn = 80
+        else
+            let &colorcolumn = &textwidth
+        endif
+    else
+        let &colorcolumn = ""
+    endif
+endfunction
+
+" Toggle showing linenumber
+nnoremap <silent> <Leader>n :call ToggleShowlinenum()<CR>
+function! ToggleShowlinenum()
+    if (g:noshowlinenumber == 0)
+        setlocal nonumber norelativenumber
+        let g:noshowlinenumber = 1
+    else
+        setlocal number relativenumber
+        let g:noshowlinenumber = 0
+    endif
+endfunction
+
+nnoremap <silent> <Leader>m :call ToggleShowfoldcolumn()<CR>
+function! ToggleShowfoldcolumn()
+    if &foldcolumn == 1
+        setlocal foldcolumn=0
+    else
+        setlocal foldcolumn=1
+    endif
+endfunction
+
 nnoremap <silent> <Leader>f :call ToggleFileformat()<CR>
 function! ToggleFileformat()
     if (&fileformat == "dos")
@@ -387,12 +442,12 @@ function! ToggleFileformat()
     endif
 endfunction
 
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab foldmethod=indent foldlevel=100
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab foldmethod=indent textwidth=80
 
-nnoremap <silent> <Leader>s :call StripWSandBL()<CR>
+nnoremap <silent> <Leader>s :call StripWSBL()<CR>
 " Strip Trailing whitespace and blank line of EOF when saving files
-autocmd FileType php,html,javascript,css,python,xml,yml,markdown autocmd BufWritePre <buffer> :call StripWSandBL()
-function! StripWSandBL()
+autocmd FileType php,html,javascript,css,python,xml,yml,markdown autocmd BufWritePre <buffer> :call StripWSBL()
+function! StripWSBL()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
@@ -400,24 +455,35 @@ function! StripWSandBL()
     call cursor(l, c)
 endfunction
 
-nnoremap <silent> <Leader>t :call ToggleTabandSpace()<CR>
-let g:hadRetabbed = 0
-function! ToggleTabandSpace()
-    let g:etStatus = &expandtab
+nnoremap <silent> <Leader>t :call ToggleTabSpace()<CR>
+function! ToggleTabSpace()
+    let b:etStatus = &expandtab
     setlocal list
-    if g:hadRetabbed
-        setlocal noexpandtab
-        retab!
-        let g:hadRetabbed = 0
-    else
-        setlocal expandtab
-        retab
-        let g:hadRetabbed = 1
+    if !exists('b:hadRetabbed')
+        let b:hadRetabbed = 0
     endif
-    if g:etStatus
-        set expandtab
+    if b:etStatus == 1
+        if b:hadRetabbed == 0
+            setlocal noexpandtab
+            retab!
+            let b:hadRetabbed = 1
+        else
+            setlocal expandtab
+            retab
+            let b:hadRetabbed = 0
+        endif
+        setlocal expandtab
     else
-        set noexpandtab
+        if b:hadRetabbed == 0
+            setlocal expandtab
+            retab
+            let b:hadRetabbed = 1
+        else
+            setlocal noexpandtab
+            retab!
+            let b:hadRetabbed = 0
+        endif
+        setlocal noexpandtab
     endif
 endfunction
 
@@ -437,11 +503,11 @@ function! ToggleSearchFold()
         setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2
         setlocal foldmethod=expr
         setlocal foldlevel=0
-        let b:hasSearchFold=1
+        let b:hasSearchFold = 1
         setlocal foldmethod=manual
     else
         setlocal foldlevel=100
-        let b:hasSearchFold=0
+        let b:hasSearchFold = 0
     endif
 endfunction
 
@@ -472,7 +538,10 @@ endfunction
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
 
 " You can switch between py2 and py3, use py2 by default. Put 'let g:usePython3 = 1' into .vimrc.before to use py3.
-if exists('g:usepython3')
+if !exists('g:usepython3')
+    let g:usepython3 = 0
+endif
+if (g:usepython3 == 1)
     if has('python3')
         silent echo "Has python3.x, py3 will be used."
     else
@@ -490,6 +559,9 @@ endif
 
 " Plugin List {{{ "
 if !exists('g:nouseplugmanager')
+    let g:nouseplugmanager = 0 " use plug.vim by default
+endif
+if (g:nouseplugmanager == 0)
     if filereadable(expand("~/.vim/autoload/plug.vim"))
         call plug#begin('~/.vim/plugged')
 
@@ -557,7 +629,7 @@ endif
 
 " Plugin Config {{{ "
 
-if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vim"))
+if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     " Plugin Config - pencilcolorscheme {{{ "
 
@@ -642,6 +714,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
             set noshowmode
             set noshowcmd
             set nocursorline
+            let b:fcStatus = &foldcolumn
             set foldcolumn=0
         endfunction
 
@@ -649,7 +722,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
             set showmode
             set showcmd
             set cursorline
-            set foldcolumn=1
+            let &foldcolumn = b:fcStatus
         endfunction
 
         autocmd! User GoyoEnter nested call <SID>goyo_enter()
