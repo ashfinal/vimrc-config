@@ -161,15 +161,15 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 #### Netrw, iTerm, Mac
 
-![screenshot-mac](./Screenshots/screenshot-mac.png)
+![screenshot-mac](./screenshots/screenshot-mac.png)
 
 #### Autocomletion, NeoComplete, Windows 10
 
-![screenshot-win](./Screenshots/screenshot-win.png)
+![screenshot-win](./screenshots/screenshot-win.png)
 
 #### Distraction-free, Goyo & Limelight, OpenSUSE Leap
 
-![screenshot-opensuse](./Screenshots/screenshot-opensuse.png)
+![screenshot-opensuse](./screenshots/screenshot-opensuse.png)
 
 ## Learn more
 
