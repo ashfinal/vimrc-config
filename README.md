@@ -64,9 +64,9 @@ You can install plugins by running `PlugInstall` in vim to acquire more power. T
 
 ### Primary key bindings.
 
-    map ; : " remap `;` to `:` in Normal/Visual Mode
-    imap jj <Esc> " remap `jj` to `<Esc>` in Insert Mode
-    mapleader = "," " map `,` to `<Leader>` in Normal Mode
+    map ; :                 " remap `;` to `:` in Normal/Visual Mode
+    imap jj <Esc>           " remap `jj` to `<Esc>` in Insert Mode
+    mapleader = ","         " map `,` to `<Leader>` in Normal Mode
 
 ### Commands
 
@@ -132,7 +132,7 @@ use `W` for sudo writing on Mac & *nix.
 | [emmet-vim][emmet-vim]           | `<Leader>` + `,`         | Insert/Visual | Expand abbr                         |
 | [vim-easymotion][vim-easymotion] | `<Space>`                |     Normal    | Search for single char              |
 | [vim-align][vim-align]           | `<Leader>` + `g`         |     Normal    | Config AlignCtrl                    |
-| [vim-align][vim-align]           | `g` + `l`                |     Visual    | align with                          |
+| [vim-align][vim-align]           | `g` + `l`                |     Visual    | Align with                          |
 | [goyo.vim][goyo.vim]             | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle distraction-free mode        |
 | [ultisnips][ultisnips]           | `ii`                     |     Insert    | Expand snips                        |
 | [ultisnips][ultisnips]           | `<Tab>`                  |     Insert    | Jumpforward                         |
