@@ -336,8 +336,8 @@ inoremap <C-h> <C-o>b
 inoremap <C-l> <C-o>w
 
 " Ctrl-[kj]: Move cursor up/down
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
+inoremap <C-k> <C-o>gk
+inoremap <C-j> <C-o>gj
 
 " Ctrl-[kj]: Move lines up/down
 " nnoremap <silent> <C-j> :m .+1<CR>==
@@ -447,15 +447,28 @@ endfunction
 
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab foldmethod=indent textwidth=80
 
-nnoremap <silent> <Leader>s :call StripWSBL()<CR>
 " Strip Trailing whitespace and blank line of EOF when saving files
 autocmd FileType php,html,javascript,css,python,xml,yml,markdown autocmd BufWritePre <buffer> :call StripWSBL()
+
+nnoremap <silent> <Leader>s :call StripWSBL()<CR>
 function! StripWSBL()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
     %s/\(\n^$\)\+\%$//ge
     call cursor(l, c)
+endfunction
+
+" YankOnce from unimpaired.vim
+nnoremap <silent> yo :call YankOnce()<CR>o
+function! YankOnce()
+    let b:paste = &paste
+    set paste
+    autocmd InsertLeave *
+          \ if exists('b:paste') |
+          \   let &paste = b:paste |
+          \   unlet b:paste |
+          \ endif
 endfunction
 
 nnoremap <silent> <Leader>t :call ToggleTabSpace()<CR>
@@ -592,7 +605,6 @@ if (g:nouseplugmanager == 0)
         Plug 'junegunn/limelight.vim'
         Plug 'ctrlpvim/ctrlp.vim'
         Plug 'vim-scripts/YankRing.vim'
-        Plug 'tpope/vim-unimpaired'
         if version >= 704
             Plug 'airblade/vim-gitgutter'
         endif
