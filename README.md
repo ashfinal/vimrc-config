@@ -19,11 +19,7 @@ Best with "huge" Vim 7.4 +lua +python.
 
 - *nix & Mac
 
-    `curl -Lo ~/.vimrc http://jump.im/re`
-
-    *If the link is broken, use this in stead:*
-
-    *`curl -Lo ~/.vimrc https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc`*
+    `curl -Lo ~/.vimrc https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc`
 
 - Windows
 
@@ -41,7 +37,6 @@ You can install plugins by running `PlugInstall` in vim to acquire more power. T
 
 - [delimitMate][delimitMate] - provides insert mode auto-completion for quotes, parens, brackets, etc.
 - [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
-- [vim-unimpaired][vim-unimpaired] - pairs of handy bracket mappings
 - [vim-align][vim-align] - Clone of the Align.vba file, since I think VBA files are a freaking abomination.
 - [YankRing.vim][YankRing.vim] - Maintains a history of previous yanks, changes and deletes
 - [goyo.vim][goyo.vim] - Distraction-free writing in Vim
@@ -77,6 +72,7 @@ use `W` for sudo writing on Mac & *nix.
 | Key                  |      Mode      | Action                                    |
 |:---------------------|:--------------:|:------------------------------------------|
 | `<CR>`               |     Normal     | unhighlight the search result             |
+| `yo`                 |     Normal     | yankonce set paste option when done       |
 | `<Tab>`              |     Normal     | switch to next buffer                     |
 | `<Shift>` + `<Tab>`  |     Normal     | switch to previous buffer                 |
 | `<Ctrl>` + `a`       | Command/Insert | move the cursor to the begining of line   |
@@ -179,7 +175,6 @@ Read [the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-con
 [vimrc]:https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc "https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc"
 [delimitMate]:https://github.com/Raimondi/delimitMate "https://github.com/Raimondi/delimitMate"
 [neocomplete]:https://github.com/Shougo/neocomplete.vim "https://github.com/Shougo/neocomplete.vim"
-[vim-unimpaired]:https://github.com/tpope/vim-unimpaired "https://github.com/tpope/vim-unimpaired"
 [vim-align]:https://github.com/tsaleh/vim-align "https://github.com/tsaleh/vim-align"
 [YankRing.vim]:https://github.com/vim-scripts/YankRing.vim "https://github.com/vim-scripts/YankRing.vim"
 [goyo.vim]:https://github.com/junegunn/goyo.vim "https://github.com/junegunn/goyo.vim"
