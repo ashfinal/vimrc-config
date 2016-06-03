@@ -155,11 +155,11 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 ## Screenshots
 
-#### Netrw, iTerm, Mac
+#### Netrw, iTerm2, Mac
 
 ![screenshot-mac](./screenshots/screenshot-mac.png)
 
-#### Autocomletion, NeoComplete, Windows 10
+#### Python, NeoComplete, Windows 10
 
 ![screenshot-win](./screenshots/screenshot-win.png)
 
