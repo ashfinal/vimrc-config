@@ -27,6 +27,24 @@ Best with "huge" Vim 7.4 +lua +python.
 
 **Run vim as usual, it can handle itself quite well.**
 
+## Read online
+
+Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online and copy what you need.
+
+## Screenshots
+
+#### Netrw, iTerm2, Mac
+
+![screenshot-mac](./screenshots/screenshot-mac.png)
+
+#### Python, NeoComplete, Windows 10
+
+![screenshot-win](./screenshots/screenshot-win.png)
+
+#### Distraction-free, Goyo & Limelight, OpenSUSE Leap
+
+![screenshot-opensuse](./screenshots/screenshot-opensuse.png)
+
 ## Plugins
 
 re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required) as plugin manager. ★ Single file. Super-fast parallel installation/update.
@@ -148,24 +166,6 @@ For example, to override the default colorscheme:
 To add new plugins, you should create `~/.vimrc.plug`:
 
     echo "Plug 'altercation/vim-colors-solarized'" >> ~/.vimrc.plug
-
-## Read online
-
-Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online and copy what you need.
-
-## Screenshots
-
-#### Netrw, iTerm2, Mac
-
-![screenshot-mac](./screenshots/screenshot-mac.png)
-
-#### Python, NeoComplete, Windows 10
-
-![screenshot-win](./screenshots/screenshot-win.png)
-
-#### Distraction-free, Goyo & Limelight, OpenSUSE Leap
-
-![screenshot-opensuse](./screenshots/screenshot-opensuse.png)
 
 ## Learn more
 
