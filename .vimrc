@@ -205,12 +205,22 @@ set scrolljump=3
 
 set viewoptions=folds,cursor,unix,slash " Better Unix / Windows compatibility
 " Save workspace and try to restore last session
-set sessionoptions=buffers,curdir,tabpages
+" set sessionoptions=buffers,curdir,tabpages
 autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
-" autocmd VimEnter *
-   " \ if filereadable(expand("~/.vim/.last.session")) |
-   " \   exe ":source ~/.vim/.last.session" |
-   " \ endif
+
+" Restore last session automatically by default
+autocmd VimEnter * :call RestoreLastSession()
+function RestoreLastSession()
+    if !exists('g:restorelastsession')
+        let g:restorelastsession = 1
+    endif
+    if (g:restorelastsession == 1)
+        if filereadable(expand("~/.vim/.last.session"))
+           exe ":source ~/.vim/.last.session"
+       endif
+   endif
+endfunction
+
 if filereadable(expand("~/.vim/.last.session"))
     nmap <silent> <Leader>r :source ~/.vim/.last.session<CR>
 endif
