@@ -210,7 +210,7 @@ autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 
 " Restore last session automatically by default
 autocmd VimEnter * :call RestoreLastSession()
-function RestoreLastSession()
+function! RestoreLastSession()
     if !exists('g:restorelastsession')
         let g:restorelastsession = 1
     endif
@@ -277,7 +277,7 @@ set incsearch
 " set nowrapscan " Don't wrap around when jumping between search result
 
 " Disable highlight when <Enter> is pressed
-map <silent> <CR> :nohlsearch<CR>
+map <silent> <BS> :nohlsearch<CR>
 
 " }}} Edit - Navigation, History, Search "
 
@@ -705,7 +705,7 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     if filereadable(expand("~/.vim/plugged/emmet-vim/plugin/emmet.vim"))
         let g:user_emmet_install_global = 0
-        autocmd FileType html,css,markdown,php EmmetInstall
+        autocmd FileType html,css,markdown,php,javascript EmmetInstall
         let g:user_emmet_leader_key = ','
         let g:user_emmet_mode = 'iv'
     endif

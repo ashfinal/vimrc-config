@@ -89,7 +89,7 @@ use `W` for sudo writing on Mac & *nix.
 
 | Key                  |      Mode      | Action                                    |
 |:---------------------|:--------------:|:------------------------------------------|
-| `<CR>`               |     Normal     | unhighlight the search result             |
+| `<BS>`               |     Normal     | unhighlight the search result             |
 | `yo`                 |     Normal     | yankonce set paste option when done       |
 | `<Tab>`              |     Normal     | switch to next buffer                     |
 | `<Shift>` + `<Tab>`  |     Normal     | switch to previous buffer                 |
