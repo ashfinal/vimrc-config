@@ -212,7 +212,7 @@ autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 autocmd VimEnter * :call RestoreLastSession()
 function! RestoreLastSession()
     if !exists('g:restorelastsession')
-        let g:restorelastsession = 1
+        let g:restorelastsession = 0
     endif
     if (g:restorelastsession == 1)
         if filereadable(expand("~/.vim/.last.session"))
@@ -277,7 +277,7 @@ set incsearch
 " set nowrapscan " Don't wrap around when jumping between search result
 
 " Disable highlight when <Enter> is pressed
-map <silent> <BS> :nohlsearch<CR>
+nnoremap <silent> <BS> :nohlsearch<CR>
 
 " }}} Edit - Navigation, History, Search "
 
