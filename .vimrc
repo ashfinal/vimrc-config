@@ -191,6 +191,8 @@ imap jj <Esc>
 " Make cursor always on center of screen
 autocmd VimEnter,WinEnter,VimResized,InsertLeave * :let &scrolloff = float2nr(floor(winheight(0)/2)+1)
 autocmd InsertEnter * :let &scrolloff = float2nr(floor(winheight(0)/2))
+" Use <Enter> key to center in insert mode, proper scrolloff needed. Very convenient.
+inoremap <CR> <CR><C-o>zz
 
 " Make moving around works well in multi lines
 nmap <silent> j gj
