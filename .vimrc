@@ -189,7 +189,8 @@ map ; :
 imap jj <Esc>
 
 " Make cursor always on center of screen
-set scrolloff=999
+autocmd VimEnter,WinEnter,VimResized,InsertLeave * :let &scrolloff = float2nr(floor(winheight(0)/2)+1)
+autocmd InsertEnter * :let &scrolloff = float2nr(floor(winheight(0)/2))
 
 " Make moving around works well in multi lines
 nmap <silent> j gj
