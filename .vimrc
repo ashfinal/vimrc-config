@@ -719,6 +719,8 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     if filereadable(expand("~/.vim/plugged/neocomplete.vim/plugin/neocomplete.vim"))
         let g:neocomplete#enable_at_startup = 1
+    else
+        set omnifunc=syntaxcomplete#Complete
     endif
 
     " }}} Plugin Config - neocomplete "
