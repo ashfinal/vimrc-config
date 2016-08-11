@@ -15,6 +15,8 @@ re-vim - Reasonable, Readable, Reliable vimrc (Ever for ordinary people)
 
 Best with "huge" Vim 7.4 +lua +python.
 
+![theme-toggle](./screenshots/theme-toggle.png)
+
 ## How to begin?
 
 - *nix & Mac

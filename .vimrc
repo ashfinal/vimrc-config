@@ -311,8 +311,6 @@ nmap <silent> <C-k> :exe "resize " . (winheight(0) * 3/2)<CR>
 nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nmap <silent> <C-l> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
-nmap <silent> <C-w>m <C-w>_<C-w><Bar> " maximize split
-" autocmd vimResized * exe "normal! \<C-w>="
 
 " always show status line
 set laststatus=2
@@ -613,7 +611,7 @@ if (g:nouseplugmanager == 0)
         if version >= 704
             Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         endif
-        Plug 'tsaleh/vim-align'
+        Plug 'ashfinal/vim-align'
         Plug 'junegunn/goyo.vim'
         Plug 'junegunn/limelight.vim'
         Plug 'ctrlpvim/ctrlp.vim'
@@ -622,6 +620,7 @@ if (g:nouseplugmanager == 0)
             Plug 'airblade/vim-gitgutter'
         endif
         Plug 'reedes/vim-colors-pencil'
+        Plug 'ashfinal/vim-colors-paper'
         if filereadable(expand("~/.vimrc.plug"))
             source $HOME/.vimrc.plug
         endif
@@ -659,14 +658,14 @@ endif
 
 if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
-    " Plugin Config - pencilcolorscheme {{{ "
+    " Plugin Config - papercolorscheme {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-colors-pencil/colors/pencil.vim"))
-        colorscheme pencil
+    if filereadable(expand("~/.vim/plugged/vim-colors-paper/colors/paper.vim"))
+        colorscheme paper
         set background=light
     endif
 
-    " }}} Plugin Config - pencilcolorscheme "
+    " }}} Plugin Config - papercolorscheme "
 
     " Plugin Config - undotree {{{ "
 
