@@ -57,7 +57,7 @@ You can install plugins by running `PlugInstall` in vim to acquire more power. T
 
 - [delimitMate][delimitMate] - provides insert mode auto-completion for quotes, parens, brackets, etc.
 - [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
-- [vim-align][vim-align] - Clone of the Align.vba file, since I think VBA files are a freaking abomination.
+- [vim-align][vim-align] - DrChip's Alignment Tool for Vim
 - [YankRing.vim][YankRing.vim] - Maintains a history of previous yanks, changes and deletes
 - [goyo.vim][goyo.vim] - Distraction-free writing in Vim
     - [limelight.vim][limelight.vim] - Best served with [goyo.vim][goyo.vim]
@@ -74,6 +74,7 @@ You can install plugins by running `PlugInstall` in vim to acquire more power. T
 - [vim-easymotion][vim-easymotion] - Vim motions on speed!
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 - [vim-colors-pencil][vim-colors-pencil] - Light (& dark) color scheme inspired by iA Writer
+- [vim-colors-paper][vim-colors-paper] - Vim color scheme inspired by Google's Material Design
 
 ## Key bindings
 
@@ -177,7 +178,7 @@ Read [the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-con
 [vimrc]:https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc "https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc"
 [delimitMate]:https://github.com/Raimondi/delimitMate "https://github.com/Raimondi/delimitMate"
 [neocomplete]:https://github.com/Shougo/neocomplete.vim "https://github.com/Shougo/neocomplete.vim"
-[vim-align]:https://github.com/tsaleh/vim-align "https://github.com/tsaleh/vim-align"
+[vim-align]:https://github.com/ashfinal/vim-align "https://github.com/ashfinal/vim-align"
 [YankRing.vim]:https://github.com/vim-scripts/YankRing.vim "https://github.com/vim-scripts/YankRing.vim"
 [goyo.vim]:https://github.com/junegunn/goyo.vim "https://github.com/junegunn/goyo.vim"
 [limelight.vim]:https://github.com/junegunn/limelight.vim "https://github.com/junegunn/limelight.vim"
@@ -194,3 +195,4 @@ Read [the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-con
 [vim-easymotion]:https://github.com/Lokaltog/vim-easymotion "https://github.com/Lokaltog/vim-easymotion"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
 [vim-colors-pencil]:https://github.com/reedes/vim-colors-pencil "https://github.com/reedes/vim-colors-pencil"
+[vim-colors-paper](https://github.com/ashfinal/vim-colors-paper "https://github.com/ashfinal/vim-colors-paper")
