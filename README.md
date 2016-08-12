@@ -5,6 +5,8 @@
     | | |  __/_____\ V /| | | | | | |
     |_|  \___|      \_/ |_|_| |_| |_|
 
+[English](https://github.com/ashfinal/vimrc-config/blob/master/README.md) | [中文](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/)
+
 re-vim - Reasonable, Readable, Reliable vimrc (Ever for ordinary people)
 
 - Well polished, documented, should work on Mac, Linux and Windows.
@@ -20,6 +22,10 @@ Best with "huge" Vim 7.4 +lua +python.
 ## How to begin?
 
 - *nix & Mac
+
+    `curl -Lo ~/.vimrc http://jump.im/re`
+
+    If the link brokes, use the below instead:
 
     `curl -Lo ~/.vimrc https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc`
 
@@ -169,10 +175,6 @@ For example, to override the default colorscheme:
 To add new plugins, you should create `~/.vimrc.plug`:
 
     echo "Plug 'altercation/vim-colors-solarized'" >> ~/.vimrc.plug
-
-## Learn more
-
-Read [the article](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/) to learn more about re-vim.
 
 
 [vimrc]:https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc "https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc"
