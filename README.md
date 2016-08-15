@@ -203,4 +203,4 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-multiple-cursors]:https://github.com/terryma/vim-multiple-cursors "https://github.com/terryma/vim-multiple-cursors"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
 [vim-colors-pencil]:https://github.com/reedes/vim-colors-pencil "https://github.com/reedes/vim-colors-pencil"
-[vim-colors-paper](https://github.com/ashfinal/vim-colors-paper "https://github.com/ashfinal/vim-colors-paper")
+[vim-colors-paper]:https://github.com/ashfinal/vim-colors-paper "https://github.com/ashfinal/vim-colors-paper"
