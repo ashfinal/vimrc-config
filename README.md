@@ -95,6 +95,7 @@ You can install plugins by running `PlugInstall` in vim to acquire more power. T
 ### Commands
 
 use `W` for sudo writing on Mac & *nix.
+
 use `Wcolor` for showing highlight group under current cursor
 
 ### Move around & Edit
@@ -159,7 +160,7 @@ use `Wcolor` for showing highlight group under current cursor
 | [vim-multiple-cursors][vim-multiple-cursors] | `-`                      | Normal/Visual | multi_cursor_skip_key               |
 | [vim-align][vim-align]                       | `<Leader>` + `g`         | Normal/Visual | Align with                          |
 | [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                    |
-| [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
+| [limelight.vim][limelight.vim]               | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
 | [ultisnips][ultisnips]                       | `ii`                     |     Insert    | Expand snips                        |
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
 | [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
