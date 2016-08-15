@@ -52,9 +52,6 @@ if has('clipboard')
     endif
 endif
 
-set selection=exclusive
-set selectmode=mouse,key
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -208,7 +205,7 @@ set scrolljump=3
 
 set viewoptions=folds,cursor,unix,slash " Better Unix / Windows compatibility
 " Save workspace and try to restore last session
-" set sessionoptions=buffers,curdir,tabpages
+set sessionoptions=buffers,curdir,tabpages
 autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 
 " Restore last session automatically by default
@@ -305,8 +302,7 @@ set splitright " Puts new vsplit windows to the right of the current
 set splitbelow " Puts new split windows to the bottom of the current
 
 " Split management
-nmap <silent> <Tab> :bnext<CR>
-nmap <silent> <S-Tab> :bprevious<CR>
+nmap <silent> <S-Tab> :bnext<CR>
 nmap <silent> <C-k> :exe "resize " . (winheight(0) * 3/2)<CR>
 nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
@@ -383,10 +379,10 @@ endif
 autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
 
 " Find out to which highlight-group a particular keyword/symbol belongs
-nnoremap <silent> <C-c> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
+command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
     \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
     \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
-    \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+    \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
 
 nnoremap <silent> <Leader>b :call ToggleBackground()<CR>
 function! ToggleBackground()
@@ -518,6 +514,7 @@ nnoremap <silent> <Leader>x :setlocal modifiable!<CR>
 nnoremap <silent> <Leader>l :setlocal list!<CR>
 nnoremap <silent> <Leader>w :setlocal wrap!<CR>
 nnoremap <silent> <Leader>d :setlocal expandtab!<CR>
+nnoremap <silent> <Leader>v :setlocal cursorline!<CR>
 
 " Make TOhtml behavior better
 let g:html_dynamic_folds = 1
@@ -564,20 +561,6 @@ endfunction
 
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
 
-" You can switch between py2 and py3, use py2 by default. Put 'let g:usePython3 = 1' into .vimrc.before to use py3.
-if !exists('g:usepython3')
-    let g:usepython3 = 0
-endif
-if (g:usepython3 == 1)
-    if has('python3')
-        silent echo "Has python3.x, py3 will be used."
-    else
-        if has('python2')
-            silent echo "Has python2.x, py2 will be used."
-        endif
-    endif
-endif
-
 " }}} Misc "
 
 " }}} General "
@@ -597,11 +580,13 @@ if (g:nouseplugmanager == 0)
             Plug 'mbbill/undotree'
         endif
         Plug 'mattn/emmet-vim'
+        Plug 'dhruvasagar/vim-table-mode'
         if executable('node')
             Plug 'maksimr/vim-jsbeautify'
         endif
         Plug 'tpope/vim-surround'
         Plug 'Lokaltog/vim-easymotion'
+        Plug 'terryma/vim-multiple-cursors'
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
         Plug 'Raimondi/delimitMate'
@@ -658,14 +643,14 @@ endif
 
 if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
-    " Plugin Config - papercolorscheme {{{ "
+    " Plugin Config - pencilcolorscheme {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-colors-paper/colors/paper.vim"))
-        colorscheme paper
+    if filereadable(expand("~/.vim/plugged/vim-colors-pencil/colors/pencil.vim"))
+        colorscheme pencil
         set background=light
     endif
 
-    " }}} Plugin Config - papercolorscheme "
+    " }}} Plugin Config - pencilcolorscheme "
 
     " Plugin Config - undotree {{{ "
 
@@ -687,6 +672,18 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     endif
 
     " }}} Plugin Config - vim-easymotion "
+
+    " Plugin Config - vim-multiple-cursors {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-multiple-cursors/autoload/multiple_cursors.vim"))
+        let g:multi_cursor_use_default_mapping=0
+        let g:multi_cursor_next_key='+'
+        let g:multi_cursor_prev_key='_'
+        let g:multi_cursor_skip_key='-'
+        let g:multi_cursor_quit_key='<Esc>'
+    endif
+
+    " }}} Plugin Config - vim-multiple-cursors "
 
     " Plugin Config - ultisnips {{{ "
 
@@ -714,6 +711,15 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     " }}} Plugin Config - emmet-vim "
 
+    " Plugin Config - vim-table-mode {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-table-mode/autoload/tablemode.vim"))
+        let g:table_mode_corner="|"
+        let g:table_mode_align_char=":"
+    endif
+
+    " }}} Plugin Config - vim-table-mode "
+
     " Plugin Config - neocomplete {{{ "
 
     if filereadable(expand("~/.vim/plugged/neocomplete.vim/plugin/neocomplete.vim"))
@@ -735,38 +741,36 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     " }}} Plugin Config - nerdcommenter "
 
-    " Plugin Config - Goyo & Limelight {{{ "
+    " Plugin Config - Goyo {{{ "
 
     if filereadable(expand("~/.vim/plugged/goyo.vim/plugin/goyo.vim"))
-        nmap <silent> <C-w><Space>  :Goyo<CR>
+        nmap <silent> <C-w><Space> :Goyo<CR>
         function! s:goyo_enter()
-            set noshowmode
-            set noshowcmd
             set nocursorline
             let b:fcStatus = &foldcolumn
             set foldcolumn=0
         endfunction
 
         function! s:goyo_leave()
-            set showmode
-            set showcmd
             set cursorline
             let &foldcolumn = b:fcStatus
         endfunction
 
         autocmd! User GoyoEnter nested call <SID>goyo_enter()
         autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-        if filereadable(expand("~/.vim/plugged/limelight.vim/plugin/limelight.vim"))
-            " Goyo.vim integration
-            let g:limelight_conceal_ctermfg = 250
-            let g:limelight_default_coefficient = 0.8
-            autocmd User GoyoEnter Limelight
-            autocmd User GoyoLeave Limelight!
-        endif
     endif
 
-    " }}} Plugin Config - Goyo & Limelight "
+    " }}} Plugin Config - Goyo "
+
+    " Plugin Config - Limelight {{{ "
+
+    if filereadable(expand("~/.vim/plugged/limelight.vim/plugin/limelight.vim"))
+        nmap <silent> <C-w><Enter> :Limelight!!<CR>
+        let g:limelight_conceal_ctermfg = 250
+        let g:limelight_default_coefficient = 0.8
+    endif
+
+    " }}} Plugin Config - Limelight "
 
     " Plugin Config - JsBeautify {{{ "
 
@@ -782,7 +786,7 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     if filereadable(expand("~/.vim/plugged/ctrlp.vim/plugin/ctrlp.vim"))
         let g:ctrlp_map = '<Leader>o'
-        let g:ctrlp_cmd = 'CtrlPMRU'
+        let g:ctrlp_cmd = 'CtrlPBuffer'
     endif
 
     " }}} Plugin Config - CtrlP "
@@ -805,8 +809,7 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plugin Config - vim-align {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-align/plugin/AlignPlugin.vim"))
-        nmap <Leader>g :AlignCtrl<Space>
-        vmap gl :Align<Space>
+        map <Leader>g :Align<Space>
     endif
 
     " }}} Plugin Config - vim-align "
