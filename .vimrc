@@ -33,9 +33,8 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-if !(has('win32') || has('win64'))
-    set t_ti= t_te= " put terminal in 'termcap' mode
-endif
+set t_Co=256 " using 256 colors
+set t_ti= t_te= " put terminal in 'termcap' mode
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -107,8 +106,13 @@ set guioptions-=L
 " Enable syntax highlighting
 syntax enable
 
-" Use desert colorscheme and light background
-colorscheme desert
+" Use desert colorscheme by default
+" colorscheme desert
+
+" Use light background under macos and GUI
+if has('mac') || has('gui_running')
+    set background=light
+endif
 
 set shortmess=aoOtTI " Abbrev. of messages
 
@@ -647,7 +651,6 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     if filereadable(expand("~/.vim/plugged/vim-colors-pencil/colors/pencil.vim"))
         colorscheme pencil
-        set background=light
     endif
 
     " }}} Plugin Config - pencilcolorscheme "
