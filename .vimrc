@@ -103,6 +103,11 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
+" Customize gui fontfamily and fontsize
+" if has("gui_running")
+    " set guifont=Inziu_Iosevka_Slab_SC:h12
+" endif
+
 " Enable syntax highlighting
 syntax enable
 
@@ -564,6 +569,22 @@ function! ToggleFoldMethod()
 endfunction
 
 autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
+
+" Toggle tmux statusline automatically
+" if exists('$TMUX')
+    " autocmd VimEnter,VimLeave * :silent !tmux set status
+" endif
+
+" Better cursorshape handling under iterm2 and tmux. WARNING: need more test.
+" if exists('$ITERM_SESSION_ID') && !exists('$TMUX')
+    " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    " let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" else
+    " let &t_SI = "\<Esc>[6 q"
+    " let &t_SR = "\<Esc>[4 q"
+    " let &t_EI = "\<Esc>[2 q"
+" endif
 
 " }}} Misc "
 
