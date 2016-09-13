@@ -601,7 +601,7 @@ if (g:nouseplugmanager == 0)
         call plug#begin('~/.vim/plugged')
 
         Plug 'bling/vim-airline'
-        if (version >= 703 && has('patch005'))
+        if version >= 704 || version ==703 && has('patch005')
             Plug 'mbbill/undotree'
         endif
         Plug 'mattn/emmet-vim'
