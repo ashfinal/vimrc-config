@@ -7,33 +7,27 @@
 
 [English](https://github.com/ashfinal/vimrc-config/blob/master/README.md) | [中文](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/)
 
-re-vim - Reasonable, Readable, Reliable vimrc (Ever for ordinary people)
+re-vim - a REasonable vim configuration
 
 - Well polished, documented, should work on Mac, Linux and Windows.
 
-- Single file, just download the [.vimrc][vimrc] file. Ready to rock in 5 secs.
+- Single file, no installation needed. Ready to rock in 5 secs.
 
-- Extend easily, make it fulfill your need.
+- Self-adapting and extensible, to fulfill your need.
 
-Best with "huge" Vim 7.4 +lua +python.
-
-![theme-toggle](./screenshots/theme-toggle.png)
+**Best with "huge" Vim 7.4 +lua +python.**
 
 ## How to begin?
 
-- *nix & Mac
+It's just a .vimrc config file! Download [it][vimrc] and put it in your home directory.
 
-    `curl -Lo ~/.vimrc http://jump.im/re`
+**And you're set. Run vim as usual, it can handle itself quite well.**
 
-    If the link brokes, use the below instead:
+⚑ Special for *nix & Mac users:
 
-    `curl -Lo ~/.vimrc https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc`
+    `curl -Lo ~/.vimrc https://j.mp/re-vim`
 
-- Windows
-
-    Download [.vimrc][vimrc] and put it in your home directory.
-
-**Run vim as usual, it can handle itself quite well.**
+[screencast](http://macplay.github.io/cool-software/start-using-re-vim-config/) for your reference.
 
 ## Read online
 
@@ -53,11 +47,15 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 ![screenshot-opensuse](./screenshots/screenshot-opensuse.png)
 
+#### Paper colorscheme, Light & Dark toggle
+
+![theme-toggle](./screenshots/theme-toggle.png)
+
 ## Plugins
 
 re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required) as plugin manager. ★ Single file. Super-fast parallel installation/update.
 
-You can install plugins by running `PlugInstall` in vim to acquire more power. This should be completed in 30 secs.
+**You can install plugins by running `PlugInstall` in vim to acquire more power. This should be completed in 30 secs.**
 
 ### Plugins list
 
@@ -174,7 +172,7 @@ re-vim uses `~/.vimrc.before` and `~/.vimrc.after` for your customization.
 
 For example, to override the default colorscheme:
 
-    echo "colorscheme solarized" >> ~/.vimrc.after
+    echo "colorscheme paper" >> ~/.vimrc.after
 
 To add new plugins, you should create `~/.vimrc.plug`:
 

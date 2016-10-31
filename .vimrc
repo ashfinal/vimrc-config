@@ -195,8 +195,13 @@ map ; :
 imap jj <Esc>
 
 " Make cursor always on center of screen
-autocmd VimEnter,WinEnter,VimResized,InsertLeave * :let &scrolloff = float2nr(floor(winheight(0)/2)+1)
-autocmd InsertEnter * :let &scrolloff = float2nr(floor(winheight(0)/2))
+if !exists('g:centeralways')
+    let g:centeralways = 1 " Center by default
+endif
+if (g:centeralways == 1)
+    autocmd VimEnter,WinEnter,VimResized,InsertLeave * :let &scrolloff = float2nr(floor(winheight(0)/2)+1)
+    autocmd InsertEnter * :let &scrolloff = float2nr(floor(winheight(0)/2))
+endif
 " Use <Enter> key to center in insert mode, proper scrolloff needed. Very convenient.
 inoremap <CR> <CR><C-o>zz
 
@@ -210,7 +215,7 @@ let mapleader = ","
 set virtualedit=onemore
 
 " How many lines to scroll at a time, make scrolling appears faster
-set scrolljump=3
+" set scrolljump=3
 
 set viewoptions=folds,cursor,unix,slash " Better Unix / Windows compatibility
 " Save workspace and try to restore last session
@@ -367,7 +372,7 @@ vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
 
 " Misc {{{ "
 
-set showcmd
+set noshowcmd
 
 " vertical diffsplit
 set diffopt+=vertical
