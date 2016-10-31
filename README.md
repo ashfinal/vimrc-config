@@ -1,4 +1,4 @@
-# re-vim
+# re-vim: a REasonable vim configuration
                          _
      _ __ ___     __   _(_)_ __ ___
     | '__/ _ \____\ \ / / | '_ ` _ \
@@ -7,27 +7,27 @@
 
 [English](https://github.com/ashfinal/vimrc-config/blob/master/README.md) | [中文](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/)
 
-re-vim - a REasonable vim configuration
-
 - Well polished, documented, should work on Mac, Linux and Windows.
 
 - Single file, no installation needed. Ready to rock in 5 secs.
 
 - Self-adapting and extensible, to fulfill your need.
 
-**Best with "huge" Vim 7.4 +lua +python.**
+*Best with "huge" Vim 7.4 +lua +python.*
 
 ## How to begin?
 
-It's just a .vimrc config file! Download [it][vimrc] and put it in your home directory.
+Remember, it's just a `.vimrc` config file!
 
-**And you're set. Run vim as usual, it can handle itself quite well.**
+Download [here][vimrc] and put it in your home directory. And you're set.
 
-⚑ Special for *nix & Mac users:
+**Run vim as usual, it can handle itself quite well.**
 
-    `curl -Lo ~/.vimrc https://j.mp/re-vim`
+Tips for *nix & Mac users:
 
-[screencast](http://macplay.github.io/cool-software/start-using-re-vim-config/) for your reference.
+    curl -Lo ~/.vimrc https://j.mp/re-vim
+
+Homemade [screencast](http://macplay.github.io/cool-software/start-using-re-vim-config/) for your reference. ♡
 
 ## Read online
 
@@ -47,7 +47,7 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 ![screenshot-opensuse](./screenshots/screenshot-opensuse.png)
 
-#### Paper colorscheme, Light & Dark toggle
+#### Paper colorscheme, Toggle Light & Dark
 
 ![theme-toggle](./screenshots/theme-toggle.png)
 
@@ -55,7 +55,7 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required) as plugin manager. ★ Single file. Super-fast parallel installation/update.
 
-**You can install plugins by running `PlugInstall` in vim to acquire more power. This should be completed in 30 secs.**
+**You can run `PlugInstall` in vim to install plugins. This should be completed in 30 secs.**
 
 ### Plugins list
 
