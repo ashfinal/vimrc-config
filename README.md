@@ -47,10 +47,6 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 ![screenshot-opensuse](./screenshots/screenshot-opensuse.png)
 
-#### Paper colorscheme, Toggle Light & Dark
-
-![theme-toggle](./screenshots/theme-toggle.png)
-
 ## Plugins
 
 re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required) as plugin manager. ★ Single file. Super-fast parallel installation/update.
