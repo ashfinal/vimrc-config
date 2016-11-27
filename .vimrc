@@ -1,4 +1,4 @@
-" Name:     re-vim - Reasonable, Readable, Reliable vimrc(Ever for ordinary people)
+" Name:     re-vim: a REasonable vim configuration
 " Author:   ashfinal <ashfinal@gmail.com>
 " URL:      https://github.com/ashfinal
 " License:  MIT license
@@ -342,6 +342,10 @@ cnoremap <C-a> <home>
 cnoremap <C-h> <S-left>
 cnoremap <C-l> <S-right>
 
+" Ctrl-[bf]: I don't use <C-b> to open mini window often
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+
 " Ctrl-a: Go to begin of line
 inoremap <C-a> <esc>I
 
@@ -553,22 +557,22 @@ endfunction
 nnoremap <silent> <Leader><Space> :call ToggleFoldMethod()<CR>
 function! ToggleFoldMethod()
     if (&foldmethod == "indent")
-        set foldmethod=manual
+        setlocal foldmethod=manual
         echo "Foldmethod: manual"
     elseif (&foldmethod == "manual")
-        set foldmethod=syntax
+        setlocal foldmethod=syntax
         echo "Foldmethod: syntax"
     elseif (&foldmethod == "syntax")
-        set foldmethod=marker
+        setlocal foldmethod=marker
         echo "Foldmethod: marker"
     elseif (&foldmethod == "marker")
-        set foldmethod=expr
+        setlocal foldmethod=expr
         echo "Foldmethod: expr"
     elseif (&foldmethod == "expr")
-        set foldmethod=diff
+        setlocal foldmethod=diff
         echo "Foldmethod: diff"
     else
-        set foldmethod=indent
+        setlocal foldmethod=indent
         echo "Foldmethod: indent"
     endif
 endfunction
@@ -653,7 +657,7 @@ if (g:nouseplugmanager == 0)
                     exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
                 else
                     exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
-                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation fell free to contact me."
+                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation feel free to contact me."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -662,7 +666,7 @@ if (g:nouseplugmanager == 0)
             endif
         else
             exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
-            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation fell free to contact me."
+            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation feel free to contact me."
         endif
     endif
 endif
