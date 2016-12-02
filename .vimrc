@@ -714,6 +714,16 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
         let g:multi_cursor_prev_key='_'
         let g:multi_cursor_skip_key='-'
         let g:multi_cursor_quit_key='<Esc>'
+        function! Multiple_cursors_before()
+            if exists(':NeoCompleteLock')==2
+                exe 'NeoCompleteLock'
+            endif
+        endfunction
+        function! Multiple_cursors_after()
+            if exists(':NeoCompleteUnlock')==2
+                exe 'NeoCompleteUnlock'
+            endif
+        endfunction
     endif
 
     " }}} Plugin Config - vim-multiple-cursors "
