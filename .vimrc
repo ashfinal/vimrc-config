@@ -300,16 +300,10 @@ nnoremap <silent> <BS> :nohlsearch<CR>
 " A buffer becomes hidden when it is abandoned
 set hidden
 
-" Open "FileExplorer" with the current buffer's path
-" Super useful when editing files in the same directory
 set autochdir " change current working directory automatically
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 30
-let g:netrw_list_hide = '^\..*$'
-nmap <silent> <Leader>e :Vexplore <C-r>=expand("%:p:h")<CR>/<CR>
 
 " Specify the behavior when switching between buffers
-set switchbuf=useopen,usetab,newtab
+set switchbuf=useopen
 set showtabline=1
 
 set splitright " Puts new vsplit windows to the right of the current
@@ -614,6 +608,7 @@ if (g:nouseplugmanager == 0)
             Plug 'mbbill/undotree'
         endif
         Plug 'mattn/emmet-vim'
+        Plug 'scrooloose/nerdtree'
         Plug 'dhruvasagar/vim-table-mode'
         if executable('node')
             Plug 'maksimr/vim-jsbeautify'
@@ -677,13 +672,13 @@ endif
 
 if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
 
-    " Plugin Config - pencilcolorscheme {{{ "
+    " Plugin Config - papercolorscheme {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-colors-pencil/colors/pencil.vim"))
-        colorscheme pencil
+    if filereadable(expand("~/.vim/plugged/vim-colors-paper/colors/paper.vim"))
+        colorscheme paper
     endif
 
-    " }}} Plugin Config - pencilcolorscheme "
+    " }}} Plugin Config - papercolorscheme "
 
     " Plugin Config - undotree {{{ "
 
@@ -753,6 +748,14 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     endif
 
     " }}} Plugin Config - emmet-vim "
+
+    " Plugin Config - nerdtree {{{ "
+
+    if filereadable(expand("~/.vim/plugged/nerdtree/autoload/nerdtree.vim"))
+        nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+    endif
+
+    " }}} Plugin Config - nerdtree "
 
     " Plugin Config - vim-table-mode {{{ "
 
