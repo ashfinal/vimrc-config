@@ -53,6 +53,10 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 
 **You can run `PlugInstall` in vim to install plugins. This should be completed in 30 secs.**
 
+To only install certain plugin, `vim-airline`, for instance:
+
+    :PlugInstall vim-airline
+
 ### Plugins list
 
 - [delimitMate][delimitMate] - provides insert mode auto-completion for quotes, parens, brackets, etc.
@@ -78,6 +82,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 - [vim-colors-pencil][vim-colors-pencil] - Light (& dark) color scheme inspired by iA Writer
 - [vim-colors-paper][vim-colors-paper] - Vim color scheme inspired by Google's Material Design
+- [vim-colors-violet][vim-colors-violet] - Violet Colorscheme for the Vim Editor
 
 ## Key bindings
 
@@ -156,7 +161,7 @@ use `Wcolor` for showing highlight group under current cursor
 | [vim-align][vim-align]                       | `<Leader>` + `g`         | Normal/Visual | Align with                          |
 | [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                    |
 | [limelight.vim][limelight.vim]               | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
-| [ultisnips][ultisnips]                       | `ii`                     |     Insert    | Expand snips                        |
+| [ultisnips][ultisnips]                       | `<Tab>`                     |     Insert    | Expand snips                        |
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
 | [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
 | [vim-jsbeautify][vim-jsbeautify]             | `<Leader>` +  `j` + `s`  |     Normal    | JsBeauty                            |
@@ -200,3 +205,4 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
 [vim-colors-pencil]:https://github.com/reedes/vim-colors-pencil "https://github.com/reedes/vim-colors-pencil"
 [vim-colors-paper]:https://github.com/ashfinal/vim-colors-paper "https://github.com/ashfinal/vim-colors-paper"
+[vim-colors-violet]:https://github.com/ashfinal/vim-colors-violet "https://github.com/ashfinal/vim-colors-violet"
