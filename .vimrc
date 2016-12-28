@@ -19,7 +19,7 @@ if !isdirectory(expand("~/.vim/"))
 endif
 
 if has('win32') || has('win64')
-    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
+    set runtimepath+=$HOME/.vim
 endif
 
 set title
@@ -35,6 +35,7 @@ set t_vb=
 
 set t_Co=256 " using 256 colors
 set t_ti= t_te= " put terminal in 'termcap' mode
+set guicursor+=a:blinkon0 " no cursor blink
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -130,14 +131,11 @@ set mousehide
 " Always show current position
 set ruler
 
-" Default show linenumber
+" Show linenumber by default
 if !exists('g:noshowlinenumber')
-    let g:noshowlinenumber = 0
-endif
-if (g:noshowlinenumber == 1)
-    set nonumber norelativenumber
-else
     set number relativenumber
+else
+    set nonumber norelativenumber
 endif
 
 " Use absolute linenum in Insert mode; relative linenum in Normal mode
@@ -145,9 +143,7 @@ autocmd FocusLost,InsertEnter * :call UseAbsNum()
 autocmd FocusGained,InsertLeave * :call UseRelNum()
 
 function! UseAbsNum()
-    let b:fcStatus = &foldcolumn
-    setlocal foldcolumn=0 " Don't show foldcolumn in Insert mode
-    if (g:noshowlinenumber == 1) || exists('#goyo')
+    if exists('g:noshowlinenumber') || exists('#goyo')
         set nonumber norelativenumber
     else
         set number norelativenumber
@@ -155,13 +151,7 @@ function! UseAbsNum()
 endfunction
 
 function! UseRelNum()
-    if !exists('b:fcStatus')
-        let b:fcStatus = &foldcolumn
-    endif
-    if b:fcStatus == 1
-        setlocal foldcolumn=1 " Restore foldcolumn in Normal mode
-    endif
-    if (g:noshowlinenumber == 1) || exists('#goyo')
+    if exists('g:noshowlinenumber') || exists('#goyo')
         set nonumber norelativenumber
     else
         set number relativenumber
@@ -194,16 +184,14 @@ map ; :
 " Map jj to enter normal mode
 imap jj <Esc>
 
-" Make cursor always on center of screen
-if !exists('g:centeralways')
-    let g:centeralways = 1 " Center by default
-endif
-if (g:centeralways == 1)
+" Make cursor always on center of screen by default
+if !exists('noalwayscenter')
+    " Calculate proper scrolloff
     autocmd VimEnter,WinEnter,VimResized,InsertLeave * :let &scrolloff = float2nr(floor(winheight(0)/2)+1)
     autocmd InsertEnter * :let &scrolloff = float2nr(floor(winheight(0)/2))
+    " Use <Enter> to keep center in insert mode, need proper scrolloff
+    inoremap <CR> <CR><C-o>zz
 endif
-" Use <Enter> key to center in insert mode, proper scrolloff needed. Very convenient.
-inoremap <CR> <CR><C-o>zz
 
 " Make moving around works well in multi lines
 nmap <silent> j gj
@@ -222,13 +210,10 @@ set viewoptions=folds,cursor,unix,slash " Better Unix / Windows compatibility
 set sessionoptions=buffers,curdir,tabpages
 autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 
-" Restore last session automatically by default
+" Restore last session automatically (Default Off)
 autocmd VimEnter * :call RestoreLastSession()
 function! RestoreLastSession()
-    if !exists('g:restorelastsession')
-        let g:restorelastsession = 0
-    endif
-    if (g:restorelastsession == 1)
+    if exists('g:restorelastsession')
         if filereadable(expand("~/.vim/.last.session"))
            exe ":source ~/.vim/.last.session"
        endif
@@ -242,13 +227,15 @@ endif
 set completeopt=menu,preview,longest
 set pumheight=10
 " automatically open and close the popup menu / preview window
-autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+if !exists('g:noautoclosepum')
+    autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+endif
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \     exe "normal! g`\"" |
+            \ endif
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -316,7 +303,7 @@ nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nmap <silent> <C-l> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
-" always show status line
+" Always show status line
 set laststatus=2
 set statusline=%<%f\ " filename
 set statusline+=%w%h%m%r " option
@@ -330,29 +317,29 @@ set statusline+=%=%-14.(%l/%L,%c%V%)\ %p%% " Right aligned file nav info
 " Key Mappings {{{ "
 
 " Bash like keys for the command line
-cnoremap <C-a> <home>
+cnoremap <C-a> <Home>
 
 " Ctrl-[hl]: Move left/right by word
-cnoremap <C-h> <S-left>
-cnoremap <C-l> <S-right>
+cnoremap <C-h> <S-Left>
+cnoremap <C-l> <S-Right>
 
 " Ctrl-[bf]: I don't use <C-b> to open mini window often
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 
 " Ctrl-a: Go to begin of line
-inoremap <C-a> <esc>I
+inoremap <C-a> <Home>
 
 " Ctrl-e: Go to end of line
-inoremap <C-e> <esc>A
+inoremap <C-e> <End>
 
 " Ctrl-[bf]: Move cursor left/right
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 
 " Ctrl-[hl]: Move left/right by word
-inoremap <C-h> <C-o>b
-inoremap <C-l> <C-o>w
+inoremap <C-h> <S-Left>
+inoremap <C-l> <S-Right>
 
 " Ctrl-[kj]: Move cursor up/down
 inoremap <C-k> <C-o>gk
@@ -384,7 +371,7 @@ set matchtime=2
 set nrformats=alpha,octal,hex
 
 " For when you forget to sudo... Really Write the file.
-if !(has('win32') || has('win64'))
+if !(has('win32') || has('win64')) && !has("gui_running")
     command! W w !sudo tee % > /dev/null
 endif
 
@@ -392,9 +379,9 @@ autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
 
 " Find out to which highlight-group a particular keyword/symbol belongs
 command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
-    \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
-    \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
-    \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
+            \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
+            \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
+            \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
 
 nnoremap <silent> <Leader>b :call ToggleBackground()<CR>
 function! ToggleBackground()
@@ -430,19 +417,19 @@ function! ToggleColorcolumn()
 endfunction
 
 " Toggle showing linenumber
-nnoremap <silent> <Leader>n :call ToggleShowlinenum()<CR>
-function! ToggleShowlinenum()
-    if (g:noshowlinenumber == 0)
-        setlocal nonumber norelativenumber
+nnoremap <silent> <Leader>n :call ToggleNumberline()<CR>
+function! ToggleNumberline()
+    if !exists('g:noshowlinenumber')
+        set nonumber norelativenumber
         let g:noshowlinenumber = 1
     else
-        setlocal number relativenumber
-        let g:noshowlinenumber = 0
+        set number relativenumber
+        unlet g:noshowlinenumber
     endif
 endfunction
 
-nnoremap <silent> <Leader>m :call ToggleShowfoldcolumn()<CR>
-function! ToggleShowfoldcolumn()
+nnoremap <silent> <Leader>m :call ToggleFoldcolumn()<CR>
+function! ToggleFoldcolumn()
     if &foldcolumn == 1
         setlocal foldcolumn=0
     else
@@ -464,16 +451,18 @@ function! ToggleFileformat()
     endif
 endfunction
 
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab foldmethod=indent textwidth=80
+autocmd FileType python setlocal foldmethod=indent textwidth=80
 
-" Strip Trailing whitespace and blank line of EOF when saving files
-autocmd FileType php,html,javascript,css,python,xml,yml,markdown autocmd BufWritePre <buffer> :call StripWSBL()
+" Strip Trailing spaces and blank lines of EOF when saving files
+if !exists('g:noautostripspaces')
+    autocmd FileType html,javascript,css,python,markdown,rst autocmd BufWritePre <buffer> :call StripWSBL()
+end
 
 nnoremap <silent> <Leader>s :call StripWSBL()<CR>
 function! StripWSBL()
     let l = line(".")
     let c = col(".")
-    %s/\s\+$//e
+    %s/\s\+$//ge
     %s/\(\n^$\)\+\%$//ge
     call cursor(l, c)
 endfunction
@@ -481,44 +470,26 @@ endfunction
 " YankOnce from unimpaired.vim
 nnoremap <silent> yo :call YankOnce()<CR>o
 function! YankOnce()
-    let b:paste = &paste
+    let b:pastemode = &paste
     set paste
     autocmd InsertLeave *
-          \ if exists('b:paste') |
-          \   let &paste = b:paste |
-          \   unlet b:paste |
-          \ endif
+                \ if exists('b:pastemode') |
+                \     let &paste = b:pastemode |
+                \     unlet b:pastemode |
+                \ endif
 endfunction
 
 nnoremap <silent> <Leader>t :call ToggleTabSpace()<CR>
 function! ToggleTabSpace()
-    let b:etStatus = &expandtab
     setlocal list
-    if !exists('b:hadRetabbed')
-        let b:hadRetabbed = 0
-    endif
-    if b:etStatus == 1
-        if b:hadRetabbed == 0
-            setlocal noexpandtab
-            retab!
-            let b:hadRetabbed = 1
-        else
-            setlocal expandtab
-            retab
-            let b:hadRetabbed = 0
-        endif
-        setlocal expandtab
-    else
-        if b:hadRetabbed == 0
-            setlocal expandtab
-            retab
-            let b:hadRetabbed = 1
-        else
-            setlocal noexpandtab
-            retab!
-            let b:hadRetabbed = 0
-        endif
+    if !exists('b:retabbed')
         setlocal noexpandtab
+        retab!
+        let b:retabbed = 1
+    else
+        setlocal expandtab
+        retab
+        unlet b:retabbed
     endif
 endfunction
 
@@ -535,15 +506,16 @@ let g:html_prevent_copy = "fntd"
 " Make search results can be foldable
 nnoremap <silent> <Leader>z :call ToggleSearchFold()<CR>
 function! ToggleSearchFold()
-    if !exists('b:hasSearchFold') || (b:hasSearchFold == 0)
+    if !exists('b:fmstatus')
+        let b:fmstatus = &foldmethod
         setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2
         setlocal foldmethod=expr
         setlocal foldlevel=0
-        let b:hasSearchFold = 1
         setlocal foldmethod=manual
     else
         setlocal foldlevel=100
-        let b:hasSearchFold = 0
+        let &foldmethod = b:fmstatus
+        unlet b:fmstatus
     endif
 endfunction
 
@@ -571,8 +543,6 @@ function! ToggleFoldMethod()
     endif
 endfunction
 
-autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
-
 " Toggle tmux statusline automatically
 " if exists('$TMUX')
     " autocmd VimEnter,VimLeave * :silent !tmux set status
@@ -596,10 +566,7 @@ autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set filetype=markdown
 " Plugins List & Config {{{ "
 
 " Plugin List {{{ "
-if !exists('g:nouseplugmanager')
-    let g:nouseplugmanager = 0 " use plug.vim by default
-endif
-if (g:nouseplugmanager == 0)
+if !exists('g:nouseplugmanager') " use plug.vim by default
     if filereadable(expand("~/.vim/autoload/plug.vim"))
         call plug#begin('~/.vim/plugged')
 
@@ -635,6 +602,7 @@ if (g:nouseplugmanager == 0)
         endif
         Plug 'reedes/vim-colors-pencil'
         Plug 'ashfinal/vim-colors-paper'
+        Plug 'ashfinal/vim-colors-violet'
         if filereadable(expand("~/.vimrc.plug"))
             source $HOME/.vimrc.plug
         endif
@@ -670,15 +638,15 @@ endif
 
 " Plugin Config {{{ "
 
-if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
+if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vim"))
 
-    " Plugin Config - papercolorscheme {{{ "
+    " Plugin Config - violetcolorscheme {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-colors-paper/colors/paper.vim"))
-        colorscheme paper
+    if filereadable(expand("~/.vim/plugged/vim-colors-violet/colors/violet.vim"))
+        colorscheme violet
     endif
 
-    " }}} Plugin Config - papercolorscheme "
+    " }}} Plugin Config - violetcolorscheme "
 
     " Plugin Config - undotree {{{ "
 
@@ -704,18 +672,18 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plugin Config - vim-multiple-cursors {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-multiple-cursors/autoload/multiple_cursors.vim"))
-        let g:multi_cursor_use_default_mapping=0
-        let g:multi_cursor_next_key='+'
-        let g:multi_cursor_prev_key='_'
-        let g:multi_cursor_skip_key='-'
-        let g:multi_cursor_quit_key='<Esc>'
+        let g:multi_cursor_use_default_mapping = 0
+        let g:multi_cursor_next_key = '+'
+        let g:multi_cursor_prev_key = '_'
+        let g:multi_cursor_skip_key = '-'
+        let g:multi_cursor_quit_key = '<Esc>'
         function! Multiple_cursors_before()
-            if exists(':NeoCompleteLock')==2
+            if exists(':NeoCompleteLock') == 2
                 exe 'NeoCompleteLock'
             endif
         endfunction
         function! Multiple_cursors_after()
-            if exists(':NeoCompleteUnlock')==2
+            if exists(':NeoCompleteUnlock') == 2
                 exe 'NeoCompleteUnlock'
             endif
         endfunction
@@ -726,7 +694,7 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plugin Config - ultisnips {{{ "
 
     if filereadable(expand("~/.vim/plugged/ultisnips/plugin/UltiSnips.vim"))
-        let g:UltiSnipsExpandTrigger = "ii"
+        let g:UltiSnipsExpandTrigger = "<Tab>"
         let g:UltiSnipsJumpForwardTrigger = "<Tab>"
         let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         let g:UltiSnipsEditSplit = "context"
@@ -752,7 +720,7 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plugin Config - nerdtree {{{ "
 
     if filereadable(expand("~/.vim/plugged/nerdtree/autoload/nerdtree.vim"))
-        nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+        nnoremap <silent> <Leader>e :NERDTree <C-r>=expand("%:p:h")<CR><CR>
     endif
 
     " }}} Plugin Config - nerdtree "
@@ -760,8 +728,16 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plugin Config - vim-table-mode {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-table-mode/autoload/tablemode.vim"))
-        let g:table_mode_corner="|"
-        let g:table_mode_align_char=":"
+
+        autocmd FileType markdown
+                    \ let g:table_mode_corner = "|" |
+                    \ let g:table_mode_corner_corner = "|" |
+                    \ let g:table_mode_header_fillchar = "-" |
+                    \ let g:table_mode_align_char = ":"
+        autocmd FileType rst
+                    \ let g:table_mode_corner = "+" |
+                    \ let g:table_mode_corner_corner = "+" |
+                    \ let g:table_mode_header_fillchar = " = "
     endif
 
     " }}} Plugin Config - vim-table-mode "
@@ -792,14 +768,12 @@ if (g:nouseplugmanager == 0) && filereadable(expand("~/.vim/autoload/plug.vim"))
     if filereadable(expand("~/.vim/plugged/goyo.vim/plugin/goyo.vim"))
         nmap <silent> <C-w><Space> :Goyo<CR>
         function! s:goyo_enter()
-            set nocursorline
-            let b:fcStatus = &foldcolumn
-            set foldcolumn=0
+            let b:fcstatus = &foldcolumn
+            setlocal foldcolumn=0
         endfunction
 
         function! s:goyo_leave()
-            set cursorline
-            let &foldcolumn = b:fcStatus
+            let &foldcolumn = b:fcstatus
         endfunction
 
         autocmd! User GoyoEnter nested call <SID>goyo_enter()
