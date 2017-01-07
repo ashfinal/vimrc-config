@@ -600,6 +600,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if version >= 704
             Plug 'airblade/vim-gitgutter'
         endif
+        Plug 'metakirby5/codi.vim'
         Plug 'reedes/vim-colors-pencil'
         Plug 'ashfinal/vim-colors-paper'
         Plug 'ashfinal/vim-colors-violet'

@@ -80,6 +80,7 @@ To only install certain plugin, `vim-airline`, for instance:
 - [undotree][undotree] - The ultimate undo history visualizer for VIM
 - [vim-easymotion][vim-easymotion] - Vim motions on speed!
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
+- [codi.vim][codi.vim] - The interactive scratchpad for hackers.
 - [vim-colors-pencil][vim-colors-pencil] - Light (& dark) color scheme inspired by iA Writer
 - [vim-colors-paper][vim-colors-paper] - Vim color scheme inspired by Google's Material Design
 - [vim-colors-violet][vim-colors-violet] - Violet Colorscheme for the Vim Editor
@@ -161,7 +162,7 @@ use `Wcolor` for showing highlight group under current cursor
 | [vim-align][vim-align]                       | `<Leader>` + `g`         | Normal/Visual | Align with                          |
 | [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                    |
 | [limelight.vim][limelight.vim]               | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
-| [ultisnips][ultisnips]                       | `<Tab>`                     |     Insert    | Expand snips                        |
+| [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Expand snips                        |
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
 | [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
 | [vim-jsbeautify][vim-jsbeautify]             | `<Leader>` +  `j` + `s`  |     Normal    | JsBeauty                            |
@@ -203,6 +204,7 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-easymotion]:https://github.com/Lokaltog/vim-easymotion "https://github.com/Lokaltog/vim-easymotion"
 [vim-multiple-cursors]:https://github.com/terryma/vim-multiple-cursors "https://github.com/terryma/vim-multiple-cursors"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
+[codi.vim]:https://github.com/metakirby5/codi.vim "https://github.com/metakirby5/codi.vim"
 [vim-colors-pencil]:https://github.com/reedes/vim-colors-pencil "https://github.com/reedes/vim-colors-pencil"
 [vim-colors-paper]:https://github.com/ashfinal/vim-colors-paper "https://github.com/ashfinal/vim-colors-paper"
 [vim-colors-violet]:https://github.com/ashfinal/vim-colors-violet "https://github.com/ashfinal/vim-colors-violet"
