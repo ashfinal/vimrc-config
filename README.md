@@ -90,7 +90,7 @@ To only install certain plugin, `vim-airline`, for instance:
 ### Primary key bindings.
 
     map ; :                 " remap `;` to `:` in Normal/Visual Mode
-    imap jj <Esc>           " remap `jj` to `<Esc>` in Insert Mode
+    imap jk <Esc>           " remap `jk` to `<Esc>` in Insert Mode
     mapleader = ","         " map `,` to `<Leader>` in Normal Mode
 
 ### Commands

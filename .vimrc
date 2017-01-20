@@ -181,8 +181,8 @@ endif
 " Map ; to : and save a million keystrokes
 map ; :
 
-" Map jj to enter normal mode
-imap jj <Esc>
+" Map jk to enter normal mode
+imap jk <Esc>
 
 " Make cursor always on center of screen by default
 if !exists('noalwayscenter')
@@ -452,6 +452,7 @@ function! ToggleFileformat()
 endfunction
 
 autocmd FileType python setlocal foldmethod=indent textwidth=80
+autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
 
 " Strip Trailing spaces and blank lines of EOF when saving files
 if !exists('g:noautostripspaces')
@@ -738,7 +739,11 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         autocmd FileType rst
                     \ let g:table_mode_corner = "+" |
                     \ let g:table_mode_corner_corner = "+" |
-                    \ let g:table_mode_header_fillchar = " = "
+                    \ let g:table_mode_header_fillchar = "="
+        autocmd FileType org
+                    \ let g:table_mode_corner = "+" |
+                    \ let g:table_mode_corner_corner = "|" |
+                    \ let g:table_mode_header_fillchar = "-"
     endif
 
     " }}} Plugin Config - vim-table-mode "
