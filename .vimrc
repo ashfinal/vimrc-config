@@ -453,6 +453,7 @@ endfunction
 
 autocmd FileType python setlocal foldmethod=indent textwidth=80
 autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
+autocmd FileType markdown,rst,org :silent TableModeEnable
 
 " Strip Trailing spaces and blank lines of EOF when saving files
 if !exists('g:noautostripspaces')
@@ -642,13 +643,13 @@ endif
 
 if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vim"))
 
-    " Plugin Config - violetcolorscheme {{{ "
+    " Plugin Config - papercolorscheme {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-colors-violet/colors/violet.vim"))
-        colorscheme violet
+    if filereadable(expand("~/.vim/plugged/vim-colors-paper/colors/paper.vim"))
+        colorscheme paper
     endif
 
-    " }}} Plugin Config - violetcolorscheme "
+    " }}} Plugin Config - papercolorscheme "
 
     " Plugin Config - undotree {{{ "
 
