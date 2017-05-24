@@ -582,6 +582,9 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if executable('node')
             Plug 'maksimr/vim-jsbeautify'
         endif
+        if executable('ag')
+            Plug 'gabesoft/vim-ags'
+        end
         Plug 'tpope/vim-surround'
         Plug 'Lokaltog/vim-easymotion'
         Plug 'terryma/vim-multiple-cursors'

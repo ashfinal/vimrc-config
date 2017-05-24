@@ -51,7 +51,7 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required) as plugin manager. ★ Single file. Super-fast parallel installation/update.
 
-**You can run `PlugInstall` in vim to install plugins. This should be completed in 30 secs.**
+**You can run `PlugInstall` in vim to install all of the included plugins. This should be completed in 30 secs.**
 
 To only install certain plugin, `vim-airline`, for instance:
 
@@ -69,6 +69,7 @@ To only install certain plugin, `vim-airline`, for instance:
     - [vim-snippets][vim-snippets] - Source of [ultisnips][ultisnips]
 - [emmet-vim][emmet-vim] - emmet for vim: http://emmet.io/
 - [nerdtree][nerdtree] - A tree explorer plugin for vim.
+- [vim-ags][vim-ags] - Silver searcher plugin for vim.
 - [vim-table-mode][vim-table-mode] - VIM Table Mode for instant table creation
 - [vim-surround][vim-surround] - surround.vim: quoting/parenthesizing made simple
 - [vim-signature][vim-signature] - Plugin to toggle, display and navigate marks
@@ -190,6 +191,7 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [goyo.vim]:https://github.com/junegunn/goyo.vim "https://github.com/junegunn/goyo.vim"
 [limelight.vim]:https://github.com/junegunn/limelight.vim "https://github.com/junegunn/limelight.vim"
 [ultisnips]:https://github.com/SirVer/ultisnips "https://github.com/SirVer/ultisnips"
+[vim-ags]:https://github.com/gabesoft/vim-ags "https://github.com/gabesoft/vim-ags"
 [vim-snippets]:https://github.com/honza/vim-snippets "https://github.com/honza/vim-snippets"
 [emmet-vim]:https://github.com/mattn/emmet-vim "https://github.com/mattn/emmet-vim"
 [nerdtree]:https://github.com/scrooloose/nerdtree "https://github.com/scrooloose/nerdtree"
