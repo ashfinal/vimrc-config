@@ -1,37 +1,22 @@
-# re-vim: a REasonable vim configuration
-                         _
-     _ __ ___     __   _(_)_ __ ___
-    | '__/ _ \____\ \ / / | '_ ` _ \
-    | | |  __/_____\ V /| | | | | | |
-    |_|  \___|      \_/ |_|_| |_| |_|
+# re-vim: Lightweight, extensible vim configuration
 
-[English](https://github.com/ashfinal/vimrc-config/blob/master/README.md) | [中文](http://macplay.github.io/cool-software/share-my-dot-vimrc-config/)
+★ Single file, just download it. Ready to rock in 5 secs.
 
-- Well polished, documented, should work on Mac, Linux and Windows.
+★ Well polished, should work on Mac, Linux and Windows.
 
-- Single file, no installation needed. Ready to rock in 5 secs.
+★ Self-adapted, extensible, to fulfill your needs.
 
-- Self-adapting and extensible, to fulfill your need.
+## Get started
 
-*Best with "huge" Vim 7.4 +lua +python.*
-
-## How to begin?
-
-Remember, it's just a `.vimrc` config file!
-
-Download [here][vimrc] and put it in your home directory. And you're set.
-
-**Run vim as usual, it can handle itself quite well.**
+Download [.vimrc][vimrc] file, put it in your home directory. Run vim as usual, it can handle itself quite well.
 
 Tips for *nix & Mac users:
 
     curl -Lo ~/.vimrc https://j.mp/re-vim
+    
+Need [neovim](https://github.com/neovim/neovim) support?
 
-Homemade [screencast](http://macplay.github.io/cool-software/start-using-re-vim-config/) for your reference. ♡
-
-## Read online
-
-Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online and copy what you need.
+    ln ~/.vimrc ~/.config/nvim/init.vim
 
 ## Screenshots
 
@@ -49,13 +34,7 @@ Read the [.vimrc](http://macplay.github.io/attachment/vimrc.html) file online an
 
 ## Plugins
 
-re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required) as plugin manager. ★ Single file. Super-fast parallel installation/update.
-
-**You can run `PlugInstall` in vim to install all of the included plugins. This should be completed in 30 secs.**
-
-To only install certain plugin, `vim-airline`, for instance:
-
-    :PlugInstall vim-airline
+re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required) as plugin manager. Run `:PlugInstall` in vim to install all built-in plugins. This should be completed in 30 secs.
 
 ### Plugins list
 
@@ -85,6 +64,8 @@ To only install certain plugin, `vim-airline`, for instance:
 - [vim-colors-pencil][vim-colors-pencil] - Light (& dark) color scheme inspired by iA Writer
 - [vim-colors-paper][vim-colors-paper] - Vim color scheme inspired by Google's Material Design
 - [vim-colors-violet][vim-colors-violet] - Violet Colorscheme for the Vim Editor
+- [nvim-completion-manager][nvim-completion-manager] - ⚡️ Fast, Extensible, Async Completion Framework for Neovim
+- [nvim-cm-tern][nvim-cm-tern] - Javascript completion for nvim-completion-manager.
 
 ## Key bindings
 
@@ -96,16 +77,16 @@ To only install certain plugin, `vim-airline`, for instance:
 
 ### Commands
 
-use `W` for sudo writing on Mac & *nix.
+use `:W` for sudo writing on Mac & *nix.
 
-use `Wcolor` for showing highlight group under current cursor
+use `:Wcolor` for showing highlight group under current cursor
 
 ### Move around & Edit
 
 | Key                 |      Mode      | Action                                  |
 |:--------------------|:--------------:|:----------------------------------------|
 | `<BS>`              |     Normal     | unhighlight the search result           |
-| `yo`                |     Normal     | yankonce set paste option when done     |
+| `yo`                |     Normal     | set nopaste automatically when done     |
 | `<Shift>` + `<Tab>` |     Normal     | switch to next buffer                   |
 | `<Ctrl>` + `a`      | Command/Insert | move the cursor to the begining of line |
 | `<Ctrl>` + `e`      | Command/Insert | move the cursor to the end of line      |
@@ -172,7 +153,7 @@ For more key bindings please refer to the plugin's manual.
 
 ## Customization
 
-re-vim uses `~/.vimrc.before` and `~/.vimrc.after` for your customization.
+re-vim uses `~/.vimrc.after` (and `~/.vimrc.before`) for your customization.
 
 For example, to override the default colorscheme:
 
@@ -210,3 +191,5 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-colors-pencil]:https://github.com/reedes/vim-colors-pencil "https://github.com/reedes/vim-colors-pencil"
 [vim-colors-paper]:https://github.com/ashfinal/vim-colors-paper "https://github.com/ashfinal/vim-colors-paper"
 [vim-colors-violet]:https://github.com/ashfinal/vim-colors-violet "https://github.com/ashfinal/vim-colors-violet"
+[nvim-completion-manager]:https://github.com/roxma/nvim-completion-manager "https://github.com/roxma/nvim-completion-manager"
+[nvim-cm-tern]:https://github.com/roxma/nvim-cm-tern "https://github.com/roxma/nvim-cm-tern"
