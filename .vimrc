@@ -231,6 +231,8 @@ if !exists('g:noautoclosepum')
     autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 endif
 
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -609,6 +611,10 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'reedes/vim-colors-pencil'
         Plug 'ashfinal/vim-colors-paper'
         Plug 'ashfinal/vim-colors-violet'
+        if has('nvim')
+            Plug 'roxma/nvim-completion-manager'
+            Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+        endif
         if filereadable(expand("~/.vimrc.plug"))
             source $HOME/.vimrc.plug
         endif
