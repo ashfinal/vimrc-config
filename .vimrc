@@ -1,4 +1,4 @@
-" Name:     re-vim: a REasonable vim configuration
+" Name:     re-vim: Lightweight, extensible vim configuration
 " Author:   ashfinal <ashfinal@gmail.com>
 " URL:      https://github.com/ashfinal
 " License:  MIT license
