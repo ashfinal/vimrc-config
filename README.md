@@ -6,6 +6,8 @@
 
 ★ Self-adapted, extensible, to fulfill your needs.
 
+*  Support HTML/CSS/Javascript, Python, Latex autocompletion.
+
 ## Get started
 
 Download [.vimrc][vimrc] file, put it in your home directory. Run vim as usual, it can handle itself quite well.
@@ -13,7 +15,7 @@ Download [.vimrc][vimrc] file, put it in your home directory. Run vim as usual, 
 Tips for *nix & Mac users:
 
     curl -Lo ~/.vimrc https://j.mp/re-vim
-    
+
 Need [neovim](https://github.com/neovim/neovim) support?
 
     ln ~/.vimrc ~/.config/nvim/init.vim
@@ -39,7 +41,6 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 ### Plugins list
 
 - [delimitMate][delimitMate] - provides insert mode auto-completion for quotes, parens, brackets, etc.
-- [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
 - [vim-align][vim-align] - DrChip's Alignment Tool for Vim
 - [YankRing.vim][YankRing.vim] - Maintains a history of previous yanks, changes and deletes
 - [goyo.vim][goyo.vim] - Distraction-free writing in Vim
@@ -64,8 +65,11 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [vim-colors-pencil][vim-colors-pencil] - Light (& dark) color scheme inspired by iA Writer
 - [vim-colors-paper][vim-colors-paper] - Vim color scheme inspired by Google's Material Design
 - [vim-colors-violet][vim-colors-violet] - Violet Colorscheme for the Vim Editor
+- [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
 - [nvim-completion-manager][nvim-completion-manager] - ⚡️ Fast, Extensible, Async Completion Framework for Neovim
+- [tern_for_vim][tern_for_vim] - Tern plugin for Vim
 - [nvim-cm-tern][nvim-cm-tern] - Javascript completion for nvim-completion-manager.
+- [vimtex][vimtex] - A modern vim plugin for editing LaTeX files.
 
 ## Key bindings
 
@@ -83,25 +87,26 @@ use `:Wcolor` for showing highlight group under current cursor
 
 ### Move around & Edit
 
-| Key                 |      Mode      | Action                                  |
-|:--------------------|:--------------:|:----------------------------------------|
-| `<BS>`              |     Normal     | unhighlight the search result           |
-| `yo`                |     Normal     | set nopaste automatically when done     |
-| `<Shift>` + `<Tab>` |     Normal     | switch to next buffer                   |
-| `<Ctrl>` + `a`      | Command/Insert | move the cursor to the begining of line |
-| `<Ctrl>` + `e`      | Command/Insert | move the cursor to the end of line      |
-| `<Ctrl>` + `h`      | Command/Insert | move the cursor left by word            |
-| `<Ctrl>` + `l`      | Command/Insert | move the cursor right by word           |
-| `<Ctrl>` + `b`      |     Insert     | move the cursor left by char            |
-| `<Ctrl>` + `f`      |     Insert     | move the cursor right by char           |
-| `<Ctrl>` + `j`      |     Insert     | move the cursor down by line            |
-| `<Ctrl>` + `k`      |     Insert     | move the cursor up by line              |
-| `<Ctrl>` + `j`      |     Visual     | move the current line downward          |
-| `<Ctrl>` + `k`      |     Visual     | move the current line upward            |
-| `<Ctrl>` + `h`      |     Normal     | resize the current split window         |
-| `<Ctrl>` + `l`      |     Normal     | resize the current split window         |
-| `<Ctrl>` + `j`      |     Normal     | resize the current split window         |
-| `<Ctrl>` + `k`      |     Normal     | resize the current split window         |
+| Key            |      Mode      | Action                                  |
+|:---------------|:--------------:|:----------------------------------------|
+| `<BS>`         |     Normal     | unhighlight the search result           |
+| `yo`           |     Normal     | set nopaste automatically when done     |
+| `[b`           |     Normal     | switch to previous buffer               |
+| `]b`           |     Normal     | switch to next buffer                   |
+| `<Ctrl>` + `a` | Command/Insert | move the cursor to the begining of line |
+| `<Ctrl>` + `e` | Command/Insert | move the cursor to the end of line      |
+| `<Ctrl>` + `h` | Command/Insert | move the cursor left by word            |
+| `<Ctrl>` + `l` | Command/Insert | move the cursor right by word           |
+| `<Ctrl>` + `b` |     Insert     | move the cursor left by char            |
+| `<Ctrl>` + `f` |     Insert     | move the cursor right by char           |
+| `<Ctrl>` + `j` |     Insert     | move the cursor down by line            |
+| `<Ctrl>` + `k` |     Insert     | move the cursor up by line              |
+| `<Ctrl>` + `j` |     Visual     | move the current line downward          |
+| `<Ctrl>` + `k` |     Visual     | move the current line upward            |
+| `<Ctrl>` + `h` |     Normal     | resize the current split window         |
+| `<Ctrl>` + `l` |     Normal     | resize the current split window         |
+| `<Ctrl>` + `j` |     Normal     | resize the current split window         |
+| `<Ctrl>` + `k` |     Normal     | resize the current split window         |
 
 ### `<Leader>` key related
 
@@ -193,3 +198,5 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-colors-violet]:https://github.com/ashfinal/vim-colors-violet "https://github.com/ashfinal/vim-colors-violet"
 [nvim-completion-manager]:https://github.com/roxma/nvim-completion-manager "https://github.com/roxma/nvim-completion-manager"
 [nvim-cm-tern]:https://github.com/roxma/nvim-cm-tern "https://github.com/roxma/nvim-cm-tern"
+[tern_for_vim]:https://github.com/ternjs/tern_for_vim "https://github.com/ternjs/tern_for_vim"
+[vimtex]:https://github.com/lervag/vimtex "https://github.com/lervag/vimtex"

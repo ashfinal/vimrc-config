@@ -299,7 +299,8 @@ set splitright " Puts new vsplit windows to the right of the current
 set splitbelow " Puts new split windows to the bottom of the current
 
 " Split management
-nmap <silent> <S-Tab> :bnext<CR>
+nnoremap <silent> [b :bprevious<cr>
+nnoremap <silent> ]b :bnext<cr>
 nmap <silent> <C-k> :exe "resize " . (winheight(0) * 3/2)<CR>
 nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
 nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
@@ -455,6 +456,7 @@ endfunction
 
 autocmd FileType python setlocal foldmethod=indent textwidth=80
 autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
+autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
 autocmd FileType markdown,rst,org :silent TableModeEnable
 
 " Strip Trailing spaces and blank lines of EOF when saving files
@@ -593,9 +595,6 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
         Plug 'Raimondi/delimitMate'
-        if version >= 703 && has('lua')
-            Plug 'Shougo/neocomplete.vim'
-        endif
         if version >= 704
             Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         endif
@@ -607,18 +606,31 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if version >= 704
             Plug 'airblade/vim-gitgutter'
         endif
+        if executable('latexmk')
+            Plug 'lervag/vimtex'
+        end
         Plug 'metakirby5/codi.vim'
         Plug 'reedes/vim-colors-pencil'
         Plug 'ashfinal/vim-colors-paper'
         Plug 'ashfinal/vim-colors-violet'
         if has('nvim')
-            Plug 'roxma/nvim-completion-manager'
-            Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+            if has('python3')
+                Plug 'roxma/nvim-completion-manager'
+                if executable('npm')
+                    Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+                end
+            end
+        else
+            if version >= 703 && has('lua')
+                Plug 'Shougo/neocomplete.vim'
+            endif
+            if executable('npm')
+                Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+            end
         endif
         if filereadable(expand("~/.vimrc.plug"))
             source $HOME/.vimrc.plug
         endif
-
         call plug#end()
     else
         if executable('git')
@@ -858,6 +870,30 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     endif
 
     " }}} Plugin Config - airline "
+
+    " Plugin Config - vimtex {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vimtex/autoload/vimtex.vim"))
+        if !exists('g:neocomplete#sources#omni#input_patterns')
+            let g:neocomplete#sources#omni#input_patterns = {}
+        endif
+        let g:neocomplete#sources#omni#input_patterns.tex =
+            \ '\v\\%('
+            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+            \ . '|hyperref\s*\[[^]]*'
+            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|%(include%(only)?|input)\s*\{[^}]*'
+            \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \ . '|\a*'
+            \ . ')'
+    endif
+
+    " }}} Plugin Config - vimtex "
 
 endif
 
