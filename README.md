@@ -6,7 +6,7 @@
 
 ★ Self-adapted, extensible, to fulfill your needs.
 
-*  Support HTML/CSS/Javascript, Python, Latex autocompletion.
+★ Support HTML/CSS/Javascript, Python, Latex autocomplete.
 
 ## Get started
 
