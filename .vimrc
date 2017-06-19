@@ -88,7 +88,8 @@ set wrap " Wrap lines
 
 " set iskeyword+=-
 set whichwrap+=<,>,h,l,[,]
-
+" clear split fillchar
+set fillchars=vert:\ 
 " Use these symbols for invisible chars
 set listchars=tab:¦\ ,eol:¬,trail:⋅,extends:»,precedes:«
 
