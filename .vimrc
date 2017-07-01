@@ -458,7 +458,7 @@ endfunction
 autocmd FileType python setlocal foldmethod=indent textwidth=80
 autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
 autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
-autocmd FileType markdown,rst,org :silent TableModeEnable
+" autocmd FileType markdown,rst,org :silent TableModeEnable
 
 " Strip Trailing spaces and blank lines of EOF when saving files
 if !exists('g:noautostripspaces')
@@ -551,9 +551,9 @@ function! ToggleFoldMethod()
 endfunction
 
 " Toggle tmux statusline automatically
-" if exists('$TMUX')
-    " autocmd VimEnter,VimLeave * :silent !tmux set status
-" endif
+if exists('$TMUX')
+    autocmd VimEnter,VimLeave * :silent !tmux set status
+endif
 
 " Better cursorshape handling under iterm2 and tmux. WARNING: need more test.
 " if exists('$ITERM_SESSION_ID') && !exists('$TMUX')
