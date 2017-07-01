@@ -134,7 +134,7 @@ use `:Wcolor` for showing highlight group under current cursor
 | Plugin                                       | Key                      |      Mode     | Action                              |
 |:---------------------------------------------|:-------------------------|:-------------:|:------------------------------------|
 | [ctrlp.vim][ctrlp.vim]                       | `<Leader>` + `o`         |     Normal    | Open CtrlP window                   |
-| [undotree][undotree]                         | `U`                      |     Normal    | Toggle undotree window              |
+| [undotree][undotree]                         | `<Leader>` + `u`         |     Normal    | Toggle undotree window              |
 | [YankRing.vim][YankRing.vim]                 | `<Leader>` + `y`         |     Normal    | Open YankRing window                |
 | [YankRing.vim][YankRing.vim]                 | `<Ctrl>` + `p`           |     Normal    | Replace with previous YankRing item |
 | [YankRing.vim][YankRing.vim]                 | `<Ctrl>` + `n`           |     Normal    | Replace with next YankRing item     |

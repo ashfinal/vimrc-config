@@ -678,7 +678,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     if filereadable(expand("~/.vim/plugged/undotree/plugin/undotree.vim"))
         let g:undotree_SplitWidth = 40
         let g:undotree_SetFocusWhenToggle = 1
-        nmap <silent> U :UndotreeToggle<CR>
+        nmap <silent> <Leader>u :UndotreeToggle<CR>
     endif
 
     " }}} Plugin Config - undotree "
