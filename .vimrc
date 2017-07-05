@@ -458,7 +458,7 @@ endfunction
 autocmd FileType python setlocal foldmethod=indent textwidth=80
 autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
 autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
-" autocmd FileType markdown,rst,org :silent TableModeEnable
+autocmd FileType markdown,rst,org :silent TableModeEnable
 
 " Strip Trailing spaces and blank lines of EOF when saving files
 if !exists('g:noautostripspaces')
@@ -753,6 +753,8 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     " Plugin Config - vim-table-mode {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-table-mode/autoload/tablemode.vim"))
+
+        let g:table_mode_auto_align = 0
 
         autocmd FileType markdown
                     \ let g:table_mode_corner = "|" |
