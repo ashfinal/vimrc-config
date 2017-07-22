@@ -88,8 +88,10 @@ set wrap " Wrap lines
 
 " set iskeyword+=-
 set whichwrap+=<,>,h,l,[,]
+
 " clear split fillchar
 set fillchars=vert:\ 
+
 " Use these symbols for invisible chars
 set listchars=tab:¦\ ,eol:¬,trail:⋅,extends:»,precedes:«
 
@@ -113,11 +115,8 @@ set guioptions-=L
 " Enable syntax highlighting
 syntax enable
 
-" Use desert colorscheme by default
-" colorscheme desert
-
-" Use light background under macos and GUI
-if has('mac') || has('gui_running')
+" Use light background under GUI
+if has('gui_vimr') || has('gui_running')
     set background=light
 endif
 
@@ -611,9 +610,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
             Plug 'lervag/vimtex'
         end
         Plug 'metakirby5/codi.vim'
-        Plug 'reedes/vim-colors-pencil'
-        Plug 'ashfinal/vim-colors-paper'
-        Plug 'ashfinal/vim-colors-violet'
+        Plug 'ashfinal/vim-one'
         if has('nvim')
             if has('python3')
                 Plug 'roxma/nvim-completion-manager'
@@ -665,13 +662,15 @@ endif
 
 if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vim"))
 
-    " Plugin Config - papercolorscheme {{{ "
+    " Plugin Config - onecolorscheme {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-colors-paper/colors/paper.vim"))
-        colorscheme paper
+    if filereadable(expand("~/.vim/plugged/vim-one/colors/one.vim"))
+        if has("gui_running") || has("gui_vimr")
+            colorscheme one
+        endif
     endif
 
-    " }}} Plugin Config - papercolorscheme "
+    " }}} Plugin Config - onecolorscheme "
 
     " Plugin Config - undotree {{{ "
 

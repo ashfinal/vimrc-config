@@ -62,9 +62,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [vim-easymotion][vim-easymotion] - Vim motions on speed!
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
-- [vim-colors-pencil][vim-colors-pencil] - Light (& dark) color scheme inspired by iA Writer
-- [vim-colors-paper][vim-colors-paper] - Vim color scheme inspired by Google's Material Design
-- [vim-colors-violet][vim-colors-violet] - Violet Colorscheme for the Vim Editor
+- [vim-one][vim-one] - Adaptation of one-light and one-dark colorschemes for Vim
 - [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
 - [nvim-completion-manager][nvim-completion-manager] - ⚡️ Fast, Extensible, Async Completion Framework for Neovim
 - [tern_for_vim][tern_for_vim] - Tern plugin for Vim
@@ -193,9 +191,7 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-multiple-cursors]:https://github.com/terryma/vim-multiple-cursors "https://github.com/terryma/vim-multiple-cursors"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
 [codi.vim]:https://github.com/metakirby5/codi.vim "https://github.com/metakirby5/codi.vim"
-[vim-colors-pencil]:https://github.com/reedes/vim-colors-pencil "https://github.com/reedes/vim-colors-pencil"
-[vim-colors-paper]:https://github.com/ashfinal/vim-colors-paper "https://github.com/ashfinal/vim-colors-paper"
-[vim-colors-violet]:https://github.com/ashfinal/vim-colors-violet "https://github.com/ashfinal/vim-colors-violet"
+[vim-one]:https://github.com/ashfinal/vim-one "https://github.com/ashfinal/vim-one"
 [nvim-completion-manager]:https://github.com/roxma/nvim-completion-manager "https://github.com/roxma/nvim-completion-manager"
 [nvim-cm-tern]:https://github.com/roxma/nvim-cm-tern "https://github.com/roxma/nvim-cm-tern"
 [tern_for_vim]:https://github.com/ternjs/tern_for_vim "https://github.com/ternjs/tern_for_vim"
