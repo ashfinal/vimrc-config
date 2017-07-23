@@ -1,4 +1,4 @@
-# re-vim: Lightweight, extensible vim configuration
+# re-vim: sensible vim configuration
 
 ★ Single file, just download it. Ready to rock in 5 secs.
 
@@ -6,7 +6,7 @@
 
 ★ Self-adapted, extensible, to fulfill your needs.
 
-★ Support HTML/CSS/Javascript, Python, Latex autocomplete.
+★ Support HTML/CSS/Javascript, Python, Latex autocompletion.
 
 ## Get started
 

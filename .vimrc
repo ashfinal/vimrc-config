@@ -1,4 +1,4 @@
-" Name:     re-vim: Lightweight, extensible vim configuration
+" Name:     re-vim: sensible vim configuration
 " Author:   ashfinal <ashfinal@gmail.com>
 " URL:      https://github.com/ashfinal
 " License:  MIT license
@@ -876,6 +876,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     " Plugin Config - vimtex {{{ "
 
     if filereadable(expand("~/.vim/plugged/vimtex/autoload/vimtex.vim"))
+        " vimtex configuration for neocomplete
         if !exists('g:neocomplete#sources#omni#input_patterns')
             let g:neocomplete#sources#omni#input_patterns = {}
         endif
@@ -893,6 +894,20 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
             \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
             \ . '|\a*'
             \ . ')'
+
+        " vimtex configuration for nvim-completion-manager
+        augroup my_cm_setup
+        autocmd!
+        autocmd User CmSetup call cm#register_source({
+              \ 'name' : 'vimtex',
+              \ 'priority': 8,
+              \ 'scoping': 1,
+              \ 'scopes': ['tex'],
+              \ 'abbreviation': 'tex',
+              \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+              \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+              \ })
+        augroup END
     endif
 
     " }}} Plugin Config - vimtex "
