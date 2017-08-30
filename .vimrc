@@ -238,6 +238,8 @@ autocmd BufReadPost *
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
             \     exe "normal! g`\"" |
             \ endif
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -606,6 +608,9 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if version >= 704
             Plug 'airblade/vim-gitgutter'
         endif
+        if version >= 800 || has('nvim')
+            Plug 'skywind3000/asyncrun.vim'
+        end
         if executable('latexmk')
             Plug 'lervag/vimtex'
         end
