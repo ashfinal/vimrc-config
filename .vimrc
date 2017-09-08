@@ -231,6 +231,7 @@ if !exists('g:noautoclosepum')
     autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 endif
 
+" When <Enter> is pressed while the popup menu is visible, hide the menu and also start a new line.
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Return to last edit position when opening files (You want this!)
@@ -592,7 +593,6 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
             Plug 'gabesoft/vim-ags'
         end
         Plug 'tpope/vim-surround'
-        Plug 'Lokaltog/vim-easymotion'
         Plug 'terryma/vim-multiple-cursors'
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
@@ -686,17 +686,6 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     endif
 
     " }}} Plugin Config - undotree "
-
-    " Plugin Config - vim-easymotion {{{ "
-
-    if filereadable(expand("~/.vim/plugged/vim-easymotion/plugin/EasyMotion.vim"))
-        let g:EasyMotion_smartcase = 1
-        let g:EasyMotion_use_smartsign_us = 1
-        map <Leader> <Plug>(easymotion-prefix)
-        nmap <Space> <Plug>(easymotion-s)
-    endif
-
-    " }}} Plugin Config - vim-easymotion "
 
     " Plugin Config - vim-multiple-cursors {{{ "
 
