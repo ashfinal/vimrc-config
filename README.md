@@ -59,7 +59,6 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [vim-multiple-cursors][vim-multiple-cursors] - True Sublime Text style multiple selections for Vim
 - [vim-jsbeautify][vim-jsbeautify] - vim plugin which formated javascript files by js-beautify(`node.js` required)
 - [undotree][undotree] - The ultimate undo history visualizer for VIM
-- [vim-easymotion][vim-easymotion] - Vim motions on speed!
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
 - [vim-one][vim-one] - Adaptation of one-light and one-dark colorschemes for Vim
@@ -73,9 +72,8 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 
 ### Primary key bindings.
 
-    map ; :                 " remap `;` to `:` in Normal/Visual Mode
-    imap jk <Esc>           " remap `jk` to `<Esc>` in Insert Mode
-    mapleader = ","         " map `,` to `<Leader>` in Normal Mode
+    imap jk <Esc>           " Use `jk` to exit Insert Mode
+    let mapleader = "\<Space>"         " Use `<Space>` as mapleader
 
 ### Commands
 
@@ -138,9 +136,8 @@ use `:Wcolor` for showing highlight group under current cursor
 | [YankRing.vim][YankRing.vim]                 | `<Ctrl>` + `n`           |     Normal    | Replace with next YankRing item     |
 | [nerdcommenter][nerdcommenter]               | `\`                      | Normal/Visual | Toggle comment                      |
 | [nerdcommenter][nerdcommenter]               | `Ctrl` + `\`             | Normal/Visual | CommentSexy                         |
-| [emmet-vim][emmet-vim]                       | `<Leader>` + `,`         | Insert/Visual | Expand abbr                         |
+| [emmet-vim][emmet-vim]                       | `,` + `,`                | Insert/Visual | Expand abbr                         |
 | [nerdtree][nerdtree]                         | `<Leader>` + `e`         |     Normal    | Toggle nerdtree                     |
-| [vim-easymotion][vim-easymotion]             | `<Space>`                |     Normal    | Search for single char              |
 | [vim-multiple-cursors][vim-multiple-cursors] | `+`                      | Normal/Visual | multi_cursor_next_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `_`                      | Normal/Visual | multi_cursor_prev_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `-`                      | Normal/Visual | multi_cursor_skip_key               |
@@ -187,7 +184,6 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-airline]:https://github.com/bling/vim-airline "https://github.com/bling/vim-airline"
 [vim-jsbeautify]:https://github.com/maksimr/vim-jsbeautify "https://github.com/maksimr/vim-jsbeautify"
 [undotree]:https://github.com/mbbill/undotree "https://github.com/mbbill/undotree"
-[vim-easymotion]:https://github.com/Lokaltog/vim-easymotion "https://github.com/Lokaltog/vim-easymotion"
 [vim-multiple-cursors]:https://github.com/terryma/vim-multiple-cursors "https://github.com/terryma/vim-multiple-cursors"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
 [codi.vim]:https://github.com/metakirby5/codi.vim "https://github.com/metakirby5/codi.vim"
