@@ -178,9 +178,6 @@ endif
 
 " Edit - Navigation, History, Search {{{ "
 
-" Map ; to : and save a million keystrokes
-map ; :
-
 " Map jk to enter normal mode
 imap jk <Esc>
 
@@ -198,7 +195,7 @@ nmap <silent> j gj
 nmap <silent> k gk
 
 " With a map leader it's possible to do extra key combinations
-let mapleader = ","
+let mapleader = "\<Space>"
 
 set virtualedit=onemore
 
