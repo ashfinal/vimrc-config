@@ -22,17 +22,9 @@ Need [neovim](https://github.com/neovim/neovim) support?
 
 ## Screenshots
 
-#### Netrw, iTerm2, Mac
+![neovim_terminal](./screenshots/neovim_terminal.png)
 
-![screenshot-mac](./screenshots/screenshot-mac.png)
-
-#### Python, NeoComplete, Windows 10
-
-![screenshot-win](./screenshots/screenshot-win.png)
-
-#### Distraction-free, Goyo & Limelight, OpenSUSE Leap
-
-![screenshot-opensuse](./screenshots/screenshot-opensuse.png)
+Some old screenshots can be found ![here](./screenshots/).
 
 ## Plugins
 
