@@ -24,7 +24,7 @@ Need [neovim](https://github.com/neovim/neovim) support?
 
 ![neovim_terminal](./screenshots/neovim_terminal.png)
 
-Some old screenshots can be found ![here](./screenshots/).
+Some old screenshots can be found [here](./screenshots/).
 
 ## Plugins
 
