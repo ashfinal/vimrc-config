@@ -348,6 +348,10 @@ inoremap <C-l> <S-Right>
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
 
+" Recover from accidental Ctrl-U http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+
 " Ctrl-[kj]: Move lines up/down
 " nnoremap <silent> <C-j> :m .+1<CR>==
 " nnoremap <silent> <C-k> :m .-2<CR>==
