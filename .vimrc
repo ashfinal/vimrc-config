@@ -249,10 +249,15 @@ set updatetime=200
 set history=1000 " command line history
 set undoreload=1000
 
-" Turn backup off, since most stuff is in SVN, git etc anyway...
+" Don't backup orignal files
 set nobackup
 set nowritebackup
-set noswapfile
+
+" Swap files are necessary when crash recovery
+if !isdirectory(expand("~/.vim/swapfiles"))
+    call mkdir($HOME . "/.vim/swapfiles", "p")
+endif
+set dir=~/.vim/swapfiles//
 
 " Turn persistent undo on, means that you can undo even when you close a buffer/VIM
 set undofile
@@ -261,7 +266,7 @@ set undolevels=1000
 if !isdirectory(expand("~/.vim/undotree"))
     call mkdir($HOME . "/.vim/undotree", "p")
 endif
-set undodir=~/.vim/undotree
+set undodir=~/.vim/undotree//
 
 " For regular expressions turn magic on
 set magic
