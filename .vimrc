@@ -55,7 +55,7 @@ endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencodings=utf8,chinese,taiwan,japan,korea,ansi
 
 " Set terminal encoding
 set termencoding=utf-8
