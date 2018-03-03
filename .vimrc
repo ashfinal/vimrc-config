@@ -926,4 +926,4 @@ if filereadable(expand("~/.vimrc.after"))
     source $HOME/.vimrc.after
 endif
 
-" vim:set et sw=4 ts=4 fdm=marker fdl=1:
+" vim:set et sw=4 ts=4 fdm=marker fdl=1 noma:
