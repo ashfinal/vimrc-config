@@ -17,6 +17,9 @@ set nocompatible " be iMproved, required
 if !isdirectory(expand("~/.vim/"))
     call mkdir($HOME . "/.vim")
 endif
+if !isdirectory(expand("~/.config/nvim/"))
+    call mkdir($HOME . "/.config/nvim", "p")
+endif
 
 if has('win32') || has('win64')
     set runtimepath+=$HOME/.vim
@@ -467,7 +470,6 @@ autocmd FileType python setlocal foldmethod=indent textwidth=80
 autocmd FileType rst setlocal shiftwidth=3 tabstop=3
 autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
 autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
-autocmd FileType markdown,rst,org :silent TableModeEnable
 
 " Strip Trailing spaces and blank lines of EOF when saving files
 if !exists('g:noautostripspaces')
@@ -583,7 +585,7 @@ endif
 
 " Plugin List {{{ "
 if !exists('g:nouseplugmanager') " use plug.vim by default
-    if filereadable(expand("~/.vim/autoload/plug.vim"))
+    if filereadable(expand("~/.vim/autoload/plug.vim")) && filereadable(expand("~/.config/nvim/autoload/plug.vim"))
         call plug#begin('~/.vim/plugged')
 
         Plug 'bling/vim-airline'
@@ -647,23 +649,26 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
             if !isdirectory(expand("~/.vim/autoload"))
                 call mkdir($HOME . "/.vim/autoload", "p")
             endif
+            if !isdirectory(expand("~/.config/nvim/autoload"))
+                call mkdir($HOME . "/.config/nvim/autoload", "p")
+            endif
             if has('python')
-                exe 'py import os,urllib2; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
+                exe 'py import os,urllib2,shutil; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); q = os.path.join(os.path.expanduser("~"), ".config/nvim/autoload/plug.vim"); open(g, "wb").write(f.read()); shutil.copy(g, q)'
             else
                 if has('python3')
-                    exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = open(os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"), "wb"); g.write(f.read())'
+                    exe 'py3 import os,urllib.request,shutil; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); q = os.path.join(os.path.expanduser("~"), ".config/nvim/autoload/plug.vim"); open(g, "wb").write(f.read()); shutil.copy(g, q)'
                 else
                     exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
-                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation feel free to contact me."
+                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
                 endif
             endif
-            if filereadable(expand("~/.vim/autoload/plug.vim"))
-                echo "PluginManager - plug.vim just installed! vim will quit now.\nYou should relaunch vim, use PlugInstall to install plugins OR do nothing just use the basic one."
+            if filereadable(expand("~/.vim/autoload/plug.vim")) && filereadable(expand("~/.config/nvim/autoload/plug.vim"))
+                echo "PluginManager - plug.vim just installed! vim will quit now.\nYou should relaunch vim, use PlugInstall to install plugins OR do nothing just use the basic config."
                 exe 'qall!'
             endif
         else
             exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
-            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. For more infomation feel free to contact me."
+            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
         endif
     endif
 endif
@@ -891,32 +896,20 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
             let g:neocomplete#sources#omni#input_patterns = {}
         endif
         let g:neocomplete#sources#omni#input_patterns.tex =
-            \ '\v\\%('
-            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-            \ . '|hyperref\s*\[[^]]*'
-            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|%(include%(only)?|input)\s*\{[^}]*'
-            \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \ . '|\a*'
-            \ . ')'
+            \ g:vimtex#re#neocomplete
 
         " vimtex configuration for nvim-completion-manager
         augroup my_cm_setup
         autocmd!
         autocmd User CmSetup call cm#register_source({
-              \ 'name' : 'vimtex',
-              \ 'priority': 8,
-              \ 'scoping': 1,
-              \ 'scopes': ['tex'],
-              \ 'abbreviation': 'tex',
-              \ 'cm_refresh_patterns': g:vimtex#re#ncm,
-              \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
-              \ })
+            \ 'name' : 'vimtex',
+            \ 'priority': 8,
+            \ 'scoping': 1,
+            \ 'scopes': ['tex'],
+            \ 'abbreviation': 'tex',
+            \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+            \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+            \ })
         augroup END
     endif
 
