@@ -711,10 +711,16 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
             if exists(':NeoCompleteLock') == 2
                 exe 'NeoCompleteLock'
             endif
+            if exists(':DelimitMateOff') == 2
+                exe 'DelimitMateOff'
+            endif
         endfunction
         function! Multiple_cursors_after()
             if exists(':NeoCompleteUnlock') == 2
                 exe 'NeoCompleteUnlock'
+            endif
+            if exists(':DelimitMateOn') == 2
+                exe 'silent DelimitMateOn'
             endif
         endfunction
     endif
