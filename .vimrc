@@ -720,7 +720,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
                 exe 'NeoCompleteUnlock'
             endif
             if exists(':DelimitMateOn') == 2
-                exe 'DelimitMateOn'
+                exe 'silent DelimitMateOn'
             endif
         endfunction
     endif
