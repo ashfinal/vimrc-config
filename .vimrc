@@ -898,25 +898,29 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
             \ ],
             \}
         " vimtex configuration for neocomplete
-        if !exists('g:neocomplete#sources#omni#input_patterns')
-            let g:neocomplete#sources#omni#input_patterns = {}
+        if exists('g:loaded_neocomplete')
+            if !exists('g:neocomplete#sources#omni#input_patterns')
+                let g:neocomplete#sources#omni#input_patterns = {}
+            endif
+            let g:neocomplete#sources#omni#input_patterns.tex =
+                \ g:vimtex#re#neocomplete
         endif
-        let g:neocomplete#sources#omni#input_patterns.tex =
-            \ g:vimtex#re#neocomplete
 
         " vimtex configuration for nvim-completion-manager
-        augroup my_cm_setup
-        autocmd!
-        autocmd User CmSetup call cm#register_source({
-            \ 'name' : 'vimtex',
-            \ 'priority': 8,
-            \ 'scoping': 1,
-            \ 'scopes': ['tex'],
-            \ 'abbreviation': 'tex',
-            \ 'cm_refresh_patterns': g:vimtex#re#ncm,
-            \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
-            \ })
-        augroup END
+        if exists('g:cm_sources_enable')
+            augroup my_cm_setup
+            autocmd!
+            autocmd User CmSetup call cm#register_source({
+                \ 'name' : 'vimtex',
+                \ 'priority': 8,
+                \ 'scoping': 1,
+                \ 'scopes': ['tex'],
+                \ 'abbreviation': 'tex',
+                \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+                \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+                \ })
+            augroup END
+        endif
     endif
 
     " }}} Plugin Config - vimtex "
