@@ -22,9 +22,7 @@ Need [neovim](https://github.com/neovim/neovim) support?
 
 [Optinal] Ever want [Oni](https://github.com/onivim/oni) closer to bare Vim experience?
 
-Copy those line to your `~/.oni/config.tsx` and fire your Oni up!
-
-[Click Here](https://github.com/ashfinal/vimrc-config/wiki/%5BOptinal%5D-Configuration-for-Oni)
+Copy [those line](https://github.com/ashfinal/vimrc-config/wiki/%5BOptinal%5D-Configuration-for-Oni) to your `~/.oni/config.tsx` and fire your Oni up!
 
 ## Screenshots
 
