@@ -170,7 +170,7 @@ set cmdheight=1
 set wildmenu
 set wildmode=list:longest,full
 " Ignore compiled files
-set wildignore=*.o,*.swp,*.bak,*.pyc,*.pyo,*.class,*.zip
+set wildignore=*.so,*.swp,*.bak,*.pyc,*.pyo,*.class,*.zip
 if has("win32") || has("win64")
     set wildignore+=.git\*,.hg\*,.svn\*
 else
@@ -849,6 +849,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     if filereadable(expand("~/.vim/plugged/ctrlp.vim/plugin/ctrlp.vim"))
         let g:ctrlp_map = '<Leader>o'
         let g:ctrlp_cmd = 'CtrlPBuffer'
+        let g:ctrlp_mruf_exclude = '/tmp/.*\|\.w3m/.*'
     endif
 
     " }}} Plugin Config - CtrlP "
