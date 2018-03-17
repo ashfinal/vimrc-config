@@ -892,6 +892,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         let g:vimtex_compiler_latexmk = {
             \ 'options' : [
             \   '-xelatex',
+            \   '-shell-escape',
             \   '-verbose',
             \   '-file-line-error',
             \   '-synctex=1',
