@@ -55,7 +55,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [nerdcommenter][nerdcommenter] - Vim plugin for intensely orgasmic commenting
 - [vim-airline][vim-airline] - lean & mean status/tabline for vim that's light as air
 - [vim-multiple-cursors][vim-multiple-cursors] - True Sublime Text style multiple selections for Vim
-- [vim-jsbeautify][vim-jsbeautify] - vim plugin which formated javascript files by js-beautify(`node.js` required)
+- [vim-autoformat][vim-autoformat] - Provide easy code formatting in Vim by integrating existing code formatters.(You may need to install your own format programs)
 - [undotree][undotree] - The ultimate undo history visualizer for VIM
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
@@ -145,7 +145,7 @@ use `:Wcolor` for showing highlight group under current cursor
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Expand snips                        |
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
 | [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
-| [vim-jsbeautify][vim-jsbeautify]             | `<Leader>` +  `j` + `s`  |     Normal    | JsBeauty                            |
+| [vim-autoformat][vim-autoformat]             | `<Leader>` +  `q`        |     Normal    | vim-autoformat                      |
 
 For more key bindings please refer to the plugin's manual.
 
@@ -180,7 +180,7 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-gitgutter]:https://github.com/airblade/vim-gitgutter "https://github.com/airblade/vim-gitgutter"
 [nerdcommenter]:https://github.com/scrooloose/nerdcommenter "https://github.com/scrooloose/nerdcommenter"
 [vim-airline]:https://github.com/bling/vim-airline "https://github.com/bling/vim-airline"
-[vim-jsbeautify]:https://github.com/maksimr/vim-jsbeautify "https://github.com/maksimr/vim-jsbeautify"
+[vim-autoformat]:https://github.com/Chiel92/vim-autoformat "https://github.com/Chiel92/vim-autoformat"
 [undotree]:https://github.com/mbbill/undotree "https://github.com/mbbill/undotree"
 [vim-multiple-cursors]:https://github.com/terryma/vim-multiple-cursors "https://github.com/terryma/vim-multiple-cursors"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"

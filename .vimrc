@@ -595,9 +595,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'mattn/emmet-vim'
         Plug 'scrooloose/nerdtree'
         Plug 'dhruvasagar/vim-table-mode'
-        if executable('node')
-            Plug 'maksimr/vim-jsbeautify'
-        endif
+        Plug 'Chiel92/vim-autoformat'
         if executable('ag')
             Plug 'gabesoft/vim-ags'
         end
@@ -834,15 +832,13 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
 
     " }}} Plugin Config - Limelight "
 
-    " Plugin Config - JsBeautify {{{ "
+    " Plugin Config - vim-autoformat {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-jsbeautify/plugin/beautifier.vim"))
-        autocmd FileType javascript noremap <buffer> <Leader>js :call JsBeautify()<CR>
-        autocmd FileType html noremap <buffer> <Leader>js :call HtmlBeautify()<CR>
-        autocmd FileType css noremap <buffer> <Leader>js :call CSSBeautify()<CR>
+    if filereadable(expand("~/.vim/plugged/vim-autoformat/plugin/autoformat.vim"))
+        noremap <Leader>q :Autoformat<CR>
     endif
 
-    " }}} Plugin Config - JsBeautify "
+    " }}} Plugin Config - vim-autoformat "
 
     " Plugin Config - CtrlP {{{ "
 
