@@ -562,9 +562,9 @@ function! ToggleFoldMethod()
 endfunction
 
 " Toggle tmux statusline automatically
-if exists('$TMUX')
-    autocmd VimEnter,VimLeave * :silent !tmux set status
-endif
+" if exists('$TMUX')
+    " autocmd VimEnter,VimLeave * :silent !tmux set status
+" endif
 
 " Better cursorshape handling under iterm2 and tmux. WARNING: need more test.
 " if exists('$ITERM_SESSION_ID') && !exists('$TMUX')
