@@ -845,7 +845,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     if filereadable(expand("~/.vim/plugged/ctrlp.vim/plugin/ctrlp.vim"))
         let g:ctrlp_map = '<Leader>o'
         let g:ctrlp_cmd = 'CtrlPBuffer'
-        let g:ctrlp_mruf_exclude = '/tmp/.*\|\.w3m/.*'
+        let g:ctrlp_mruf_exclude = '/tmp/.*\|\.w3m/.*\|/var/folders/.*'
     endif
 
     " }}} Plugin Config - CtrlP "
