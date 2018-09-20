@@ -651,9 +651,11 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
                 call mkdir($HOME . "/.config/nvim/autoload", "p")
             endif
             if has('python')
+                echo "Downloading plug.vim, please wait a second..."
                 exe 'py import os,urllib2,shutil; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); q = os.path.join(os.path.expanduser("~"), ".config/nvim/autoload/plug.vim"); open(g, "wb").write(f.read()); shutil.copy(g, q)'
             else
                 if has('python3')
+                    echo "Downloading plug.vim, please wait a second..."
                     exe 'py3 import os,urllib.request,shutil; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); q = os.path.join(os.path.expanduser("~"), ".config/nvim/autoload/plug.vim"); open(g, "wb").write(f.read()); shutil.copy(g, q)'
                 else
                     exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
