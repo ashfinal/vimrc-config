@@ -207,7 +207,6 @@ set virtualedit=block
 
 set viewoptions=folds,cursor,unix,slash " Better Unix / Windows compatibility
 " Save workspace and try to restore last session
-set sessionoptions=buffers,curdir,tabpages
 autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 
 " Restore last session automatically (Default Off)
