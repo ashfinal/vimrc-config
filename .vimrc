@@ -750,6 +750,8 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         let g:user_emmet_leader_key = ','
         let g:user_emmet_mode = 'iv'
     endif
+    
+    " }}} Plugin Config - emmet-vim "
 
     " Plugin Config - vim-table-mode {{{ "
 
@@ -823,14 +825,6 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     endif
 
     " }}} Plugin Config - Limelight "
-
-    " Plugin Config - vim-autoformat {{{ "
-
-    if filereadable(expand("~/.vim/plugged/vim-autoformat/plugin/autoformat.vim"))
-        noremap <Leader>q :Autoformat<CR>
-    endif
-
-    " }}} Plugin Config - vim-autoformat "
 
     " Plugin Config - CtrlP {{{ "
 
