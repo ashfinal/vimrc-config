@@ -298,6 +298,10 @@ set hidden
 
 set autochdir " change current working directory automatically
 
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 30
+nnoremap <silent> <Leader>e :Vexplore <C-r>=expand("%:p:h")<CR><CR>
+
 " Specify the behavior when switching between buffers
 set switchbuf=useopen
 set showtabline=1
@@ -592,7 +596,6 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
             Plug 'mbbill/undotree'
         endif
         Plug 'mattn/emmet-vim'
-        Plug 'scrooloose/nerdtree'
         Plug 'dhruvasagar/vim-table-mode'
         Plug 'Chiel92/vim-autoformat'
         if executable('ag')
@@ -610,7 +613,6 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'junegunn/goyo.vim'
         Plug 'junegunn/limelight.vim'
         Plug 'ctrlpvim/ctrlp.vim'
-        Plug 'vim-scripts/YankRing.vim'
         if version >= 704
             Plug 'airblade/vim-gitgutter'
         endif
@@ -750,16 +752,6 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         let g:user_emmet_mode = 'iv'
     endif
 
-    " }}} Plugin Config - emmet-vim "
-
-    " Plugin Config - nerdtree {{{ "
-
-    if filereadable(expand("~/.vim/plugged/nerdtree/autoload/nerdtree.vim"))
-        nnoremap <silent> <Leader>e :NERDTree <C-r>=expand("%:p:h")<CR><CR>
-    endif
-
-    " }}} Plugin Config - nerdtree "
-
     " Plugin Config - vim-table-mode {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-table-mode/autoload/tablemode.vim"))
@@ -850,21 +842,6 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     endif
 
     " }}} Plugin Config - CtrlP "
-
-    " Plugin Config - YankRing {{{ "
-
-    if !isdirectory(expand("~/.vim/yankring"))
-        call mkdir($HOME . "/.vim/yankring", "p")
-    endif
-    let g:yankring_history_dir = '~/.vim/yankring/'
-    if filereadable(expand("~/.vim/plugged/YankRing.vim/plugin/yankring.vim"))
-        nmap <silent> <Leader>y :YRShow<CR>
-        let g:yankring_min_element_length = 3
-        let g:yankring_replace_n_pkey = '<C-p>'
-        let g:yankring_replace_n_nkey = '<C-n>'
-    endif
-
-    " }}} Plugin Config - YankRing "
 
     " Plugin Config - vim-align {{{ "
 
