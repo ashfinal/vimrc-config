@@ -597,7 +597,6 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         endif
         Plug 'mattn/emmet-vim'
         Plug 'dhruvasagar/vim-table-mode'
-        Plug 'Chiel92/vim-autoformat'
         if executable('ag')
             Plug 'gabesoft/vim-ags'
         end
