@@ -40,13 +40,11 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 
 - [delimitMate][delimitMate] - provides insert mode auto-completion for quotes, parens, brackets, etc.
 - [vim-align][vim-align] - DrChip's Alignment Tool for Vim
-- [YankRing.vim][YankRing.vim] - Maintains a history of previous yanks, changes and deletes
 - [goyo.vim][goyo.vim] - Distraction-free writing in Vim
     - [limelight.vim][limelight.vim] - Best served with [goyo.vim][goyo.vim]
 - [ultisnips][ultisnips] - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!(`+python` required)
     - [vim-snippets][vim-snippets] - Source of [ultisnips][ultisnips]
 - [emmet-vim][emmet-vim] - emmet for vim: http://emmet.io/
-- [nerdtree][nerdtree] - A tree explorer plugin for vim.
 - [vim-ags][vim-ags] - Silver searcher plugin for vim.
 - [vim-table-mode][vim-table-mode] - VIM Table Mode for instant table creation
 - [vim-surround][vim-surround] - surround.vim: quoting/parenthesizing made simple
@@ -55,7 +53,6 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [nerdcommenter][nerdcommenter] - Vim plugin for intensely orgasmic commenting
 - [vim-airline][vim-airline] - lean & mean status/tabline for vim that's light as air
 - [vim-multiple-cursors][vim-multiple-cursors] - True Sublime Text style multiple selections for Vim
-- [vim-autoformat][vim-autoformat] - Provide easy code formatting in Vim by integrating existing code formatters.(You may need to install your own format programs)
 - [undotree][undotree] - The ultimate undo history visualizer for VIM
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
@@ -129,13 +126,9 @@ use `:Wcolor` for showing highlight group under current cursor
 |:---------------------------------------------|:-------------------------|:-------------:|:------------------------------------|
 | [ctrlp.vim][ctrlp.vim]                       | `<Leader>` + `o`         |     Normal    | Open CtrlP window                   |
 | [undotree][undotree]                         | `<Leader>` + `u`         |     Normal    | Toggle undotree window              |
-| [YankRing.vim][YankRing.vim]                 | `<Leader>` + `y`         |     Normal    | Open YankRing window                |
-| [YankRing.vim][YankRing.vim]                 | `<Ctrl>` + `p`           |     Normal    | Replace with previous YankRing item |
-| [YankRing.vim][YankRing.vim]                 | `<Ctrl>` + `n`           |     Normal    | Replace with next YankRing item     |
 | [nerdcommenter][nerdcommenter]               | `\`                      | Normal/Visual | Toggle comment                      |
 | [nerdcommenter][nerdcommenter]               | `Ctrl` + `\`             | Normal/Visual | CommentSexy                         |
 | [emmet-vim][emmet-vim]                       | `,` + `,`                | Insert/Visual | Expand abbr                         |
-| [nerdtree][nerdtree]                         | `<Leader>` + `e`         |     Normal    | Toggle nerdtree                     |
 | [vim-multiple-cursors][vim-multiple-cursors] | `+`                      | Normal/Visual | multi_cursor_next_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `_`                      | Normal/Visual | multi_cursor_prev_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `-`                      | Normal/Visual | multi_cursor_skip_key               |
@@ -145,7 +138,6 @@ use `:Wcolor` for showing highlight group under current cursor
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Expand snips                        |
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
 | [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
-| [vim-autoformat][vim-autoformat]             | `<Leader>` +  `q`        |     Normal    | vim-autoformat                      |
 
 For more key bindings please refer to the plugin's manual.
 
@@ -166,21 +158,18 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [delimitMate]:https://github.com/Raimondi/delimitMate "https://github.com/Raimondi/delimitMate"
 [neocomplete]:https://github.com/Shougo/neocomplete.vim "https://github.com/Shougo/neocomplete.vim"
 [vim-align]:https://github.com/ashfinal/vim-align "https://github.com/ashfinal/vim-align"
-[YankRing.vim]:https://github.com/vim-scripts/YankRing.vim "https://github.com/vim-scripts/YankRing.vim"
 [goyo.vim]:https://github.com/junegunn/goyo.vim "https://github.com/junegunn/goyo.vim"
 [limelight.vim]:https://github.com/junegunn/limelight.vim "https://github.com/junegunn/limelight.vim"
 [ultisnips]:https://github.com/SirVer/ultisnips "https://github.com/SirVer/ultisnips"
 [vim-ags]:https://github.com/gabesoft/vim-ags "https://github.com/gabesoft/vim-ags"
 [vim-snippets]:https://github.com/honza/vim-snippets "https://github.com/honza/vim-snippets"
 [emmet-vim]:https://github.com/mattn/emmet-vim "https://github.com/mattn/emmet-vim"
-[nerdtree]:https://github.com/scrooloose/nerdtree "https://github.com/scrooloose/nerdtree"
 [vim-table-mode]:https://github.com/dhruvasagar/vim-table-mode "https://github.com/dhruvasagar/vim-table-mode"
 [vim-surround]:https://github.com/tpope/vim-surround "https://github.com/tpope/vim-surround"
 [vim-signature]:https://github.com/kshenoy/vim-signature "https://github.com/kshenoy/vim-signature"
 [vim-gitgutter]:https://github.com/airblade/vim-gitgutter "https://github.com/airblade/vim-gitgutter"
 [nerdcommenter]:https://github.com/scrooloose/nerdcommenter "https://github.com/scrooloose/nerdcommenter"
 [vim-airline]:https://github.com/bling/vim-airline "https://github.com/bling/vim-airline"
-[vim-autoformat]:https://github.com/Chiel92/vim-autoformat "https://github.com/Chiel92/vim-autoformat"
 [undotree]:https://github.com/mbbill/undotree "https://github.com/mbbill/undotree"
 [vim-multiple-cursors]:https://github.com/terryma/vim-multiple-cursors "https://github.com/terryma/vim-multiple-cursors"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
