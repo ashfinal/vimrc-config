@@ -200,7 +200,7 @@ nmap <silent> k gk
 " With a map leader it's possible to do extra key combinations
 let mapleader = "\<Space>"
 
-set virtualedit=onemore
+set virtualedit=block
 
 " How many lines to scroll at a time, make scrolling appears faster
 " set scrolljump=3
