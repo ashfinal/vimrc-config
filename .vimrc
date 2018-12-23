@@ -402,40 +402,7 @@ command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
             \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
             \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
 
-nnoremap <silent> <Leader>b :call ToggleBackground()<CR>
-function! ToggleBackground()
-    if &background == "light"
-        set background=dark
-    else
-        set background=light
-    endif
-endfunction
-
-" Toggle showing softwarpped continuing line
-nnoremap <silent> <Leader>k :call ToggleShowbreak()<CR>
-function! ToggleShowbreak()
-    if &showbreak == ""
-        set showbreak=+++
-    else
-        set showbreak=
-    endif
-endfunction
-
-" Toggle showing colorcolumn over the textwidth
-nnoremap <silent> <Leader>c :call ToggleColorcolumn()<CR>
-function! ToggleColorcolumn()
-    if &colorcolumn == ""
-        if &textwidth == 0
-            let &colorcolumn = 80
-        else
-            let &colorcolumn = &textwidth
-        endif
-    else
-        let &colorcolumn = ""
-    endif
-endfunction
-
-" Toggle showing linenumber
+" Toggle showing line number
 nnoremap <silent> <Leader>n :call ToggleNumberline()<CR>
 function! ToggleNumberline()
     if !exists('g:noshowlinenumber')
@@ -444,29 +411,6 @@ function! ToggleNumberline()
     else
         set number relativenumber
         unlet g:noshowlinenumber
-    endif
-endfunction
-
-nnoremap <silent> <Leader>m :call ToggleFoldcolumn()<CR>
-function! ToggleFoldcolumn()
-    if &foldcolumn == 1
-        setlocal foldcolumn=0
-    else
-        setlocal foldcolumn=1
-    endif
-endfunction
-
-nnoremap <silent> <Leader>f :call ToggleFileformat()<CR>
-function! ToggleFileformat()
-    if (&fileformat == "dos")
-        set fileformat=mac
-        echo "Fileformat: mac"
-    elseif (&fileformat == "mac")
-        set fileformat=unix
-        echo "Fileformat: unix"
-    else
-        set fileformat=dos
-        echo "Fileformat: dos"
     endif
 endfunction
 
@@ -501,26 +445,6 @@ function! YankOnce()
                 \ endif
 endfunction
 
-nnoremap <silent> <Leader>t :call ToggleTabSpace()<CR>
-function! ToggleTabSpace()
-    setlocal list
-    if !exists('b:retabbed')
-        setlocal noexpandtab
-        retab!
-        let b:retabbed = 1
-    else
-        setlocal expandtab
-        retab
-        unlet b:retabbed
-    endif
-endfunction
-
-nnoremap <silent> <Leader>x :setlocal modifiable!<CR>
-nnoremap <silent> <Leader>l :setlocal list!<CR>
-nnoremap <silent> <Leader>w :setlocal wrap!<CR>
-nnoremap <silent> <Leader>d :setlocal expandtab!<CR>
-nnoremap <silent> <Leader>v :setlocal cursorline!<CR>
-
 " Make TOhtml behavior better
 let g:html_dynamic_folds = 1
 let g:html_prevent_copy = "fntd"
@@ -538,30 +462,6 @@ function! ToggleSearchFold()
         setlocal foldlevel=100
         let &foldmethod = b:fmstatus
         unlet b:fmstatus
-    endif
-endfunction
-
-" Toggle foldmethod
-nnoremap <silent> <Leader><Space> :call ToggleFoldMethod()<CR>
-function! ToggleFoldMethod()
-    if (&foldmethod == "indent")
-        setlocal foldmethod=manual
-        echo "Foldmethod: manual"
-    elseif (&foldmethod == "manual")
-        setlocal foldmethod=syntax
-        echo "Foldmethod: syntax"
-    elseif (&foldmethod == "syntax")
-        setlocal foldmethod=marker
-        echo "Foldmethod: marker"
-    elseif (&foldmethod == "marker")
-        setlocal foldmethod=expr
-        echo "Foldmethod: expr"
-    elseif (&foldmethod == "expr")
-        setlocal foldmethod=diff
-        echo "Foldmethod: diff"
-    else
-        setlocal foldmethod=indent
-        echo "Foldmethod: indent"
     endif
 endfunction
 
