@@ -478,7 +478,7 @@ autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
 " Strip Trailing spaces and blank lines of EOF when saving files
 if !exists('g:noautostripspaces')
     autocmd FileType html,javascript,css,python,markdown,rst autocmd BufWritePre <buffer> :call StripWSBL()
-end
+endif
 
 nnoremap <silent> <Leader>s :call StripWSBL()<CR>
 function! StripWSBL()
@@ -600,7 +600,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'dhruvasagar/vim-table-mode'
         if executable('ag')
             Plug 'gabesoft/vim-ags'
-        end
+        endif
         Plug 'tpope/vim-surround'
         Plug 'terryma/vim-multiple-cursors'
         Plug 'kshenoy/vim-signature'
@@ -618,10 +618,10 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         endif
         if version >= 800 || has('nvim')
             Plug 'skywind3000/asyncrun.vim'
-        end
+        endif
         if executable('latexmk')
             Plug 'lervag/vimtex'
-        end
+        endif
         Plug 'metakirby5/codi.vim'
         Plug 'ashfinal/vim-one'
         if has('nvim')
@@ -629,15 +629,15 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
                 Plug 'roxma/nvim-completion-manager'
                 if executable('npm')
                     Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-                end
-            end
+                endif
+            endif
         else
             if version >= 703 && has('lua')
                 Plug 'Shougo/neocomplete.vim'
             endif
             if executable('npm')
                 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-            end
+            endif
         endif
         if filereadable(expand("~/.vimrc.plug"))
             source $HOME/.vimrc.plug
