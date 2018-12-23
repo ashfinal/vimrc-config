@@ -301,6 +301,7 @@ set autochdir " change current working directory automatically
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 30
 nnoremap <silent> <Leader>e :Vexplore <C-r>=expand("%:p:h")<CR><CR>
+autocmd FileType netrw setlocal bufhidden=delete
 
 " Specify the behavior when switching between buffers
 set switchbuf=useopen
