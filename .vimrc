@@ -500,17 +500,11 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'ashfinal/vim-one'
         if has('nvim')
             if has('python3')
-                Plug 'roxma/nvim-completion-manager'
-                if executable('npm')
-                    Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-                endif
+                " Need a new completion manager
             endif
         else
             if version >= 703 && has('lua')
                 Plug 'Shougo/neocomplete.vim'
-            endif
-            if executable('npm')
-                Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
             endif
         endif
         if filereadable(expand("~/.vimrc.plug"))
@@ -748,22 +742,6 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
             endif
             let g:neocomplete#sources#omni#input_patterns.tex =
                 \ g:vimtex#re#neocomplete
-        endif
-
-        " vimtex configuration for nvim-completion-manager
-        if exists('g:cm_sources_enable')
-            augroup my_cm_setup
-            autocmd!
-            autocmd User CmSetup call cm#register_source({
-                \ 'name' : 'vimtex',
-                \ 'priority': 8,
-                \ 'scoping': 1,
-                \ 'scopes': ['tex'],
-                \ 'abbreviation': 'tex',
-                \ 'cm_refresh_patterns': g:vimtex#re#ncm,
-                \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
-                \ })
-            augroup END
         endif
     endif
 
