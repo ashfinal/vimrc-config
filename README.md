@@ -104,21 +104,9 @@ use `:Wcolor` for showing highlight group under current cursor
 | Key                    |  Mode  | Action                                                   |
 |:-----------------------|:------:|:---------------------------------------------------------|
 | `<Leader>` + `r`       | Normal | Restore last session                                     |
-| `<Leader>` + `b`       | Normal | Toggle background(need colorscheme support)              |
-| `<Leader>` + `c`       | Normal | Toggle showing colorcolumn(highlight 80 column etc.)     |
-| `<Leader>` + `d`       | Normal | Toggle expandtab(automatically expand tab to space?)     |
-| `<Leader>` + `f`       | Normal | Toggle fileformat(unix/mac/dos)                          |
-| `<Leader>` + `k`       | Normal | Toggle showing linebreak(add '+++' before wrapped line)  |
-| `<Leader>` + `l`       | Normal | Toggle showing non-printable char                        |
-| `<Leader>` + `m`       | Normal | Toggle showing foldnumber margin                         |
 | `<Leader>` + `n`       | Normal | Toggle showing linenumber                                |
 | `<Leader>` + `s`       | Normal | Strip whitespace & blankline EOF                         |
-| `<Leader>` + `t`       | Normal | Toggle tab & space(also can be used as indent guideline) |
-| `<Leader>` + `v`       | Normal | Toggle cursorline                                        |
-| `<Leader>` + `w`       | Normal | Toggle linewrap                                          |
-| `<Leader>` + `x`       | Normal | Toggle modifiable(readonly mode)                         |
 | `<Leader>` + `z`       | Normal | Toggle SearchFold(also can be used as outliner)          |
-| `<Leader>` + `<Space>` | Normal | Toggle FoldMethod                                        |
 
 ### Plugins key bindings
 
