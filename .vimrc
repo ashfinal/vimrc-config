@@ -500,7 +500,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'ashfinal/vim-one'
         if has('nvim')
             if has('python3')
-                " Need a new completion manager
+                Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
+                Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
             endif
         else
             if version >= 703 && has('lua')
@@ -746,6 +747,22 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     endif
 
     " }}} Plugin Config - vimtex "
+
+    " Plugin Config - coc.nvim {{{ "
+
+    if filereadable(expand("~/.vim/plugged/coc.nvim/plugin/coc.vim"))
+        " Remap keys for gotos
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
+        " Remap for rename current word
+        nmap gm <Plug>(coc-rename)
+        " Show documentation in preview window
+        nmap <silent> gh :call CocAction('doHover')<CR>
+    endif
+
+    " }}} Plugin Config - coc.nvim "
 
 endif
 
