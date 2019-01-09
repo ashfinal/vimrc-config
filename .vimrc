@@ -498,10 +498,10 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         endif
         Plug 'metakirby5/codi.vim'
         Plug 'ashfinal/vim-one'
-        if has('nvim')
+        if has('nvim') && !exists('g:gui_oni')
             if has('python3')
-                Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': { -> coc#util#install() } }
-                Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+                Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+                Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
             endif
         else
             if version >= 703 && has('lua')
