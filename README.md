@@ -58,8 +58,8 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
 - [coc.nvim][coc.nvim] - Complete engine and Language Server support for neovim & vim, featured as VSCode(`+python3 required`)
 - [vimtex][vimtex] - A modern vim plugin for editing LaTeX files.
-- [asyncrun][asyncrun.vim] - Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
-- [denite][denite.nvim] - Dark powered asynchronous unite all interfaces for Neovim/Vim8(`+python3 required`)
+- [asyncrun][asyncrun] - Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
+- [denite][denite] - Dark powered asynchronous unite all interfaces for Neovim/Vim8(`+python3 required`)
 
 ## Key bindings
 
