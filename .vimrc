@@ -760,8 +760,8 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         nmap gm <Plug>(coc-rename)
         " Show documentation in preview window
         nmap <silent> gh :call CocAction('doHover')<CR>
-        nmap go :Denite coc-diagnostic<CR>
-        nmap gs :Denite coc-symbols<CR>
+        nmap <silent> go :Denite coc-diagnostic<CR>
+        nmap <silent> gs :Denite coc-symbols<CR>
     endif
 
     " }}} Plugin Config - coc.nvim "
