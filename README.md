@@ -1,12 +1,12 @@
 # re-vim: sensible vim configuration
 
-★ Single file, just download it. Ready to rock in 5 secs.
+★ Single file, just download it then fire up your nvim/vim!
 
 ★ Well polished, should work on Mac, Linux and Windows.
 
-★ Self-adapted, extensible, to fulfill your needs.
+★ Neovim family now has full Language Server Protocol support.
 
-★ Support HTML/CSS/Javascript, Python, Latex autocompletion.
+★ Easy to maintain and extend, to fulfill your needs.
 
 ## Get started
 
@@ -58,10 +58,10 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
 - [vim-one][vim-one] - Adaptation of one-light and one-dark colorschemes for Vim
 - [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
-- [nvim-completion-manager][nvim-completion-manager] - ⚡️ Fast, Extensible, Async Completion Framework for Neovim
-- [tern_for_vim][tern_for_vim] - Tern plugin for Vim
-- [nvim-cm-tern][nvim-cm-tern] - Javascript completion for nvim-completion-manager.
+- [coc.nvim][coc.nvim] - Complete engine and Language Server support for neovim & vim, featured as VSCode(`+python3 required`)
 - [vimtex][vimtex] - A modern vim plugin for editing LaTeX files.
+- [asyncrun][asyncrun.vim] - Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
+- [denite][denite.nvim] - Dark powered asynchronous unite all interfaces for Neovim/Vim8(`+python3 required`)
 
 ## Key bindings
 
@@ -127,6 +127,21 @@ use `:Wcolor` for showing highlight group under current cursor
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
 | [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
 
+### Language Server Protocol related
+
+| Key |  Mode  | Action              |
+|:----|:------:|:--------------------|
+| gh  | Normal | show hover document |
+| gd  | Normal | coc-definition      |
+| gy  | Normal | coc-type-definition |
+| gs  | Normal | coc-symbols         |
+| go  | Normal | coc-diagnostic      |
+| gm  | Normal | coc-rename          |
+| gr  | Normal | coc-references      |
+| gi  | Normal | coc-implementation  |
+
+You need to run `:CocInstall coc-json coc-html coc-css` or something before using LSP related functions. See [Using coc extensions · neoclide/coc.nvim Wiki · GitHub](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
+
 For more key bindings please refer to the plugin's manual.
 
 ## Customization
@@ -163,7 +178,7 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
 [codi.vim]:https://github.com/metakirby5/codi.vim "https://github.com/metakirby5/codi.vim"
 [vim-one]:https://github.com/ashfinal/vim-one "https://github.com/ashfinal/vim-one"
-[nvim-completion-manager]:https://github.com/roxma/nvim-completion-manager "https://github.com/roxma/nvim-completion-manager"
-[nvim-cm-tern]:https://github.com/roxma/nvim-cm-tern "https://github.com/roxma/nvim-cm-tern"
-[tern_for_vim]:https://github.com/ternjs/tern_for_vim "https://github.com/ternjs/tern_for_vim"
+[coc.nvim]:https://github.com/neoclide/coc.nvim "https://github.com/neoclide/coc.nvim "
 [vimtex]:https://github.com/lervag/vimtex "https://github.com/lervag/vimtex"
+[asyncrun]: https://github.com/skywind3000/asyncrun/vim "https://github.com/skywind3000/asyncrun.vim"
+[denite]: https://github.com/Shougo/denite.nvim "https://github.com/Shougo/denite.nvim"
