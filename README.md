@@ -20,9 +20,7 @@ Need [neovim](https://github.com/neovim/neovim) support?
 
     ln ~/.vimrc ~/.config/nvim/init.vim
 
-[Optinal] Ever want [Oni](https://github.com/onivim/oni) closer to bare Vim experience?
-
-Copy [those line](https://github.com/ashfinal/vimrc-config/wiki/%5BOptinal%5D-Configuration-for-Oni) to your `~/.oni/config.tsx` and fire your Oni up!
+[Optinal] Ever want [Oni](https://github.com/onivim/oni) closer to bare Vim experience? Copy [those line](https://github.com/ashfinal/vimrc-config/wiki/%5BOptinal%5D-Configuration-for-Oni) to your `~/.oni/config.tsx` and fire your Oni up!
 
 ## Screenshots
 
@@ -140,7 +138,7 @@ use `:Wcolor` for showing highlight group under current cursor
 | gr  | Normal | coc-references      |
 | gi  | Normal | coc-implementation  |
 
-You need to run `:CocInstall coc-json coc-html coc-css` or something before using LSP related functions. See [Using coc extensions · neoclide/coc.nvim Wiki · GitHub](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
+You need to run `:CocInstall coc-json coc-html coc-css` or something before using LSP related functions. See [Using coc extensions · neoclide/coc.nvim Wiki · GitHub](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) .
 
 For more key bindings please refer to the plugin's manual.
 
@@ -180,5 +178,5 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [vim-one]:https://github.com/ashfinal/vim-one "https://github.com/ashfinal/vim-one"
 [coc.nvim]:https://github.com/neoclide/coc.nvim "https://github.com/neoclide/coc.nvim "
 [vimtex]:https://github.com/lervag/vimtex "https://github.com/lervag/vimtex"
-[asyncrun]: https://github.com/skywind3000/asyncrun/vim "https://github.com/skywind3000/asyncrun.vim"
-[denite]: https://github.com/Shougo/denite.nvim "https://github.com/Shougo/denite.nvim"
+[asyncrun]:https://github.com/skywind3000/asyncrun/vim "https://github.com/skywind3000/asyncrun.vim"
+[denite]:https://github.com/Shougo/denite.nvim "https://github.com/Shougo/denite.nvim"
