@@ -59,7 +59,6 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [coc.nvim][coc.nvim] - Complete engine and Language Server support for neovim & vim, featured as VSCode(`+python3 required`)
 - [vimtex][vimtex] - A modern vim plugin for editing LaTeX files.
 - [asyncrun][asyncrun] - Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
-- [denite][denite] - Dark powered asynchronous unite all interfaces for Neovim/Vim8(`+python3 required`)
 
 ## Key bindings
 
@@ -133,7 +132,8 @@ use `:Wcolor` for showing highlight group under current cursor
 | gd  | Normal | coc-definition      |
 | gy  | Normal | coc-type-definition |
 | gs  | Normal | coc-symbols         |
-| go  | Normal | coc-diagnostic      |
+| go  | Normal | coc-outline         |
+| gc  | Normal | coc-diagnostics     |
 | gm  | Normal | coc-rename          |
 | gr  | Normal | coc-references      |
 | gi  | Normal | coc-implementation  |
@@ -179,4 +179,3 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [coc.nvim]:https://github.com/neoclide/coc.nvim "https://github.com/neoclide/coc.nvim "
 [vimtex]:https://github.com/lervag/vimtex "https://github.com/lervag/vimtex"
 [asyncrun]:https://github.com/skywind3000/asyncrun/vim "https://github.com/skywind3000/asyncrun.vim"
-[denite]:https://github.com/Shougo/denite.nvim "https://github.com/Shougo/denite.nvim"
