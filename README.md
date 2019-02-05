@@ -56,7 +56,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
 - [vim-one][vim-one] - Adaptation of one-light and one-dark colorschemes for Vim
 - [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
-- [coc.nvim][coc.nvim] - Complete engine and Language Server support for neovim & vim, featured as VSCode(`+python3 required`)
+- [coc.nvim][coc.nvim] - Complete engine and Language Server support for neovim & vim, featured as VSCode(`+python3, yarn/npm required`)
 - [vimtex][vimtex] - A modern vim plugin for editing LaTeX files.
 - [asyncrun][asyncrun] - Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
 
