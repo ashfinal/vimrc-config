@@ -221,7 +221,7 @@ if !exists('g:noautoclosepum')
 endif
 
 " When <Enter> is pressed while the popup menu is visible, hide the menu and also start a new line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
