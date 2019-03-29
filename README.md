@@ -20,8 +20,6 @@ Need [neovim](https://github.com/neovim/neovim) support?
 
     ln ~/.vimrc ~/.config/nvim/init.vim
 
-[Optinal] Ever want [Oni](https://github.com/onivim/oni) closer to bare Vim experience? Copy [those line](https://github.com/ashfinal/vimrc-config/wiki/%5BOptinal%5D-Configuration-for-Oni) to your `~/.oni/config.tsx` and fire your Oni up!
-
 ## Screenshots
 
 ![neovim_terminal](./screenshots/neovim_terminal.png)
