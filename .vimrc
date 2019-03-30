@@ -617,7 +617,6 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         let g:user_emmet_install_global = 0
         autocmd FileType html,css,markdown,php,javascript EmmetInstall
         let g:user_emmet_leader_key = ','
-        let g:user_emmet_mode = 'iv'
     endif
 
     " }}} Plugin Config - emmet-vim "
