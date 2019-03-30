@@ -627,7 +627,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     if filereadable(expand("~/.vim/plugged/vim-table-mode/autoload/tablemode.vim"))
 
         let g:table_mode_auto_align = 0
-        autocmd FileType markdown,rst,org :TableModeEnable
+        autocmd FileType markdown,rst,org :silent TableModeEnable
 
         autocmd FileType markdown
                     \ let g:table_mode_corner = "|" |
