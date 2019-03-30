@@ -115,6 +115,7 @@ use `:Wcolor` for showing highlight group under current cursor
 | [vim-multiple-cursors][vim-multiple-cursors] | `+`                      | Normal/Visual | multi_cursor_next_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `_`                      | Normal/Visual | multi_cursor_prev_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `-`                      | Normal/Visual | multi_cursor_skip_key               |
+| [vim-multiple-cursors][vim-multiple-cursors] | `<Leader>` + `m`         | Normal/Visual | MultipleCursorsFind                 |
 | [vim-align][vim-align]                       | `<Leader>` + `g`         | Normal/Visual | Align with                          |
 | [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                    |
 | [limelight.vim][limelight.vim]               | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
@@ -128,6 +129,7 @@ use `:Wcolor` for showing highlight group under current cursor
 |:----|:------:|:--------------------|
 | gh  | Normal | show hover document |
 | gd  | Normal | coc-definition      |
+| gf  | Visual | coc-format-selected |
 | gy  | Normal | coc-type-definition |
 | gs  | Normal | coc-symbols         |
 | go  | Normal | coc-outline         |
