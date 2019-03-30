@@ -4,7 +4,7 @@
 
 ★ Well polished, should work on Mac, Linux and Windows.
 
-★ Neovim family now has full Language Server Protocol support.
+★ Full [Language Server Protocol](https://langserver.org/) support(neovim only).
 
 ★ Easy to maintain and extend, to fulfill your needs.
 
@@ -67,7 +67,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 
 ### Commands
 
-use `:W` for sudo writing on Mac & *nix.
+use `:W` for sudo writing on Mac & Linux.
 
 use `:Wcolor` for showing highlight group under current cursor
 
@@ -136,7 +136,7 @@ use `:Wcolor` for showing highlight group under current cursor
 | gr  | Normal | coc-references      |
 | gi  | Normal | coc-implementation  |
 
-You need to run `:CocInstall coc-json coc-html coc-css` or something before using LSP related functions. See [Using coc extensions · neoclide/coc.nvim Wiki · GitHub](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) .
+You need to run `:CocInstall coc-word coc-ultisnips coc-html coc-pyls` or something before using LSP related functions. See [Using coc extensions · neoclide/coc.nvim Wiki · GitHub](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) .
 
 For more key bindings please refer to the plugin's manual.
 
