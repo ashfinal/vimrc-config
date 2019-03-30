@@ -571,6 +571,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
     " Plugin Config - vim-multiple-cursors {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-multiple-cursors/autoload/multiple_cursors.vim"))
+        map <Leader>m :MultipleCursorsFind<Space>
         let g:multi_cursor_use_default_mapping = 0
         let g:multi_cursor_next_key = '+'
         let g:multi_cursor_prev_key = '_'
