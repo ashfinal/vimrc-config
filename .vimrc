@@ -93,7 +93,11 @@ set wrap " Wrap lines
 set whichwrap+=<,>,h,l,[,]
 
 " clear vert split and empty lines fillchar
-set fillchars=vert:\ ,eob:\ ,
+if has('nvim')
+    set fillchars=vert:\ ,eob:\ ,
+else
+    set fillchars=vert:\ ,
+endif
 
 " Use these symbols for invisible chars
 set listchars=tab:¦\ ,eol:¬,trail:⋅,extends:»,precedes:«
