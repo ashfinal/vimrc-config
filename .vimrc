@@ -476,9 +476,6 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         endif
         Plug 'mattn/emmet-vim'
         Plug 'dhruvasagar/vim-table-mode'
-        if executable('ag')
-            Plug 'gabesoft/vim-ags'
-        endif
         Plug 'tpope/vim-surround'
         Plug 'terryma/vim-multiple-cursors'
         Plug 'kshenoy/vim-signature'
