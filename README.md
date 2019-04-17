@@ -100,7 +100,6 @@ use `:Wcolor` for showing highlight group under current cursor
 | `<Leader>` + `r`       | Normal | Restore last session                                     |
 | `<Leader>` + `n`       | Normal | Toggle showing linenumber                                |
 | `<Leader>` + `s`       | Normal | Strip whitespace & blankline EOF                         |
-| `<Leader>` + `z`       | Normal | Toggle SearchFold(also can be used as outliner)          |
 
 ### Plugins key bindings
 

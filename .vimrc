@@ -443,22 +443,6 @@ endfunction
 let g:html_dynamic_folds = 1
 let g:html_prevent_copy = "fntd"
 
-" Make search results can be foldable
-nnoremap <silent> <Leader>z :call ToggleSearchFold()<CR>
-function! ToggleSearchFold()
-    if !exists('b:fmstatus')
-        let b:fmstatus = &foldmethod
-        setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2
-        setlocal foldmethod=expr
-        setlocal foldlevel=0
-        setlocal foldmethod=manual
-    else
-        setlocal foldlevel=100
-        let &foldmethod = b:fmstatus
-        unlet b:fmstatus
-    endif
-endfunction
-
 " }}} Misc "
 
 " }}} General "
