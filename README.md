@@ -41,7 +41,6 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [ultisnips][ultisnips] - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!(`+python` required)
     - [vim-snippets][vim-snippets] - Source of [ultisnips][ultisnips]
 - [emmet-vim][emmet-vim] - emmet for vim: http://emmet.io/
-- [vim-ags][vim-ags] - Silver searcher plugin for vim.
 - [vim-table-mode][vim-table-mode] - VIM Table Mode for instant table creation
 - [vim-surround][vim-surround] - surround.vim: quoting/parenthesizing made simple
 - [vim-signature][vim-signature] - Plugin to toggle, display and navigate marks
@@ -162,7 +161,6 @@ To add new plugins, you should create `~/.vimrc.plug`:
 [goyo.vim]:https://github.com/junegunn/goyo.vim "https://github.com/junegunn/goyo.vim"
 [limelight.vim]:https://github.com/junegunn/limelight.vim "https://github.com/junegunn/limelight.vim"
 [ultisnips]:https://github.com/SirVer/ultisnips "https://github.com/SirVer/ultisnips"
-[vim-ags]:https://github.com/gabesoft/vim-ags "https://github.com/gabesoft/vim-ags"
 [vim-snippets]:https://github.com/honza/vim-snippets "https://github.com/honza/vim-snippets"
 [emmet-vim]:https://github.com/mattn/emmet-vim "https://github.com/mattn/emmet-vim"
 [vim-table-mode]:https://github.com/dhruvasagar/vim-table-mode "https://github.com/dhruvasagar/vim-table-mode"
