@@ -448,7 +448,7 @@ let g:html_prevent_copy = "fntd"
 
 " Plugin List {{{ "
 if !exists('g:nouseplugmanager') " use plug.vim by default
-    if filereadable(expand("~/.vim/autoload/plug.vim")) && filereadable(expand("~/.config/nvim/autoload/plug.vim"))
+    if filereadable(expand("~/.vim/autoload/plug.vim"))
         call plug#begin('~/.vim/plugged')
 
         Plug 'bling/vim-airline'
@@ -496,20 +496,19 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
     else
         if executable('git')
             call mkdir($HOME . "/.vim/autoload", "p")
-            call mkdir($HOME . "/.config/nvim/autoload", "p")
             if has('python')
                 echo "Downloading plug.vim, please wait a second..."
-                exe 'py import os,urllib2,shutil; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); q = os.path.join(os.path.expanduser("~"), ".config/nvim/autoload/plug.vim"); open(g, "wb").write(f.read()); shutil.copy(g, q)'
+                exe 'py import os,urllib2; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); open(g, "wb").write(f.read())'
             else
                 if has('python3')
                     echo "Downloading plug.vim, please wait a second..."
-                    exe 'py3 import os,urllib.request,shutil; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); q = os.path.join(os.path.expanduser("~"), ".config/nvim/autoload/plug.vim"); open(g, "wb").write(f.read()); shutil.copy(g, q)'
+                    exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); open(g, "wb").write(f.read())'
                 else
                     exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
                     echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
                 endif
             endif
-            if filereadable(expand("~/.vim/autoload/plug.vim")) && filereadable(expand("~/.config/nvim/autoload/plug.vim"))
+            if filereadable(expand("~/.vim/autoload/plug.vim"))
                 echo "PluginManager - plug.vim just installed! vim will quit now.\nYou should relaunch vim, use PlugInstall to install plugins OR do nothing just use the basic config."
                 exe 'qall!'
             endif
