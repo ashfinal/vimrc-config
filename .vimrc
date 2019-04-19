@@ -3,9 +3,9 @@
 " URL:      https://github.com/ashfinal
 " License:  MIT license
 
-" Use ~/.vimrc.before if exists
-if filereadable(expand("~/.vimrc.before"))
-    source $HOME/.vimrc.before
+" Use ~/.vim/vimrc.before if exists
+if filereadable(expand("~/.vim/vimrc.before"))
+    source $HOME/.vim/vimrc.before
 endif
 
 " General {{{ "
@@ -489,8 +489,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
                 Plug 'Shougo/neocomplete.vim'
             endif
         endif
-        if filereadable(expand("~/.vimrc.plug"))
-            source $HOME/.vimrc.plug
+        if filereadable(expand("~/.vim/vimrc.plug"))
+            source $HOME/.vim/vimrc.plug
         endif
         call plug#end()
     else
@@ -504,8 +504,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
                     echo "Downloading plug.vim, please wait a second..."
                     exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); open(g, "wb").write(f.read())'
                 else
-                    exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
-                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
+                    exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vim/vimrc.before"
+                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -513,8 +513,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
                 exe 'qall!'
             endif
         else
-            exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vimrc.before"
-            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '.vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
+            exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vim/vimrc.before"
+            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
         endif
     endif
 endif
@@ -749,9 +749,9 @@ endif
 
 " }}} Plugins List & Config "
 
-" Use ~/.vimrc.after if exists
-if filereadable(expand("~/.vimrc.after"))
-    source $HOME/.vimrc.after
+" Use ~/.vim/vimrc.after if exists
+if filereadable(expand("~/.vim/vimrc.after"))
+    source $HOME/.vim/vimrc.after
 endif
 
 " vim:set et sw=4 ts=4 fdm=marker fdl=1 noma:
