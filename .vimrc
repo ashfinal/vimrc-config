@@ -17,12 +17,13 @@ set nocompatible " be iMproved, required
 if !isdirectory(expand("~/.vim/"))
     call mkdir($HOME . "/.vim")
 endif
-if !isdirectory(expand("~/.config/nvim/"))
-    call mkdir($HOME . "/.config/nvim", "p")
-endif
+
+set runtimepath+=$HOME/.vim
 
 if has('win32') || has('win64')
-    set runtimepath+=$HOME/.vim
+    call mkdir($HOME . "/AppData/Local/nvim", "p")
+elseif has('unix') || has('mac')
+    call mkdir($HOME . "/.config/nvim", "p")
 endif
 
 set title
