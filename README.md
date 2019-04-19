@@ -12,7 +12,7 @@
 
 Download [.vimrc][vimrc] file, put it in your home directory. Run vim as usual, it can handle itself quite well.
 
-Tips for Linux & macOS users:
+Tips for Linux & macOS users(install & update):
 
     curl -Lo ~/.vimrc https://j.mp/re-vim
 
