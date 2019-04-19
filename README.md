@@ -20,6 +20,10 @@ Need [neovim](https://github.com/neovim/neovim) support?
 
     ln ~/.vimrc ~/.config/nvim/init.vim
 
+If on Windows, run this:
+
+    mklink "%USERPROFILE%\AppData\Local\nvim\init.vim" "%USERPROFILE%\.vimrc"
+
 ## Screenshots
 
 ![neovim_terminal](./screenshots/neovim_terminal.png)
@@ -142,15 +146,19 @@ For more key bindings please refer to the plugin's manual.
 
 ## Customization
 
-re-vim uses `~/.vimrc.after` (and `~/.vimrc.before`) for your customization.
+re-vim uses `~/.vim/vimrc.after` (and `~/.vim/vimrc.before`) for your customization.
 
 For example, to override the default colorscheme:
 
-    echo "colorscheme paper" >> ~/.vimrc.after
+    echo "colorscheme one" >> ~/.vim/vimrc.after
 
-To add new plugins, you should create `~/.vimrc.plug`:
+To enable true color support:
 
-    echo "Plug 'altercation/vim-colors-solarized'" >> ~/.vimrc.plug
+    echo "set termguicolors" >> ~/.vim/vimrc.after
+
+To add new plugins, you should create `~/.vim/vimrc.plug`:
+
+    echo "Plug 'altercation/vim-colors-solarized'" >> ~/.vim/vimrc.plug
 
 
 [vimrc]:https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc "https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc"
