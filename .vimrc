@@ -251,18 +251,14 @@ set nobackup
 set nowritebackup
 
 " Swap files are necessary when crash recovery
-if !isdirectory(expand("~/.vim/swapfiles"))
-    call mkdir($HOME . "/.vim/swapfiles", "p")
-endif
+call mkdir($HOME . "/.vim/swapfiles", "p")
 set dir=~/.vim/swapfiles//
 
 " Turn persistent undo on, means that you can undo even when you close a buffer/VIM
 set undofile
 set undolevels=1000
 
-if !isdirectory(expand("~/.vim/undotree"))
-    call mkdir($HOME . "/.vim/undotree", "p")
-endif
+call mkdir($HOME . "/.vim/undotree", "p")
 set undodir=~/.vim/undotree//
 
 " For regular expressions turn magic on
@@ -499,12 +495,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         call plug#end()
     else
         if executable('git')
-            if !isdirectory(expand("~/.vim/autoload"))
-                call mkdir($HOME . "/.vim/autoload", "p")
-            endif
-            if !isdirectory(expand("~/.config/nvim/autoload"))
-                call mkdir($HOME . "/.config/nvim/autoload", "p")
-            endif
+            call mkdir($HOME . "/.vim/autoload", "p")
+            call mkdir($HOME . "/.config/nvim/autoload", "p")
             if has('python')
                 echo "Downloading plug.vim, please wait a second..."
                 exe 'py import os,urllib2,shutil; f = urllib2.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); q = os.path.join(os.path.expanduser("~"), ".config/nvim/autoload/plug.vim"); open(g, "wb").write(f.read()); shutil.copy(g, q)'
@@ -590,9 +582,7 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
         let g:UltiSnipsJumpForwardTrigger = "<Tab>"
         let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         let g:UltiSnipsEditSplit = "context"
-        if !isdirectory(expand("~/.vim/UltiSnips"))
-            call mkdir($HOME . "/.vim/UltiSnips", "p")
-        endif
+        call mkdir($HOME . "/.vim/UltiSnips", "p")
         let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
     endif
 
