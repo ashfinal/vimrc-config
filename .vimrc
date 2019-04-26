@@ -189,8 +189,8 @@ if !exists('noalwayscenter')
 endif
 
 " Make moving around works well in multi lines
-nmap <silent> j gj
-nmap <silent> k gk
+map <silent> j gj
+map <silent> k gk
 
 " With a map leader it's possible to do extra key combinations
 let mapleader = "\<Space>"
