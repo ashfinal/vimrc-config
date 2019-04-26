@@ -160,6 +160,12 @@ To add new plugins, you should create `~/.vim/vimrc.plug`:
 
     echo "Plug 'altercation/vim-colors-solarized'" >> ~/.vim/vimrc.plug
 
+## Related projects
+
+https://github.com/amix/vimrc
+
+https://github.com/spf13/spf13-vim
+
 
 [vimrc]:https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc "https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc"
 [delimitMate]:https://github.com/Raimondi/delimitMate "https://github.com/Raimondi/delimitMate"
