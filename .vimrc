@@ -482,10 +482,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
             Plug 'metakirby5/codi.vim'
         endif
         Plug 'ashfinal/vim-one'
-        if has('nvim') && !exists('g:gui_oni')
-            if has('python3')
-                Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
-            endif
+        if has('nvim') && !exists('g:gui_oni') || version >= 800
+            Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
         else
             if version >= 703 && has('lua')
                 Plug 'Shougo/neocomplete.vim'
