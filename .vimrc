@@ -478,7 +478,9 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if executable('latexmk')
             Plug 'lervag/vimtex'
         endif
-        Plug 'metakirby5/codi.vim'
+        if has('unix') || has('mac')
+            Plug 'metakirby5/codi.vim'
+        endif
         Plug 'ashfinal/vim-one'
         if has('nvim') && !exists('g:gui_oni')
             if has('python3')
