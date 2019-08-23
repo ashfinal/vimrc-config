@@ -424,18 +424,6 @@ function! StripWSBL()
     call cursor(l, c)
 endfunction
 
-" YankOnce from unimpaired.vim
-nnoremap <silent> yo :call YankOnce()<CR>o
-function! YankOnce()
-    let b:pastemode = &paste
-    set paste
-    autocmd InsertLeave *
-                \ if exists('b:pastemode') |
-                \     let &paste = b:pastemode |
-                \     unlet b:pastemode |
-                \ endif
-endfunction
-
 " Make TOhtml behavior better
 let g:html_dynamic_folds = 1
 let g:html_prevent_copy = "fntd"
