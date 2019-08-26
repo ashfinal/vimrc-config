@@ -73,6 +73,10 @@ set ambiwidth=double
 set formatoptions+=m
 " When joining lines, don't insert a space between two multi-byte characters
 set formatoptions+=B
+" Where it makes sense, remove a comment leader when joining lines
+set formatoptions+=j
+" When formatting text, recognize numbered lists
+set formatoptions+=n
 
 set autoindent " Auto indent
 set smartindent " Smart indent
