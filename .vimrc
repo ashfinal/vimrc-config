@@ -204,7 +204,7 @@ set virtualedit=block
 " How many lines to scroll at a time, make scrolling appears faster
 " set scrolljump=3
 
-set viewoptions=folds,cursor,unix,slash " Better Unix / Windows compatibility
+set sessionoptions-=options " Don't restore all options and mappings
 " Save workspace and try to restore last session
 autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 
