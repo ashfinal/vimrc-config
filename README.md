@@ -39,7 +39,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 ### Plugins list
 
 - [delimitMate][delimitMate] - provides insert mode auto-completion for quotes, parens, brackets, etc.
-- [vim-align][vim-align] - DrChip's Alignment Tool for Vim
+- [vim-easy-align][vim-easy-align] - A Vim alignment plugin
 - [goyo.vim][goyo.vim] - Distraction-free writing in Vim
     - [limelight.vim][limelight.vim] - Best served with [goyo.vim][goyo.vim]
 - [ultisnips][ultisnips] - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!(`+python` required)
@@ -117,7 +117,7 @@ use `:Wcolor` for showing highlight group under current cursor
 | [vim-multiple-cursors][vim-multiple-cursors] | `_`                      | Normal/Visual | multi_cursor_prev_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `-`                      | Normal/Visual | multi_cursor_skip_key               |
 | [vim-multiple-cursors][vim-multiple-cursors] | `<Leader>` + `m`         | Normal/Visual | MultipleCursorsFind                 |
-| [vim-align][vim-align]                       | `<Leader>` + `g`         | Normal/Visual | Align with                          |
+| [vim-easy-align][vim-easy-align]             | `<Leader>` + `g`         | Normal/Visual | Align with                          |
 | [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                    |
 | [limelight.vim][limelight.vim]               | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Expand snips                        |
@@ -169,7 +169,7 @@ https://github.com/spf13/spf13-vim
 [vimrc]:https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc "https://raw.githubusercontent.com/ashfinal/vimrc-config/master/.vimrc"
 [delimitMate]:https://github.com/Raimondi/delimitMate "https://github.com/Raimondi/delimitMate"
 [neocomplete]:https://github.com/Shougo/neocomplete.vim "https://github.com/Shougo/neocomplete.vim"
-[vim-align]:https://github.com/ashfinal/vim-align "https://github.com/ashfinal/vim-align"
+[vim-easy-align]:https://github.com/junegunn/vim-easy-align "https://github.com/junegunn/vim-easy-align"
 [goyo.vim]:https://github.com/junegunn/goyo.vim "https://github.com/junegunn/goyo.vim"
 [limelight.vim]:https://github.com/junegunn/limelight.vim "https://github.com/junegunn/limelight.vim"
 [ultisnips]:https://github.com/SirVer/ultisnips "https://github.com/SirVer/ultisnips"

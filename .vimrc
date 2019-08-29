@@ -457,7 +457,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if version >= 704
             Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         endif
-        Plug 'ashfinal/vim-align'
+        Plug 'junegunn/vim-easy-align'
         Plug 'junegunn/goyo.vim'
         Plug 'junegunn/limelight.vim'
         Plug 'ctrlpvim/ctrlp.vim'
@@ -673,13 +673,15 @@ if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vi
 
     " }}} Plugin Config - CtrlP "
 
-    " Plugin Config - vim-align {{{ "
+    " Plugin Config - vim-easy-align {{{ "
 
-    if filereadable(expand("~/.vim/plugged/vim-align/plugin/AlignPlugin.vim"))
-        map <Leader>g :Align<Space>
+    if filereadable(expand("~/.vim/plugged/vim-easy-align/plugin/easy_align.vim"))
+        map <Leader>g :EasyAlign<Space>
+        xmap ga <Plug>(EasyAlign)
+        nmap ga <Plug>(EasyAlign)
     endif
 
-    " }}} Plugin Config - vim-align "
+    " }}} Plugin Config - vim-easy-align "
 
     " Plugin Config - airline {{{ "
 
