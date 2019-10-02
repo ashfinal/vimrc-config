@@ -48,7 +48,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [vim-table-mode][vim-table-mode] - VIM Table Mode for instant table creation
 - [vim-surround][vim-surround] - surround.vim: quoting/parenthesizing made simple
 - [vim-signature][vim-signature] - Plugin to toggle, display and navigate marks
-- [vim-gitgutter][vim-gitgutter] - A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
+- [vim-fugitive][vim-fugitive] - A Git wrapper so awesome, it should be illegal
 - [nerdcommenter][nerdcommenter] - Vim plugin for intensely orgasmic commenting
 - [vim-airline][vim-airline] - lean & mean status/tabline for vim that's light as air
 - [vim-multiple-cursors][vim-multiple-cursors] - True Sublime Text style multiple selections for Vim
@@ -178,7 +178,7 @@ https://github.com/spf13/spf13-vim
 [vim-table-mode]:https://github.com/dhruvasagar/vim-table-mode "https://github.com/dhruvasagar/vim-table-mode"
 [vim-surround]:https://github.com/tpope/vim-surround "https://github.com/tpope/vim-surround"
 [vim-signature]:https://github.com/kshenoy/vim-signature "https://github.com/kshenoy/vim-signature"
-[vim-gitgutter]:https://github.com/airblade/vim-gitgutter "https://github.com/airblade/vim-gitgutter"
+[vim-fugitive]:https://github.com/tpope/vim-fugitive "https://github.com/tpope/vim-fugitive"
 [nerdcommenter]:https://github.com/scrooloose/nerdcommenter "https://github.com/scrooloose/nerdcommenter"
 [vim-airline]:https://github.com/bling/vim-airline "https://github.com/bling/vim-airline"
 [undotree]:https://github.com/mbbill/undotree "https://github.com/mbbill/undotree"

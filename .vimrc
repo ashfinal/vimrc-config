@@ -462,7 +462,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'junegunn/limelight.vim'
         Plug 'ctrlpvim/ctrlp.vim'
         if version >= 704
-            Plug 'airblade/vim-gitgutter'
+            Plug 'tpope/vim-fugitive'
         endif
         if version >= 800 || has('nvim')
             Plug 'skywind3000/asyncrun.vim'
