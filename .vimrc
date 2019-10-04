@@ -450,6 +450,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         Plug 'mattn/emmet-vim'
         Plug 'dhruvasagar/vim-table-mode'
         Plug 'tpope/vim-surround'
+        Plug 'wellle/targets.vim'
         Plug 'terryma/vim-multiple-cursors'
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'

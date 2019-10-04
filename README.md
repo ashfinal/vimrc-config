@@ -47,6 +47,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [emmet-vim][emmet-vim] - emmet for vim: http://emmet.io/
 - [vim-table-mode][vim-table-mode] - VIM Table Mode for instant table creation
 - [vim-surround][vim-surround] - surround.vim: quoting/parenthesizing made simple
+- [targets.vim][targets.vim] - Vim plugin that provides additional text objects
 - [vim-signature][vim-signature] - Plugin to toggle, display and navigate marks
 - [vim-fugitive][vim-fugitive] - A Git wrapper so awesome, it should be illegal
 - [nerdcommenter][nerdcommenter] - Vim plugin for intensely orgasmic commenting
@@ -177,6 +178,7 @@ https://github.com/spf13/spf13-vim
 [emmet-vim]:https://github.com/mattn/emmet-vim "https://github.com/mattn/emmet-vim"
 [vim-table-mode]:https://github.com/dhruvasagar/vim-table-mode "https://github.com/dhruvasagar/vim-table-mode"
 [vim-surround]:https://github.com/tpope/vim-surround "https://github.com/tpope/vim-surround"
+[targets.vim]:https://github.com/wellle/targets.vim "https://github.com/wellle/targets.vim"
 [vim-signature]:https://github.com/kshenoy/vim-signature "https://github.com/kshenoy/vim-signature"
 [vim-fugitive]:https://github.com/tpope/vim-fugitive "https://github.com/tpope/vim-fugitive"
 [nerdcommenter]:https://github.com/scrooloose/nerdcommenter "https://github.com/scrooloose/nerdcommenter"
