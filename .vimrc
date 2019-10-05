@@ -308,14 +308,14 @@ set nowritebackup
 
 " Swap files are necessary when crash recovery
 call mkdir($HOME . "/.vim/swapfiles", "p")
-set dir=~/.vim/swapfiles//
+set dir=$HOME/.vim/swapfiles//
 
 " Turn persistent undo on, means that you can undo even when you close a buffer/VIM
 set undofile
 set undolevels=1000
 
 call mkdir($HOME . "/.vim/undotree", "p")
-set undodir=~/.vim/undotree//
+set undodir=$HOME/.vim/undotree//
 
 " For regular expressions turn magic on
 set magic
