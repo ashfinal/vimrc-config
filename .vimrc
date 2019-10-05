@@ -199,13 +199,27 @@ endif
 imap jk <Esc>
 
 " Make cursor always on center of screen by default
-if !exists('noalwayscenter')
-    " Calculate proper scrolloff
-    autocmd VimEnter,WinEnter,VimResized,InsertLeave * :let &scrolloff = float2nr(floor(winheight(0)/2)+1)
-    autocmd InsertEnter * :let &scrolloff = float2nr(floor(winheight(0)/2))
-    " Use <Enter> to keep center in insert mode, need proper scrolloff
-    inoremap <CR> <CR><C-o>zz
+if !exists('g:cursor_always_center')
+    let g:cursor_always_center = 1
+else
+    if g:cursor_always_center == 0 | augroup! rc_always_center | endif
 endif
+
+augroup rc_always_center
+    autocmd!
+    autocmd VimEnter,WinEnter,VimResized,InsertLeave,InsertEnter * call RC#AlwaysCenterOrNot()
+augroup END
+
+function! RC#AlwaysCenterOrNot()
+    if g:cursor_always_center
+        let &scrolloff = float2nr(floor(winheight(0) / 2) + 1)
+        " Use <Enter> to keep center in insert mode, need proper scrolloff
+        inoremap <CR> <CR><C-o>zz
+    else
+        let &scrolloff = float2nr(floor(winheight(0) / 2))
+        iunmap <CR>
+    endif
+endfunction
 
 " Make moving around works well in multi lines
 map <silent> j gj
