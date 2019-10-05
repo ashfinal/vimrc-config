@@ -462,9 +462,9 @@ command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
 augroup rc_ft_settings
     autocmd!
     autocmd FileType python setlocal foldmethod=indent textwidth=80
-    autocmd FileType rst setlocal shiftwidth=3 tabstop=3
     autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
     autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
+    autocmd FileType qf setlocal nowrap
 augroup END
 
 " Strip trailing spaces and blank lines of EOF when saving files
