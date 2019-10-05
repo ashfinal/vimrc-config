@@ -214,7 +214,7 @@ function! RC#AlwaysCenterOrNot()
     if g:cursor_always_center
         let &scrolloff = float2nr(floor(winheight(0) / 2) + 1)
         " Use <Enter> to keep center in insert mode, need proper scrolloff
-        inoremap <CR> <CR><C-o>zz
+        inoremap! <CR> <CR><C-o>zz
     else
         let &scrolloff = float2nr(floor(winheight(0) / 2))
         iunmap <CR>
@@ -277,8 +277,11 @@ function! RC#ClosePumOrNot()
     endif
 endfunction
 
-" When <Enter> is pressed while the popup menu is visible, hide the menu and also start a new line.
-" inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
+" When <Enter> is pressed while the popup menu is visible, confirm the selection instead of starting a new line.
+inoremap <expr> <CR>
+    \ pumvisible() ? "\<C-y>" :
+    \ g:cursor_always_center ? "\<CR>\<C-o>zz" :
+    \ "\<CR>"
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
