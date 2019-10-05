@@ -234,19 +234,25 @@ set virtualedit=block
 " set scrolljump=3
 
 set sessionoptions-=options " Don't restore all options and mappings
-" Save workspace and try to restore last session
-autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 
-" Restore last session automatically (Default Off)
-autocmd VimEnter * :call RestoreLastSession()
-function! RestoreLastSession()
-    if exists('g:restorelastsession')
+" Restore last session automatically (default off)
+if !exists('g:rc_restore_last_session') | let g:rc_restore_last_session = 0 | endif
+
+" Always save the last session
+autocmd save_session VimLeave * exe ":mksession! ~/.vim/.last.session"
+
+" Try to restore last session
+autocmd restore_session VimEnter * call RC#RestoreLastSession()
+
+function! RC#RestoreLastSession()
+    if g:rc_restore_last_session
         if filereadable(expand("~/.vim/.last.session"))
            exe ":source ~/.vim/.last.session"
        endif
    endif
 endfunction
 
+" Restore the last session manually
 if filereadable(expand("~/.vim/.last.session"))
     nmap <silent> <Leader>r :source ~/.vim/.last.session<CR>
 endif
