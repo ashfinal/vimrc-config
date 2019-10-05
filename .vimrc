@@ -219,7 +219,7 @@ function! RCAlwaysCenterOrNot()
         inoremap <CR> <CR><C-o>zz
     else
         let &scrolloff = 0
-        iunmap <CR>
+        silent! iunmap <CR>
     endif
 endfunction
 
@@ -287,12 +287,6 @@ function! RCClosePWOrNot()
         endif
     endif
 endfunction
-
-" When <Enter> is pressed while the popup menu is visible, confirm the selection instead of starting a new line.
-inoremap <expr> <CR>
-    \ pumvisible() ? "\<C-y>" :
-    \ g:rc_always_center ? "\<CR>\<C-o>zz" :
-    \ "\<CR>"
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
