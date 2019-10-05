@@ -282,7 +282,9 @@ augroup END
 
 function! RCClosePWOrNot()
     if g:rc_auto_close_pw
-        if pumvisible() == 0 | silent! pclose | endif
+        if !pumvisible() && (!exists('*getcmdwintype') || empty(getcmdwintype()))
+            silent! pclose
+        endif
     endif
 endfunction
 
