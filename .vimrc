@@ -260,19 +260,19 @@ endif
 set completeopt=menu,preview,longest
 set pumheight=10
 
-" Automatically close the popup menu
-if !exists('g:rc_auto_close_pum')
-    let g:rc_auto_close_pum = 1
+" Automatically close the preview window when popup menu is invisible
+if !exists('g:rc_auto_close_pw')
+    let g:rc_auto_close_pw = 1
 else
-    if g:rc_auto_close_pum == 0 | augroup! rc_close_pum | end
+    if g:rc_auto_close_pw == 0 | augroup! rc_close_pw | end
 endif
 
-augroup rc_close_pum
-    autocmd CursorMovedI,InsertLeave * call RC#ClosePumOrNot()
+augroup rc_close_pw
+    autocmd CursorMovedI,InsertLeave * call RC#ClosePWOrNot()
 augroup END
 
-function! RC#ClosePumOrNot()
-    if g:rc_auto_close_pum
+function! RC#ClosePWOrNot()
+    if g:rc_auto_close_pw
         if pumvisible() == 0 | silent! pclose | endif
     endif
 endfunction
