@@ -150,23 +150,22 @@ function! RC#ToggleLineNumber(switch)
     endif
 endfunction
 
-" Use absolute linenum in Insert mode; relative linenum in Normal mode
-autocmd FocusLost,InsertEnter * :call UseAbsNum()
-autocmd FocusGained,InsertLeave * :call UseRelNum()
+" Use absolute linenum in insert mode; relative linenum in normal mode
+augroup rc-line-number
+    autocmd!
+    autocmd FocusLost,InsertEnter * call RC#UseAbsOrRelNum(1)
+    autocmd FocusGained,InsertLeave * call RC#UseAbsOrRelNum(0)
+augroup END
 
-function! UseAbsNum()
-    if exists('g:noshowlinenumber') || exists('#goyo')
+function! RC#UseAbsOrRelNum(switch)
+    if g:rc_show_line_number == 0 || exists('#goyo')
         set nonumber norelativenumber
     else
-        set number norelativenumber
-    endif
-endfunction
-
-function! UseRelNum()
-    if exists('g:noshowlinenumber') || exists('#goyo')
-        set nonumber norelativenumber
-    else
-        set number relativenumber
+        if a:switch
+            set number norelativenumber
+        else
+            set number relativenumber
+        endif
     endif
 endfunction
 
