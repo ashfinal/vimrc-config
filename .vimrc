@@ -216,7 +216,7 @@ function! RCAlwaysCenterOrNot()
     if g:cursor_always_center
         let &scrolloff = float2nr(floor(winheight(0) / 2) + 1)
         " Use <Enter> to keep center in insert mode, need proper scrolloff
-        inoremap! <CR> <CR><C-o>zz
+        inoremap <CR> <CR><C-o>zz
     else
         let &scrolloff = float2nr(floor(winheight(0) / 2))
         iunmap <CR>
@@ -242,13 +242,13 @@ if !exists('g:rc_restore_last_session') | let g:rc_restore_last_session = 0 | en
 
 " Always save the last session
 augroup save_session
-    augroup!
+    autocmd!
     autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 augroup END
 
 " Try to restore last session
 augroup restore_session
-    augroup!
+    autocmd!
     autocmd VimEnter * call RCRestoreLastSession()
 augroup END
 
@@ -276,6 +276,7 @@ else
 endif
 
 augroup rc_close_pw
+    autocmd!
     autocmd CursorMovedI,InsertLeave * call RCClosePWOrNot()
 augroup END
 
