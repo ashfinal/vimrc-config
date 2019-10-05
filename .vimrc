@@ -135,23 +135,29 @@ set mousehide
 set ruler
 
 " Show line number by default
-if !exists('g:rc_show_line_number') | let g:rc_show_line_number = 1 | endif
+if !exists('g:rc_show_line_number')
+    let g:rc_show_line_number = 1
+else
+    " If show_line_number is explicitly set to false, events-driving UseAbsOrRelNum will be stopped.
+    if g:rc_show_line_number == 0 | augroup! rc_line_number | endif
+endif
 call RC#ToggleLineNumber(g:rc_show_line_number)
 
 " Toggle showing line number
-nnoremap <silent> <Leader>n :call RC#ToggleLineNumber(g:rc_show_line_number)<CR>
+let g:rc_lineNr_switch = g:rc_show_line_number
+nnoremap <silent> <Leader>n :call RC#ToggleLineNumber(g:rc_lineNr_switch)<CR>
 function! RC#ToggleLineNumber(switch)
     if a:switch
         set number relativenumber
-        let g:rc_show_line_number = 0
+        let g:rc_lineNr_switch = 0
     else
         set nonumber norelativenumber
-        let g:rc_show_line_number = 1
+        let g:rc_lineNr_switch = 1
     endif
 endfunction
 
 " Use absolute linenum in insert mode; relative linenum in normal mode
-augroup rc-line-number
+augroup rc_line_number
     autocmd!
     autocmd FocusLost,InsertEnter * call RC#UseAbsOrRelNum(1)
     autocmd FocusGained,InsertLeave * call RC#UseAbsOrRelNum(0)
