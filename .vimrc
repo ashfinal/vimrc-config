@@ -135,7 +135,7 @@ set mousehide
 set ruler
 
 " Show line number by default
-let g:rc_show_line_number = 1
+if !exists('g:rc_show_line_number') | let g:rc_show_line_number = 1 | endif
 call RC#ToggleLineNumber(g:rc_show_line_number)
 
 " Toggle showing line number
