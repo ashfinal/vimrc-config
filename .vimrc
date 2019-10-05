@@ -141,12 +141,12 @@ else
     " If show_line_number is explicitly set to false, events-driving UseAbsOrRelNum will be stopped.
     if g:rc_show_line_number == 0 | augroup! rc_line_number | endif
 endif
-call RC#ToggleLineNumber(g:rc_show_line_number)
+call RCToggleLineNumber(g:rc_show_line_number)
 
 " Toggle showing line number
 let g:rc_lineNr_switch = g:rc_show_line_number
-nnoremap <silent> <Leader>n :call RC#ToggleLineNumber(g:rc_lineNr_switch)<CR>
-function! RC#ToggleLineNumber(switch)
+nnoremap <silent> <Leader>n :call RCToggleLineNumber(g:rc_lineNr_switch)<CR>
+function! RCToggleLineNumber(switch)
     if a:switch
         set number relativenumber
         let g:rc_lineNr_switch = 0
@@ -159,11 +159,11 @@ endfunction
 " Use absolute linenum in insert mode; relative linenum in normal mode
 augroup rc_line_number
     autocmd!
-    autocmd FocusLost,InsertEnter * call RC#UseAbsOrRelNum(1)
-    autocmd FocusGained,InsertLeave * call RC#UseAbsOrRelNum(0)
+    autocmd FocusLost,InsertEnter * call RCUseAbsOrRelNum(1)
+    autocmd FocusGained,InsertLeave * call RCUseAbsOrRelNum(0)
 augroup END
 
-function! RC#UseAbsOrRelNum(switch)
+function! RCUseAbsOrRelNum(switch)
     if g:rc_show_line_number == 0 || exists('#goyo')
         set nonumber norelativenumber
     else
@@ -207,10 +207,10 @@ endif
 
 augroup rc_always_center
     autocmd!
-    autocmd VimEnter,WinEnter,VimResized,InsertLeave,InsertEnter * call RC#AlwaysCenterOrNot()
+    autocmd VimEnter,WinEnter,VimResized,InsertLeave,InsertEnter * call RCAlwaysCenterOrNot()
 augroup END
 
-function! RC#AlwaysCenterOrNot()
+function! RCAlwaysCenterOrNot()
     if g:cursor_always_center
         let &scrolloff = float2nr(floor(winheight(0) / 2) + 1)
         " Use <Enter> to keep center in insert mode, need proper scrolloff
@@ -242,9 +242,9 @@ if !exists('g:rc_restore_last_session') | let g:rc_restore_last_session = 0 | en
 autocmd save_session VimLeave * exe ":mksession! ~/.vim/.last.session"
 
 " Try to restore last session
-autocmd restore_session VimEnter * call RC#RestoreLastSession()
+autocmd restore_session VimEnter * call RCRestoreLastSession()
 
-function! RC#RestoreLastSession()
+function! RCRestoreLastSession()
     if g:rc_restore_last_session
         if filereadable(expand("~/.vim/.last.session"))
            exe ":source ~/.vim/.last.session"
@@ -268,10 +268,10 @@ else
 endif
 
 augroup rc_close_pw
-    autocmd CursorMovedI,InsertLeave * call RC#ClosePWOrNot()
+    autocmd CursorMovedI,InsertLeave * call RCClosePWOrNot()
 augroup END
 
-function! RC#ClosePWOrNot()
+function! RCClosePWOrNot()
     if g:rc_auto_close_pw
         if pumvisible() == 0 | silent! pclose | endif
     endif
