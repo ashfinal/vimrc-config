@@ -241,10 +241,16 @@ set sessionoptions-=options " Don't restore all options and mappings
 if !exists('g:rc_restore_last_session') | let g:rc_restore_last_session = 0 | endif
 
 " Always save the last session
-autocmd save_session VimLeave * exe ":mksession! ~/.vim/.last.session"
+augroup save_session
+    augroup!
+    autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
+augroup END
 
 " Try to restore last session
-autocmd restore_session VimEnter * call RCRestoreLastSession()
+augroup restore_session
+    augroup!
+    autocmd VimEnter * call RCRestoreLastSession()
+augroup END
 
 function! RCRestoreLastSession()
     if g:rc_restore_last_session
