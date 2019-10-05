@@ -424,7 +424,7 @@ function! StripWSBL()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//ge
-    %s/\(\n^$\)\+\%$//ge
+    %s/\(\n\)\+\%$//ge
     call cursor(l, c)
 endfunction
 
