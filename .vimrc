@@ -259,10 +259,23 @@ endif
 
 set completeopt=menu,preview,longest
 set pumheight=10
-" automatically open and close the popup menu / preview window
-if !exists('g:noautoclosepum')
-    autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+" Automatically close the popup menu
+if !exists('g:rc_auto_close_pum')
+    let g:rc_auto_close_pum = 1
+else
+    if g:rc_auto_close_pum == 0 | augroup! rc_close_pum | end
 endif
+
+augroup rc_close_pum
+    autocmd CursorMovedI,InsertLeave * call RC#ClosePumOrNot()
+augroup END
+
+function! RC#ClosePumOrNot()
+    if g:rc_auto_close_pum
+        if pumvisible() == 0 | silent! pclose | endif
+    endif
+endfunction
 
 " When <Enter> is pressed while the popup menu is visible, hide the menu and also start a new line.
 " inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
