@@ -505,7 +505,7 @@ let g:html_prevent_copy = "fntd"
 " Plugin List {{{ "
 " Use plug.vim by default
 if !exists('g:rc_use_plug_manager') | let g:rc_use_plug_manager = 1 | endif
-if g:rc_use_plug_manager == 1
+if g:rc_use_plug_manager
     if filereadable(expand("~/.vim/autoload/plug.vim"))
         call plug#begin('~/.vim/plugged')
 
@@ -582,13 +582,14 @@ endif
 
 " Plugin Config {{{ "
 
-if !exists('g:rc_use_plug_manager') && filereadable(expand("~/.vim/autoload/plug.vim"))
+if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     " Plugin Config - onecolorscheme {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-one/colors/one.vim"))
+        colorscheme one
         if has("gui_running") || has("gui_vimr")
-            colorscheme one
+            set background=light
         endif
     endif
 
@@ -607,7 +608,7 @@ if !exists('g:rc_use_plug_manager') && filereadable(expand("~/.vim/autoload/plug
     " Plugin Config - vim-multiple-cursors {{{ "
 
     if filereadable(expand("~/.vim/plugged/vim-multiple-cursors/autoload/multiple_cursors.vim"))
-        map <Leader>m :MultipleCursorsFind<Space>
+        nmap <Leader>m :MultipleCursorsFind<Space>
         let g:multi_cursor_use_default_mapping = 0
         let g:multi_cursor_next_key = '+'
         let g:multi_cursor_prev_key = '_'
@@ -695,7 +696,7 @@ if !exists('g:rc_use_plug_manager') && filereadable(expand("~/.vim/autoload/plug
     if filereadable(expand("~/.vim/plugged/nerdcommenter/plugin/NERD_commenter.vim"))
         " Always leave a space between the comment character and the comment
         let NERDSpaceDelims = 1
-        map <Bslash> <plug>NERDCommenterInvert
+        nmap <Bslash> <plug>NERDCommenterInvert
         vmap <C-Bslash> <plug>NERDCommenterSexy
     endif
 
