@@ -541,7 +541,7 @@ if g:rc_use_plug_manager
             Plug 'metakirby5/codi.vim'
         endif
         Plug 'ashfinal/vim-one'
-        if has('nvim') && !exists('g:gui_oni') || version >= 800
+        if version >= 800 || has('nvim')
             Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
         else
             if version >= 703 && has('lua')
