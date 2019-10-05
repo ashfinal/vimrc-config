@@ -501,7 +501,9 @@ let g:html_prevent_copy = "fntd"
 " Plugins List & Config {{{ "
 
 " Plugin List {{{ "
-if !exists('g:nouseplugmanager') " use plug.vim by default
+" Use plug.vim by default
+if !exists('g:rc_use_plug_manager') | let g:rc_use_plug_manager = 1 | endif
+if g:rc_use_plug_manager == 1
     if filereadable(expand("~/.vim/autoload/plug.vim"))
         call plug#begin('~/.vim/plugged')
 
@@ -559,8 +561,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
                     echo "Downloading plug.vim, please wait a second..."
                     exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); open(g, "wb").write(f.read())'
                 else
-                    exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vim/vimrc.before"
-                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
+                    exe "silent !echo 'let g:rc_use_plug_manager = 0' > ~/.vim/vimrc.before"
+                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:rc_use_plug_manager = 0' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -568,8 +570,8 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
                 exe 'qall!'
             endif
         else
-            exe "silent !echo 'let g:nouseplugmanager = 1' > ~/.vim/vimrc.before"
-            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:nouseplugmanager = 1' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
+            exe "silent !echo 'let g:rc_use_plug_manager = 0' > ~/.vim/vimrc.before"
+            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:rc_use_plug_manager = 0' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
         endif
     endif
 endif
@@ -578,7 +580,7 @@ endif
 
 " Plugin Config {{{ "
 
-if !exists('g:nouseplugmanager') && filereadable(expand("~/.vim/autoload/plug.vim"))
+if !exists('g:rc_use_plug_manager') && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     " Plugin Config - onecolorscheme {{{ "
 
