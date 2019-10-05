@@ -450,7 +450,10 @@ if !has('win32') && !has("gui_running")
     command! W w !sudo tee % > /dev/null
 endif
 
-autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
+augroup rc_color_warning
+    autocmd!
+    autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
+augroup END
 
 " Find out to which highlight-group a particular keyword/symbol belongs
 command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
@@ -458,10 +461,13 @@ command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
             \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
             \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
 
-autocmd FileType python setlocal foldmethod=indent textwidth=80
-autocmd FileType rst setlocal shiftwidth=3 tabstop=3
-autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
-autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
+augroup rc_ft_settings
+    autocmd!
+    autocmd FileType python setlocal foldmethod=indent textwidth=80
+    autocmd FileType rst setlocal shiftwidth=3 tabstop=3
+    autocmd BufNewFile,BufRead *.org setlocal filetype=org commentstring=#%s
+    autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
+augroup END
 
 " Strip Trailing spaces and blank lines of EOF when saving files
 if !exists('g:noautostripspaces')
