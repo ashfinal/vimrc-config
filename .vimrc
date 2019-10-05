@@ -647,7 +647,7 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     if filereadable(expand("~/.vim/plugged/emmet-vim/plugin/emmet.vim"))
         let g:user_emmet_install_global = 0
-        autocmd FileType html,css,markdown,php,javascript EmmetInstall
+        autocmd FileType html,xhtml,xml,css,scss,sass,less EmmetInstall
         let g:user_emmet_leader_key = ','
     endif
 
