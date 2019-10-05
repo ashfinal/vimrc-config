@@ -469,13 +469,20 @@ augroup rc_ft_settings
     autocmd BufNewFile,BufRead *.tex setlocal filetype=tex
 augroup END
 
-" Strip Trailing spaces and blank lines of EOF when saving files
-if !exists('g:noautostripspaces')
-    autocmd FileType html,javascript,css,python,markdown,rst autocmd BufWritePre <buffer> :call StripWSBL()
+" Strip trailing spaces and blank lines of EOF when saving files
+if !exists('g:rc_strip_wsbl')
+    let g:rc_strip_wsbl = 1
+else
+    if g:rc_strip_wsbl == 0 | augroup! rc_strip_wsbl | endif
 endif
 
-nnoremap <silent> <Leader>s :call StripWSBL()<CR>
-function! StripWSBL()
+augroup rc_strip_wsbl
+    autocmd!
+    autocmd BufWritePre * call RCStripWSBL()
+augroup END
+
+nnoremap <silent> <Leader>s :call RCStripWSBL()<CR>
+function! RCStripWSBL()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//ge
