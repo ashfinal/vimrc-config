@@ -20,9 +20,9 @@ endif
 
 set runtimepath+=$HOME/.vim
 
-if has('win32') || has('win64')
+if has('win32')
     call mkdir($HOME . "/AppData/Local/nvim", "p")
-elseif has('unix') || has('mac')
+else
     call mkdir($HOME . "/.config/nvim", "p")
 endif
 
@@ -170,7 +170,7 @@ set wildmenu
 set wildmode=list:longest,full
 " Ignore compiled files
 set wildignore=*.so,*.swp,*.bak,*.pyc,*.pyo,*.class,*.zip
-if has("win32") || has("win64")
+if has("win32")
     set wildignore+=.git\*,.hg\*,.svn\*
 else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -384,8 +384,8 @@ set matchtime=2
 " Define how to use the CTRL-A and CTRL-X commands for adding to and subtracting from a number respectively
 set nrformats=alpha,octal,hex
 
-" For when you forget to sudo... Really Write the file.
-if !(has('win32') || has('win64')) && !has("gui_running")
+" For when you forget to sudo... Really write the file.
+if !has('win32') && !has("gui_running")
     command! W w !sudo tee % > /dev/null
 endif
 
@@ -471,7 +471,7 @@ if !exists('g:nouseplugmanager') " use plug.vim by default
         if executable('latexmk')
             Plug 'lervag/vimtex'
         endif
-        if has('unix') || has('mac')
+        if !has('win32')
             Plug 'metakirby5/codi.vim'
         endif
         Plug 'ashfinal/vim-one'
