@@ -134,12 +134,21 @@ set mousehide
 " Always show current position
 set ruler
 
-" Show linenumber by default
-if !exists('g:noshowlinenumber')
-    set number relativenumber
-else
-    set nonumber norelativenumber
-endif
+" Show line number by default
+let g:rc_show_line_number = 1
+call RC#ToggleLineNumber(g:rc_show_line_number)
+
+" Toggle showing line number
+nnoremap <silent> <Leader>n :call RC#ToggleLineNumber(g:rc_show_line_number)<CR>
+function! RC#ToggleLineNumber(switch)
+    if a:switch
+        set number relativenumber
+        let g:rc_show_line_number = 0
+    else
+        set nonumber norelativenumber
+        let g:rc_show_line_number = 1
+    endif
+endfunction
 
 " Use absolute linenum in Insert mode; relative linenum in Normal mode
 autocmd FocusLost,InsertEnter * :call UseAbsNum()
@@ -397,18 +406,6 @@ command! Wcolor echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
             \ "> trans<" . synIDattr(synID(line("."),col("."),0),"name") .
             \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
             \ "> fg:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")
-
-" Toggle showing line number
-nnoremap <silent> <Leader>n :call ToggleNumberline()<CR>
-function! ToggleNumberline()
-    if !exists('g:noshowlinenumber')
-        set nonumber norelativenumber
-        let g:noshowlinenumber = 1
-    else
-        set number relativenumber
-        unlet g:noshowlinenumber
-    endif
-endfunction
 
 autocmd FileType python setlocal foldmethod=indent textwidth=80
 autocmd FileType rst setlocal shiftwidth=3 tabstop=3
