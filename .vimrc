@@ -301,11 +301,11 @@ nmap gV `[v`]
 set autoread
 
 set autowrite " Automatically write a file when leaving a modified buffer
+
 set updatetime=200
 
 " Set how many lines of history VIM has to remember
 set history=1000 " command line history
-set undoreload=1000
 
 " Don't backup orignal files
 set nobackup
@@ -336,7 +336,9 @@ set hlsearch
 
 " Makes search act like search in modern browsers
 set incsearch
-" set nowrapscan " Don't wrap around when jumping between search result
+
+" Don't wrap around when jumping between search result
+" set nowrapscan
 
 " Disable highlight when <Backspace> is pressed
 nnoremap <silent> <BS> :nohlsearch<CR>
@@ -442,7 +444,7 @@ set matchtime=2
 set nrformats=alpha,octal,hex
 
 " For when you forget to sudo... Really write the file.
-if !has('win32') && !has("gui_running")
+if !has('win32')
     command! W w !sudo tee % > /dev/null
 endif
 
