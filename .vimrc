@@ -141,7 +141,6 @@ else
     " If show_line_number is explicitly set to false, events-driving UseAbsOrRelNum will be stopped.
     if g:rc_show_line_number == 0 | augroup! rc_line_number | endif
 endif
-call RCToggleLineNumber(g:rc_show_line_number)
 
 " Toggle showing line number
 let g:rc_lineNr_switch = g:rc_show_line_number
@@ -155,6 +154,9 @@ function! RCToggleLineNumber(switch)
         let g:rc_lineNr_switch = 1
     endif
 endfunction
+
+" Run once to show initial linenum
+call RCToggleLineNumber(g:rc_show_line_number)
 
 " Use absolute linenum in insert mode; relative linenum in normal mode
 augroup rc_line_number
