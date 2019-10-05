@@ -186,9 +186,9 @@ set cmdheight=1
 set wildmenu
 set wildmode=list:longest,full
 " Ignore compiled files
-set wildignore=*.so,*.swp,*.bak,*.pyc,*.pyo,*.class,*.zip
+set wildignore=*.so,*.swp,*.pyc,*.pyo,*.exe,*.7z
 if has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
+    set wildignore+=.git\*,.hg\*,.svn\*,*\desktop.ini
 else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
