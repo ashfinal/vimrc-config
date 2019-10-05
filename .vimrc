@@ -201,24 +201,24 @@ endif
 imap jk <Esc>
 
 " Make cursor always on center of screen by default
-if !exists('g:cursor_always_center')
-    let g:cursor_always_center = 1
+if !exists('g:rc_always_center')
+    let g:rc_always_center = 1
 else
-    if g:cursor_always_center == 0 | augroup! rc_always_center | endif
+    if g:rc_always_center == 0 | augroup! rc_always_center | endif
 endif
 
 augroup rc_always_center
     autocmd!
-    autocmd VimEnter,WinEnter,VimResized,InsertLeave,InsertEnter * call RCAlwaysCenterOrNot()
+    autocmd VimEnter,WinEnter,VimResized * call RCAlwaysCenterOrNot()
 augroup END
 
 function! RCAlwaysCenterOrNot()
-    if g:cursor_always_center
-        let &scrolloff = float2nr(floor(winheight(0) / 2) + 1)
+    if g:rc_always_center
         " Use <Enter> to keep center in insert mode, need proper scrolloff
+        let &scrolloff = float2nr(floor(winheight(0) / 2) + 1)
         inoremap <CR> <CR><C-o>zz
     else
-        let &scrolloff = float2nr(floor(winheight(0) / 2))
+        let &scrolloff = 0
         iunmap <CR>
     endif
 endfunction
@@ -289,7 +289,7 @@ endfunction
 " When <Enter> is pressed while the popup menu is visible, confirm the selection instead of starting a new line.
 inoremap <expr> <CR>
     \ pumvisible() ? "\<C-y>" :
-    \ g:cursor_always_center ? "\<CR>\<C-o>zz" :
+    \ g:rc_always_center ? "\<CR>\<C-o>zz" :
     \ "\<CR>"
 
 " Return to last edit position when opening files (You want this!)
