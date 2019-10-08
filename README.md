@@ -52,7 +52,6 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [vim-fugitive][vim-fugitive] - A Git wrapper so awesome, it should be illegal
 - [nerdcommenter][nerdcommenter] - Vim plugin for intensely orgasmic commenting
 - [vim-airline][vim-airline] - lean & mean status/tabline for vim that's light as air
-- [vim-multiple-cursors][vim-multiple-cursors] - True Sublime Text style multiple selections for Vim
 - [undotree][undotree] - The ultimate undo history visualizer for VIM
 - [ctrlp.vim][ctrlp.vim] - Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
@@ -114,10 +113,6 @@ use `:Wcolor` for showing highlight group under current cursor
 | [nerdcommenter][nerdcommenter]               | `\`                      | Normal/Visual | Toggle comment                      |
 | [nerdcommenter][nerdcommenter]               | `Ctrl` + `\`             | Normal/Visual | CommentSexy                         |
 | [emmet-vim][emmet-vim]                       | `,` + `,`                | Insert/Visual | Expand abbr                         |
-| [vim-multiple-cursors][vim-multiple-cursors] | `+`                      | Normal/Visual | multi_cursor_next_key               |
-| [vim-multiple-cursors][vim-multiple-cursors] | `_`                      | Normal/Visual | multi_cursor_prev_key               |
-| [vim-multiple-cursors][vim-multiple-cursors] | `-`                      | Normal/Visual | multi_cursor_skip_key               |
-| [vim-multiple-cursors][vim-multiple-cursors] | `<Leader>` + `m`         | Normal/Visual | MultipleCursorsFind                 |
 | [vim-easy-align][vim-easy-align]             | `<Leader>` + `g`         | Normal/Visual | Align with                          |
 | [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                    |
 | [limelight.vim][limelight.vim]               | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
@@ -184,7 +179,6 @@ https://github.com/spf13/spf13-vim
 [nerdcommenter]:https://github.com/scrooloose/nerdcommenter "https://github.com/scrooloose/nerdcommenter"
 [vim-airline]:https://github.com/bling/vim-airline "https://github.com/bling/vim-airline"
 [undotree]:https://github.com/mbbill/undotree "https://github.com/mbbill/undotree"
-[vim-multiple-cursors]:https://github.com/terryma/vim-multiple-cursors "https://github.com/terryma/vim-multiple-cursors"
 [ctrlp.vim]:https://github.com/ctrlpvim/ctrlp.vim "https://github.com/ctrlpvim/ctrlp.vim"
 [codi.vim]:https://github.com/metakirby5/codi.vim "https://github.com/metakirby5/codi.vim"
 [vim-one]:https://github.com/ashfinal/vim-one "https://github.com/ashfinal/vim-one"

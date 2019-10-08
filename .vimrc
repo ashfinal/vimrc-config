@@ -513,7 +513,6 @@ if g:rc_use_plug_manager
         Plug 'dhruvasagar/vim-table-mode'
         Plug 'machakann/vim-sandwich'
         Plug 'wellle/targets.vim'
-        Plug 'terryma/vim-multiple-cursors'
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
         Plug 'Raimondi/delimitMate'
@@ -600,35 +599,6 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
     endif
 
     " }}} Plugin Config - undotree "
-
-    " Plugin Config - vim-multiple-cursors {{{ "
-
-    if filereadable(expand("~/.vim/plugged/vim-multiple-cursors/autoload/multiple_cursors.vim"))
-        nmap <Leader>m :MultipleCursorsFind<Space>
-        let g:multi_cursor_use_default_mapping = 0
-        let g:multi_cursor_next_key = '+'
-        let g:multi_cursor_prev_key = '_'
-        let g:multi_cursor_skip_key = '-'
-        let g:multi_cursor_quit_key = '<Esc>'
-        function! Multiple_cursors_before()
-            if exists(':NeoCompleteLock') == 2
-                exe 'NeoCompleteLock'
-            endif
-            if exists(':DelimitMateOff') == 2
-                exe 'DelimitMateOff'
-            endif
-        endfunction
-        function! Multiple_cursors_after()
-            if exists(':NeoCompleteUnlock') == 2
-                exe 'NeoCompleteUnlock'
-            endif
-            if exists(':DelimitMateOn') == 2
-                exe 'silent DelimitMateOn'
-            endif
-        endfunction
-    endif
-
-    " }}} Plugin Config - vim-multiple-cursors "
 
     " Plugin Config - ultisnips {{{ "
 
