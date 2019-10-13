@@ -528,6 +528,7 @@ if g:rc_use_plug_manager
         endif
         if version >= 800 || has('nvim')
             Plug 'skywind3000/asyncrun.vim'
+            Plug 'mg979/vim-visual-multi'
         endif
         if executable('latexmk')
             Plug 'lervag/vimtex'
@@ -750,6 +751,33 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
     endif
 
     " }}} Plugin Config - vimtex "
+
+    " Plugin Config - visual-multi {{{ "
+
+    let g:VM_mouse_mappings   = 1
+    let g:VM_skip_empty_lines = 1
+    let g:VM_silent_exit      = 1
+
+    function! VM_Start()
+        if exists(":DelimitMateOff") | exe 'DelimitMateOff' | endif
+    endfunction
+
+    function! VM_Exit()
+        if exists(':DelimitMateOn') | exe 'DelimitMateOn' | endif
+    endfunction
+
+    let g:VM_leader = {'default': '<Leader>', 'visual': '<Leader>', 'buffer': 'z'}
+    let g:VM_maps                           = {}
+    let g:VM_maps["Get Operator"]           = '<Leader>a'
+    let g:VM_maps["Add Cursor At Pos"]      = '<Leader><Space>'
+    let g:VM_maps["Reselect Last"]          = '<Leader>z'
+    let g:VM_maps["Visual Cursors"]         = '<Leader><Space>'
+    let g:VM_maps["Undo"]                   = 'u'
+    let g:VM_maps["Redo"]                   = '<C-r>'
+    let g:VM_maps["Visual Subtract"]        = 'zs'
+    let g:VM_maps["Visual Reduce"]          = 'zr'
+
+    " }}} Plugin Config - visual-multi "
 
     " Plugin Config - coc.nvim {{{ "
 
