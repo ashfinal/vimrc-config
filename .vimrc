@@ -662,7 +662,7 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
     if filereadable(expand("~/.vim/plugged/nerdcommenter/plugin/NERD_commenter.vim"))
         " Always leave a space between the comment character and the comment
         let NERDSpaceDelims = 1
-        nmap <Bslash> <plug>NERDCommenterInvert
+        map <Bslash> <plug>NERDCommenterInvert
         vmap <C-Bslash> <plug>NERDCommenterSexy
     endif
 
