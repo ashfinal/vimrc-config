@@ -120,6 +120,18 @@ use `:Wcolor` for showing highlight group under current cursor
 | [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
 | [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
 
+### visual-multi key bindings
+
+| Key                    |      Mode     | Action                                       |
+|:-----------------------|:-------------:|:---------------------------------------------|
+| `Ctrl` + `n`           | Normal/Visual | select the word under cursor                 |
+| `<Leader>` + `A`       | Normal/Visual | select all occurrences of the word/selection |
+| `Ctrl` + `<LeftClick>` |     Normal    | add a single cursor at current position      |
+| `<Leader>` + `<Space>` | Normal/Visual | add a cursor or create cursors vertically    |
+| `Ctrl` + `<Down/Up>`   |     Normal    | create cursors vertically                    |
+| `n`/`N`/`[`/`]`        |     Normal    | navigate between cursors/regions             |
+| `q`/`Q`                |     Normal    | skip/remove the region under cursor          |
+
 ### Language Server Protocol related
 
 | Key |  Mode  | Action              |
