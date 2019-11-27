@@ -492,6 +492,11 @@ endfunction
 let g:html_dynamic_folds = 1
 let g:html_prevent_copy = "fntd"
 
+if has("patch-8.1.360") || has("nvim-0.3.5")
+    set diffopt+=algorithm:histogram
+    set diffopt+=indent-heuristic
+endif
+
 " }}} Misc "
 
 " }}} General "
