@@ -143,15 +143,15 @@ else
 endif
 
 " Toggle showing line number
-let g:rc_lineNr_switch = g:rc_show_line_number
-nnoremap <silent> <Leader>n :call RCToggleLineNumber(g:rc_lineNr_switch)<CR>
+let g:rc_linenr_switch = g:rc_show_line_number
+nnoremap <silent> <Leader>n :call RCToggleLineNumber(g:rc_linenr_switch)<CR>
 function! RCToggleLineNumber(switch)
     if a:switch
         set number relativenumber
-        let g:rc_lineNr_switch = 0
+        let g:rc_linenr_switch = 0
     else
         set nonumber norelativenumber
-        let g:rc_lineNr_switch = 1
+        let g:rc_linenr_switch = 1
     endif
 endfunction
 
