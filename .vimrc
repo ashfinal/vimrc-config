@@ -61,9 +61,6 @@ set encoding=utf8
 
 set fileencodings=ucs-bom,utf-8,default,cp936,big5,latin1
 
-" Set terminal encoding
-set termencoding=utf-8
-
 " Use Unix as the standard file type
 set fileformats=unix,mac,dos
 
