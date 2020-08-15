@@ -47,6 +47,9 @@ set backspace=eol,start,indent
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
 
+" With a map leader it's possible to do extra key combinations
+let mapleader = "\<Space>"
+
 " Enable clipboard if possible
 if has('clipboard')
     if has('unnamedplus') " When possible use + register for copy-paste
@@ -139,21 +142,25 @@ else
     if g:rc_show_line_number == 0 | augroup! rc_line_number | endif
 endif
 
+if g:rc_show_line_number
+    set number relativenumber
+else
+    set nonumber norelativenumber
+endif
+
 " Toggle showing line number
-let g:rc_linenr_switch = g:rc_show_line_number
-nnoremap <silent> <Leader>n :call RCToggleLineNumber(g:rc_linenr_switch)<CR>
-function! RCToggleLineNumber(switch)
-    if a:switch
-        set number relativenumber
-        let g:rc_linenr_switch = 0
-    else
+nnoremap <silent> <Leader>n :call RCToggleLineNumber()<CR>
+
+let s:linenr_switch = g:rc_show_line_number
+function! RCToggleLineNumber()
+    if s:linenr_switch
         set nonumber norelativenumber
-        let g:rc_linenr_switch = 1
+        let s:linenr_switch = 0
+    else
+        set number relativenumber
+        let s:linenr_switch = 1
     endif
 endfunction
-
-" Run once to show initial linenum
-call RCToggleLineNumber(g:rc_show_line_number)
 
 " Use absolute linenum in insert mode; relative linenum in normal mode
 augroup rc_line_number
@@ -224,9 +231,6 @@ endfunction
 map <silent> j gj
 map <silent> k gk
 
-" With a map leader it's possible to do extra key combinations
-let mapleader = "\<Space>"
-
 set virtualedit=block
 
 " How many lines to scroll at a time, make scrolling appears faster
@@ -259,7 +263,7 @@ endfunction
 
 " Restore the last session manually
 if filereadable(expand("~/.vim/.last.session"))
-    nmap <silent> <Leader>r :source ~/.vim/.last.session<CR>
+    nnoremap <silent> <Leader>r :source ~/.vim/.last.session<CR>
 endif
 
 set completeopt=menu,preview,longest
@@ -598,7 +602,7 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
     if filereadable(expand("~/.vim/plugged/undotree/plugin/undotree.vim"))
         let g:undotree_SplitWidth = 40
         let g:undotree_SetFocusWhenToggle = 1
-        nmap <silent> <Leader>u :UndotreeToggle<CR>
+        nnoremap <silent> <Leader>u :UndotreeToggle<CR>
     endif
 
     " }}} Plugin Config - undotree "
