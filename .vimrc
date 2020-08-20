@@ -718,6 +718,9 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plugin Config - CtrlP {{{ "
 
     if filereadable(expand("~/.vim/plugged/ctrlp.vim/plugin/ctrlp.vim"))
+        if executable('rg')
+            let g:ctrlp_user_command = 'rg %s --files --no-hidden --color=never --glob ""'
+        endif
         let g:ctrlp_map = '<Leader>o'
         let g:ctrlp_cmd = 'CtrlPBuffer'
         let g:ctrlp_mruf_exclude = '/tmp/.*\|\.w3m/.*\|/var/folders/.*'
