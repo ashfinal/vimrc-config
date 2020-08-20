@@ -420,12 +420,9 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
 " Ctrl-[kj]: Move lines up/down
-" nnoremap <silent> <C-j> :m .+1<CR>==
-" nnoremap <silent> <C-k> :m .-2<CR>==
-" inoremap <silent> <C-j> <Esc>:m .+1<CR>==gi
-" inoremap <silent> <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
-vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
+" replaced by vim-textmanip plugin
+" vnoremap <silent> <C-j> :m '>+1<CR>gv=gv
+" vnoremap <silent> <C-k> :m '<-2<CR>gv=gv
 
 " }}} Key Mappings "
 
@@ -536,6 +533,7 @@ if g:rc_use_plug_manager
             Plug 'skywind3000/asyncrun.vim'
             Plug 'mg979/vim-visual-multi'
         endif
+        Plug 't9md/vim-textmanip'
         if executable('latexmk')
             Plug 'lervag/vimtex'
         endif
@@ -653,6 +651,19 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
     endif
 
     " }}} Plugin Config - vim-table-mode "
+
+    " Plugin Config - vim-textmanip {{{ "
+
+    if filereadable(expand("~/.vim/plugged/vim-textmanip/autoload/textmanip.vim"))
+
+        xmap <C-j> <Plug>(textmanip-move-down)
+        xmap <C-k> <Plug>(textmanip-move-up)
+        xmap <C-h> <Plug>(textmanip-move-left)
+        xmap <C-l> <Plug>(textmanip-move-right)
+
+    endif
+
+    " }}} Plugin Config - vim-textmanip "
 
     " Plugin Config - neocomplete {{{ "
 
