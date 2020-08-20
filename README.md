@@ -45,6 +45,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [ultisnips][ultisnips] - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!(`+python` required)
     - [vim-snippets][vim-snippets] - Source of [ultisnips][ultisnips]
 - [emmet-vim][emmet-vim] - emmet for vim: http://emmet.io/
+- [vim-textmanip][vim-textmanip] - easy text manupilation for vim
 - [vim-table-mode][vim-table-mode] - VIM Table Mode for instant table creation
 - [vim-sandwich][vim-sandwich] - The set of operator and textobject plugins to search/select/edit sandwiched textobjects.
 - [targets.vim][targets.vim] - Vim plugin that provides additional text objects
@@ -183,6 +184,7 @@ https://github.com/spf13/spf13-vim
 [ultisnips]:https://github.com/SirVer/ultisnips "https://github.com/SirVer/ultisnips"
 [vim-snippets]:https://github.com/honza/vim-snippets "https://github.com/honza/vim-snippets"
 [emmet-vim]:https://github.com/mattn/emmet-vim "https://github.com/mattn/emmet-vim"
+[vim-textmanip]:https://github.com/t9md/vim-textmanip "https://github.com/t9md/vim-textmanip"
 [vim-table-mode]:https://github.com/dhruvasagar/vim-table-mode "https://github.com/dhruvasagar/vim-table-mode"
 [vim-sandwich]:https://github.com/machakann/vim-sandwich "https://github.com/machakann/vim-sandwich"
 [targets.vim]:https://github.com/wellle/targets.vim "https://github.com/wellle/targets.vim"
