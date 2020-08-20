@@ -739,6 +739,7 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     if filereadable(expand("~/.vim/plugged/vim-airline/plugin/airline.vim"))
         let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#buffer_nr_show = 1
         let g:airline#extensions#tabline#fnamemod = ':t'
     endif
 
