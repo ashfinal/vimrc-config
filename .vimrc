@@ -744,6 +744,11 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
         let g:airline#extensions#tabline#enabled = 1
         let g:airline#extensions#tabline#buffer_nr_show = 1
         let g:airline#extensions#tabline#fnamemod = ':t'
+        " Automatically show/hide invisible characters depend on file is dirty or nor
+        augroup dirtyfile
+            autocmd!
+            autocmd BufReadPost * if airline#extensions#whitespace#check()!="" | setl list | endif
+        augroup END
     endif
 
     " }}} Plugin Config - airline "
