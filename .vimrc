@@ -474,7 +474,7 @@ endif
 
 augroup rc_strip_wsbl
     autocmd!
-    autocmd BufWritePre * call RCStripWSBL()
+    autocmd BufWritePre * if &modifiable && &modified | call RCStripWSBL() | endif
 augroup END
 
 nnoremap <silent> <Leader>s :call RCStripWSBL()<CR>
