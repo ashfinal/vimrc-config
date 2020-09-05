@@ -368,10 +368,10 @@ set splitbelow " Puts new split windows to the bottom of the current
 " Split management
 nnoremap <silent> [b :bprevious<cr>
 nnoremap <silent> ]b :bnext<cr>
-nmap <silent> <C-k> :exe "resize " . (winheight(0) * 3/2)<CR>
-nmap <silent> <C-j> :exe "resize " . (winheight(0) * 2/3)<CR>
-nmap <silent> <C-h> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-nmap <silent> <C-l> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+nnoremap <silent> <C-k> :resize +2<CR>
+nnoremap <silent> <C-j> :resize -2<CR>
+nnoremap <silent> <C-h> :vertical resize +4<CR>
+nnoremap <silent> <C-l> :vertical resize -4<CR>
 
 " Always show status line
 set laststatus=2
