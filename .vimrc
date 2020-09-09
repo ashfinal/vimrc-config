@@ -23,7 +23,7 @@ set runtimepath+=$HOME/.vim
 if has('win32')
     call mkdir($HOME . "/AppData/Local/nvim", "p")
 else
-    call mkdir($HOME . "/.config/nvim", "p")
+    if !isdirectory($HOME . "/.config/nvim") | call mkdir($HOME . "/.config/nvim", "p") | endif
 endif
 
 set title
@@ -313,14 +313,14 @@ set nobackup
 set nowritebackup
 
 " Swap files are necessary when crash recovery
-call mkdir($HOME . "/.vim/swapfiles", "p")
+if !isdirectory($HOME . "/.vim/swapfiles") | call mkdir($HOME . "/.vim/swapfiles", "p") | endif
 set dir=$HOME/.vim/swapfiles//
 
 " Turn persistent undo on, means that you can undo even when you close a buffer/VIM
 set undofile
 set undolevels=1000
 
-call mkdir($HOME . "/.vim/undotree", "p")
+if !isdirectory($HOME. "/.vim/undotree") | call mkdir($HOME . "/.vim/undotree", "p") | endif
 set undodir=$HOME/.vim/undotree//
 
 " For regular expressions turn magic on
@@ -612,7 +612,7 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
         let g:UltiSnipsJumpForwardTrigger = "<Tab>"
         let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         let g:UltiSnipsEditSplit = "context"
-        call mkdir($HOME . "/.vim/UltiSnips", "p")
+        if !isdirectory($HOME . "/.vim/UltiSnips") | call mkdir($HOME . "/.vim/UltiSnips", "p") | endif
         let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
     endif
 
