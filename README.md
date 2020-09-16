@@ -4,7 +4,7 @@
 
 ★ Well polished, should work on Mac, Linux and Windows.
 
-★ Full [Language Server Protocol](https://langserver.org/) support(neovim only).
+★ Full [Language Server Protocol](https://langserver.org/) support([node.js][node.js] required).
 
 ★ Easy to maintain and extend, to fulfill your needs.
 
@@ -58,7 +58,8 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [codi.vim][codi.vim] - The interactive scratchpad for hackers.
 - [vim-one][vim-one] - Adaptation of one-light and one-dark colorschemes for Vim
 - [neocomplete][neocomplete] - Next generation completion framework after neocomplcache(`+lua` required)
-- [coc.nvim][coc.nvim] - Complete engine and Language Server support for neovim & vim, featured as VSCode(`npm/yarn required`)
+- [coc.nvim][coc.nvim] - Complete engine and Language Server support for neovim & vim, featured as VSCode([node.js][node.js] required)
+- [tagbar][tagbar] - Vim plugin that displays tags in a window, ordered by scope([ctags][ctags] required)
 - [vimtex][vimtex] - A modern vim plugin for editing LaTeX files.
 - [asyncrun][asyncrun] - Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
 
@@ -99,27 +100,28 @@ use `:Wcolor` for showing highlight group under current cursor
 
 ### `<Leader>` key related
 
-| Key                    |  Mode  | Action                                                   |
-|:-----------------------|:------:|:---------------------------------------------------------|
-| `<Leader>` + `r`       | Normal | Restore last session                                     |
-| `<Leader>` + `n`       | Normal | Toggle showing linenumber                                |
-| `<Leader>` + `s`       | Normal | Strip whitespace & blankline EOF                         |
+| Key              |  Mode  | Action                           |
+|:-----------------|:------:|:---------------------------------|
+| `<Leader>` + `r` | Normal | Restore last session             |
+| `<Leader>` + `n` | Normal | Toggle showing linenumber        |
+| `<Leader>` + `s` | Normal | Strip whitespace & blankline EOF |
 
 ### Plugins key bindings
 
-| Plugin                                       | Key                      |      Mode     | Action                              |
-|:---------------------------------------------|:-------------------------|:-------------:|:------------------------------------|
-| [ctrlp.vim][ctrlp.vim]                       | `<Leader>` + `o`         |     Normal    | Open CtrlP window                   |
-| [undotree][undotree]                         | `<Leader>` + `u`         |     Normal    | Toggle undotree window              |
-| [nerdcommenter][nerdcommenter]               | `\`                      | Normal/Visual | Toggle comment                      |
-| [nerdcommenter][nerdcommenter]               | `Ctrl` + `\`             | Normal/Visual | CommentSexy                         |
-| [emmet-vim][emmet-vim]                       | `,` + `,`                | Insert/Visual | Expand abbr                         |
-| [vim-easy-align][vim-easy-align]             | `<Leader>` + `g`         | Normal/Visual | Align with                          |
-| [goyo.vim][goyo.vim]                         | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                    |
-| [limelight.vim][limelight.vim]               | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode               |
-| [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Expand snips                        |
-| [ultisnips][ultisnips]                       | `<Tab>`                  |     Insert    | Jumpforward                         |
-| [ultisnips][ultisnips]                       | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                        |
+| Plugin                           | Key                      |      Mode     | Action                 |
+|:---------------------------------|:-------------------------|:-------------:|:-----------------------|
+| [ctrlp.vim][ctrlp.vim]           | `<Leader>` + `o`         |     Normal    | Open CtrlP window      |
+| [undotree][undotree]             | `<Leader>` + `u`         |     Normal    | Toggle undotree window |
+| [nerdcommenter][nerdcommenter]   | `\`                      | Normal/Visual | Toggle comment         |
+| [nerdcommenter][nerdcommenter]   | `Ctrl` + `\`             | Normal/Visual | CommentSexy            |
+| [emmet-vim][emmet-vim]           | `,` + `,`                | Insert/Visual | Expand abbr            |
+| [vim-easy-align][vim-easy-align] | `<Leader>` + `g`         | Normal/Visual | Align with             |
+| [goyo.vim][goyo.vim]             | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode       |
+| [limelight.vim][limelight.vim]   | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode  |
+| [ultisnips][ultisnips]           | `<Tab>`                  |     Insert    | Expand snips           |
+| [ultisnips][ultisnips]           | `<Tab>`                  |     Insert    | Jumpforward            |
+| [ultisnips][ultisnips]           | `<Shift> + <Tab>`        |     Insert    | Jumpbackward           |
+| [tagbar][tagbar]                 | `<Leader>` + `b`         |     Normal    | Toggle tagbar window   |
 
 ### visual-multi key bindings
 
@@ -199,3 +201,6 @@ https://github.com/spf13/spf13-vim
 [coc.nvim]:https://github.com/neoclide/coc.nvim "https://github.com/neoclide/coc.nvim "
 [vimtex]:https://github.com/lervag/vimtex "https://github.com/lervag/vimtex"
 [asyncrun]:https://github.com/skywind3000/asyncrun/vim "https://github.com/skywind3000/asyncrun.vim"
+[node.js]:https://nodejs.org/en/download/ "https://nodejs.org/en/download/"
+[tagbar]:https://github.com/preservim/tagbar "https://github.com/preservim/tagbar"
+[ctags]:https://github.com/universal-ctags/ctags "https://github.com/universal-ctags/ctags"
