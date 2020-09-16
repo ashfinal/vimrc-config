@@ -680,6 +680,11 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
         let g:ctrlp_map = '<Leader>o'
         let g:ctrlp_cmd = 'CtrlPBuffer'
         let g:ctrlp_mruf_exclude = '/tmp/.*\|\.w3m/.*\|/var/folders/.*'
+
+        augroup rc_mru_cleanup
+            autocmd!
+            autocmd VimEnter * call ctrlp#mrufiles#refresh()
+        augroup end
     endif
 
     " }}} Plugin Config - CtrlP "
