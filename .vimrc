@@ -490,6 +490,9 @@ if g:rc_use_plug_manager
             Plug 'mg979/vim-visual-multi'
         endif
         Plug 't9md/vim-textmanip'
+        if executable('ctags')
+            Plug 'preservim/tagbar'
+        endif
         if executable('latexmk')
             Plug 'lervag/vimtex'
         endif
@@ -786,6 +789,14 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
     endif
 
     " }}} Plugin Config - coc.nvim "
+
+    " Plugin Config - tagbar {{{ "
+
+    if filereadable(expand("~/.vim/plugged/tagbar/autoload/tagbar.vim"))
+        nnoremap <silent> <Leader>b :TagbarToggle<CR>
+    endif
+
+    " }}} Plugin Config - tagbar "
 
 endif
 
