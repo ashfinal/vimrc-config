@@ -198,13 +198,13 @@ set sessionoptions-=options " Don't restore all options and mappings
 if !exists('g:rc_restore_last_session') | let g:rc_restore_last_session = 0 | endif
 
 " Always save the last session
-augroup save_session
+augroup rc_save_session
     autocmd!
     autocmd VimLeave * exe ":mksession! ~/.vim/.last.session"
 augroup END
 
 " Try to restore last session
-augroup restore_session
+augroup rc_restore_session
     autocmd!
     autocmd VimEnter * call RCRestoreLastSession()
 augroup END
@@ -402,7 +402,7 @@ if !has('win32')
     command! W w !sudo tee % > /dev/null
 endif
 
-augroup rc_color_warning
+augroup rc_warning_highlight
     autocmd!
     autocmd ColorScheme * call matchadd('Todo', '\W\zs\(NOTICE\|WARNING\|DANGER\)')
 augroup END
@@ -701,7 +701,7 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
         let g:airline#extensions#tabline#buffer_nr_show = 1
         let g:airline#extensions#tabline#fnamemod = ':t'
         " Automatically show/hide invisible characters depend on file is dirty or nor
-        augroup dirtyfile
+        augroup rc_listmode_dirtyfile
             autocmd!
             autocmd BufReadPost * if airline#extensions#whitespace#check()!="" | setl list | endif
         augroup END
