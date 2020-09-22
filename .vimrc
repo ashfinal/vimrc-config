@@ -111,7 +111,7 @@ set foldlevel=100 " unfold all by default
 
 " }}} Environment - Encoding, Indent, Fold "
 
-" Appearence - Scrollbar, Highlight, Numberline {{{ "
+" Appearence - Scrollbar, Highlight, Linenumber {{{ "
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -153,7 +153,7 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-" }}} Appearence - Scrollbar, Highlight, Numberline "
+" }}} Appearence - Scrollbar, Highlight, Linenumber "
 
 " Edit - Navigation, History, Search {{{ "
 
