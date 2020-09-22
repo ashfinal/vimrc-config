@@ -252,7 +252,7 @@ autocmd BufReadPost *
     \ | endif
 
 " Visually select the text that was last edited/pasted
-nmap gV `[v`]
+nnoremap <expr> gV '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Set to auto read when a file is changed from the outside
 set autoread
