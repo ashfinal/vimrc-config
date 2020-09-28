@@ -788,6 +788,15 @@ if g:rc_use_plug_manager && filereadable(expand("~/.vim/autoload/plug.vim"))
 
     " }}} Plugin Config - coc.nvim "
 
+    " Plugin Config - AsyncRun {{{ "
+
+    if filereadable(expand("~/.vim/plugged/asyncrun.vim/plugin/asyncrun.vim"))
+        nnoremap <silent> <expr> & ':AsyncRun -post=cw ' . input('>') . '<CR>'
+        nnoremap <silent> <expr> g& ':AsyncRun -save -post=copen -strip ' . input('>', 'rg --vimgrep ' . expand('<cword>') . ' %') . '<CR>'
+    endif
+
+    " }}} Plugin Config - AsyncRun "
+
     " Plugin Config - tagbar {{{ "
 
     if filereadable(expand("~/.vim/plugged/tagbar/autoload/tagbar.vim"))

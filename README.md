@@ -108,20 +108,22 @@ use `:Wcolor` for showing highlight group under current cursor
 
 ### Plugins key bindings
 
-| Plugin                           | Key                      |      Mode     | Action                 |
-|:---------------------------------|:-------------------------|:-------------:|:-----------------------|
-| [ctrlp.vim][ctrlp.vim]           | `<Leader>` + `o`         |     Normal    | Open CtrlP window      |
-| [undotree][undotree]             | `<Leader>` + `u`         |     Normal    | Toggle undotree window |
-| [nerdcommenter][nerdcommenter]   | `\`                      | Normal/Visual | Toggle comment         |
-| [nerdcommenter][nerdcommenter]   | `Ctrl` + `\`             | Normal/Visual | CommentSexy            |
-| [emmet-vim][emmet-vim]           | `,` + `,`                | Insert/Visual | Expand abbr            |
-| [vim-easy-align][vim-easy-align] | `<Leader>` + `g`         | Normal/Visual | Align with             |
-| [goyo.vim][goyo.vim]             | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode       |
-| [limelight.vim][limelight.vim]   | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode  |
-| [ultisnips][ultisnips]           | `<Tab>`                  |     Insert    | Expand snips           |
-| [ultisnips][ultisnips]           | `<Tab>`                  |     Insert    | Jumpforward            |
-| [ultisnips][ultisnips]           | `<Shift> + <Tab>`        |     Insert    | Jumpbackward           |
-| [tagbar][tagbar]                 | `<Leader>` + `b`         |     Normal    | Toggle tagbar window   |
+| Plugin                           | Key                      |      Mode     | Action                                                    |
+|:---------------------------------|:-------------------------|:-------------:|:----------------------------------------------------------|
+| [ctrlp.vim][ctrlp.vim]           | `<Leader>` + `o`         |     Normal    | Open CtrlP window                                         |
+| [undotree][undotree]             | `<Leader>` + `u`         |     Normal    | Toggle undotree window                                    |
+| [nerdcommenter][nerdcommenter]   | `\`                      | Normal/Visual | Toggle comment                                            |
+| [nerdcommenter][nerdcommenter]   | `Ctrl` + `\`             | Normal/Visual | CommentSexy                                               |
+| [emmet-vim][emmet-vim]           | `,` + `,`                | Insert/Visual | Expand abbr                                               |
+| [vim-easy-align][vim-easy-align] | `<Leader>` + `g`         | Normal/Visual | Align with                                                |
+| [goyo.vim][goyo.vim]             | `Ctrl` + `w` + `<Space>` |     Normal    | Toggle goyo mode                                          |
+| [limelight.vim][limelight.vim]   | `Ctrl` + `w` + `<Enter>` |     Normal    | Toggle limelight mode                                     |
+| [ultisnips][ultisnips]           | `<Tab>`                  |     Insert    | Expand snips                                              |
+| [ultisnips][ultisnips]           | `<Tab>`                  |     Insert    | Jumpforward                                               |
+| [ultisnips][ultisnips]           | `<Shift> + <Tab>`        |     Insert    | Jumpbackward                                              |
+| [tagbar][tagbar]                 | `<Leader>` + `b`         |     Normal    | Toggle tagbar window                                      |
+| [asyncrun][asyncrun]             | `&`                      |     Normal    | AsyncRun arbitrary command(like `wget http://myfile.zip`) |
+| [asyncrun][asyncrun]             | `g&`                     |     Normal    | AsyncRun predefined command with `-strip` option          |
 
 ### visual-multi key bindings
 
