@@ -473,7 +473,7 @@ if g:rc_use_plug_manager
         Plug 'kshenoy/vim-signature'
         Plug 'scrooloose/nerdcommenter'
         Plug 'Raimondi/delimitMate'
-        if version >= 704
+        if version >= 704 && has('python3')
             Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         endif
         Plug 'junegunn/vim-easy-align'
