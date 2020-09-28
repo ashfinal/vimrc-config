@@ -386,9 +386,6 @@ inoremap <c-w> <c-g>u<c-w>
 
 set noshowcmd
 
-" vertical diffsplit
-set diffopt+=vertical
-
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
@@ -446,7 +443,8 @@ endfunction
 let g:html_dynamic_folds = 1
 let g:html_prevent_copy = "fntd"
 
-if has("patch-8.1.360") || has("nvim-0.3.5")
+if has("patch-8.2.766") || has("nvim-0.3.5")
+    set diffopt+=vertical
     set diffopt+=algorithm:histogram
     set diffopt+=indent-heuristic
 endif
