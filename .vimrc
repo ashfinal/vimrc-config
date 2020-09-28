@@ -501,7 +501,7 @@ if g:rc_use_plug_manager
         endif
         Plug 'ashfinal/vim-one'
         if version >= 800 || has('nvim')
-            Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
         else
             if version >= 703 && has('lua')
                 Plug 'Shougo/neocomplete.vim'
