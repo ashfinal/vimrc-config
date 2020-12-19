@@ -45,7 +45,7 @@ re-vim uses [vim-plug](https://github.com/junegunn/vim-plug) (`+python` required
 - [ultisnips][ultisnips] - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!(`+python` required)
     - [vim-snippets][vim-snippets] - Source of [ultisnips][ultisnips]
 - [emmet-vim][emmet-vim] - emmet for vim: http://emmet.io/
-- [vim-textmanip][vim-textmanip] - easy text manupilation for vim
+- [vim-textmanip][vim-textmanip] - easy text manipulation for vim
 - [vim-table-mode][vim-table-mode] - VIM Table Mode for instant table creation
 - [vim-sandwich][vim-sandwich] - The set of operator and textobject plugins to search/select/edit sandwiched textobjects.
 - [targets.vim][targets.vim] - Vim plugin that provides additional text objects
