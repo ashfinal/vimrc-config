@@ -520,8 +520,8 @@ if g:rc_use_plug_manager
                     echo "Downloading plug.vim, please wait a second..."
                     exe 'py3 import os,urllib.request; f = urllib.request.urlopen("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"); g = os.path.join(os.path.expanduser("~"), ".vim/autoload/plug.vim"); open(g, "wb").write(f.read())'
                 else
-                    exe "silent !echo 'let g:rc_use_plug_manager = 0' > ~/.vim/vimrc.before"
-                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the line with 'let g:rc_use_plug_manager = 0' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
+                    redir >> ~/.vim/vimrc.before | echom 'let g:rc_use_plug_manager = 0' | redir END
+                    echo "WARNING: plug.vim has been disabled due to the absence of 'python' or 'python3' features.\nIf you solve the problem and want to use it, you should delete the 'let g:rc_use_plug_manager = 0' line in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble please file an issue."
                 endif
             endif
             if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -529,8 +529,8 @@ if g:rc_use_plug_manager
                 exe 'qall!'
             endif
         else
-            exe "silent !echo 'let g:rc_use_plug_manager = 0' > ~/.vim/vimrc.before"
-            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the line with 'let g:rc_use_plug_manager = 0' in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble contact me."
+            redir >> ~/.vim/vimrc.before | echom 'let g:rc_use_plug_manager = 0' | redir END
+            echo "WARNING: plug.vim has been disabled due to the absence of 'git'.\nIf you solve the problem and want to use it, you should delete the 'let g:rc_use_plug_manager = 0' line in '~/.vim/vimrc.before' file.\nIf you don't take any action, that's OK. This message won't appear again. If you have any trouble please file an issue."
         endif
     endif
 endif

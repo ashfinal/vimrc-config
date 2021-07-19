@@ -20,8 +20,9 @@ Need [neovim](https://github.com/neovim/neovim) support?
 
     ln ~/.vimrc ~/.config/nvim/init.vim
 
-If on Windows, run this:
+If on Windows, run these in Command Prompt:
 
+    mkdir "%USERPROFILE%\AppData\Local\nvim"
     mklink "%USERPROFILE%\AppData\Local\nvim\init.vim" "%USERPROFILE%\.vimrc"
 
 ## Screenshots
